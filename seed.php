@@ -415,6 +415,42 @@ $seedThreads = [
         'reply' => 'Bizim sokakta da dun aksam su geldi, tesekkurler bilgi icin.',
         'replyAuthor' => 'hasan_karpaz',
     ],
+    [
+        'tag' => 'yasam',
+        'hashtags' => ['girne', 'kiralik'],
+        'title' => 'ILAN: Girne Alsancakta esyali 1+1 kiralik daire',
+        'body' => "📍 Konum: Alsancak, Girne (sahile 5 dk yurume)\n💰 Fiyat: 9.000 TL/ay + aidat\n📞 Iletisim: DM ile ulasin\n📅 Ilan tarihi: bugun\n\nEsyali, faturalar haric, minimum 6 ay kontrat.",
+        'author' => 'mehmet_girne',
+        'reply' => 'Fotograflari da paylasabilir misiniz?',
+        'replyAuthor' => 'aylin_iskele',
+    ],
+    [
+        'tag' => 'yasam',
+        'hashtags' => ['lefkosa', 'satilik'],
+        'title' => 'ILAN: Lefkosa Gonyelide satilik 3+1 daire',
+        'body' => "📍 Konum: Gonyeli, Lefkosa\n💰 Fiyat: 65.000 GBP\n📞 Iletisim: DM ile ulasin\n📅 Ilan tarihi: bugun\n\nSitede, otoparkli, 120m2, esyasiz teslim.",
+        'author' => 'ada_lefkosa',
+        'reply' => 'Site aidati ne kadar aciklayabilir misiniz?',
+        'replyAuthor' => 'zeynep_dau',
+    ],
+    [
+        'tag' => 'yasam',
+        'hashtags' => ['gazimagusa', 'is-ilani'],
+        'title' => 'ILAN: Magusada part-time kafe eleman araniyor',
+        'body' => "📍 Bolge: Gazimagusa merkez\n💼 Pozisyon: Barista / kafe elemani\n💰 Maas: Saatlik + bahsis\n🕐 Calisma sekli: Part-time, ogrenciye uygun\n📞 Iletisim: DM ile ulasin\n📅 Ilan tarihi: bugun",
+        'author' => 'can_maguza',
+        'reply' => 'Ders programina gore saat ayarlanabiliyor mu?',
+        'replyAuthor' => 'hasan_karpaz',
+    ],
+    [
+        'tag' => 'yasam',
+        'hashtags' => ['dau', 'ev-arkadasi'],
+        'title' => 'ILAN: DAU cevresinde ev arkadasi araniyor',
+        'body' => "📍 Konum: Magusa, DAU'ya yurume mesafesi\n💰 Fiyat: Kisi basi 4.500 TL + faturalar\n📞 Iletisim: DM ile ulasin\n📅 Ilan tarihi: bugun\n\nDuzenli, sigara icmeyen, muhendislik ogrencisi tercih sebebi.",
+        'author' => 'zeynep_dau',
+        'reply' => 'Ev kac kisilik, oda bos mu simdiden?',
+        'replyAuthor' => 'can_maguza',
+    ],
 ];
 
 foreach ($seedThreads as $thread) {

@@ -44,7 +44,7 @@
       "name": "Yaşam (Ev, Yurt, İş)",
       "color": "#10b981",
       "icon": "fas fa-home",
-      "description": "Kiralık/satılık ev, öğrenci evi, ev/oda arkadaşı, iş ilanı, staj, ikinci el eşya"
+      "description": "Kiralık/satılık ev, öğrenci evi, ev/oda arkadaşı, iş ilanı, staj, ikinci el eşya. İlan açarken #satılık/#kiralık/#iş-ilanı/#ev-arkadaşı/#ikinci-el etiketlerinden birini ekleyin ve başlıkta 📍 Konum, 💰 Fiyat, 📞 İletişim bilgisini belirtin."
     },
     {
       "slug": "kesfet",

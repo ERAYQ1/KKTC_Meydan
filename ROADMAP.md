@@ -50,7 +50,8 @@ Alt seviyede kalabilecek ek kategoriler: Teknoloji, Spor, Hayvanlar, Güvenlik/A
 - [ ] **İşletme/Esnaf dizini** — işletme profili (adres, harita, telefon, WhatsApp, çalışma saati, fotoğraf, hizmetler, yorum/puan, doğrulanmış işletme rozeti)
 - [ ] **Etkinlik takvimi** — takvim görünümlü etkinlik paylaşımı
 - [ ] **Anonim paylaşım** — kullanıcı hesabıyla ya da anonim paylaşabilir; moderatör gerçek kimliği görebilir, normal kullanıcı göremez; IP/log güvenli tutulur; taciz/tehdit içeriği için moderasyon uygulanır. Gizlilik/hukuki risk taşıdığı için dikkatli tasarlanacak.
-- [ ] **İlan sistemi** — yapılandırılmış alanlar (fiyat, konum, iletişim, ilan tarihi, ilan tipi) ile forum konusundan ayrı bir "ilan" içerik tipi. Reklam sistemi (kategori/şehir/üniversite hedefleme) bu işin üzerine kurulacak.
+- [x] **İlan sistemi — v1 (konvansiyon + hashtag)**: "Yaşam" kategorisi altında #satılık/#kiralık/#iş-ilanı/#ev-arkadaşı/#ikinci-el hashtag'i + standart başlık formatı (📍 Konum, 💰 Fiyat, 📞 İletişim, 📅 Tarih). 4 örnek ilan eklendi (kiralık daire, satılık daire, iş ilanı, ev arkadaşı). Kategori açıklamasında format kullanıcıya gösteriliyor.
+- [ ] **İlan sistemi v2 (özel post tipi)** — gerçek yapılandırılmış alanlar (ayrı fiyat/konum/tarih sütunları, fiyata göre filtreleme, ayrı ilan listesi görünümü). **Aynı engel: Node.js/npm gerekiyor.** Reklam sistemi (kategori/şehir/üniversite hedefleme) bu işin üzerine kurulacak.
 - [ ] Detaylı istatistik/analitik admin paneli (günlük/haftalık aktif kullanıcı, en aktif kategori)
 - [ ] Otomatik moderasyon / kelime filtresi (özellikle Sağlık ve Güvenlik kategorilerinde kişisel veri/suçlama riskine karşı)
 
