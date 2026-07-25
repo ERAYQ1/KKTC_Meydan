@@ -27,12 +27,31 @@ Detaylı ürün ve mimari dokümantasyonu için bkz. [PROJECT_CONTEXT.md](PROJEC
 git clone https://github.com/ERAYQ1/KKTC_Meydan.git
 cd KKTC_Meydan
 cp config.example.php config.php
-# config.php içindeki veritabanı bilgilerini düzenleyin
+# config.php içindeki veritabanı bilgilerini düzenleyin (bu dosya .gitignore'da, asla commit etmeyin)
 docker compose up -d --build
 composer install
 ```
 
 Uygulama varsayılan olarak `http://localhost:8080` üzerinden erişilebilir olacaktır.
+
+İlk kurulumdan sonra gerekli eklentileri etkinleştirin:
+
+```bash
+docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-lang-turkish \
+  flarum-subscriptions flarum-likes flarum-lock flarum-mentions flarum-markdown \
+  flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval
+```
+
+Kategoriler (tag) ve site ayarları (isim, açıklama, tema rengi, hoş geldin mesajı) `site_settings.json` içinde tanımlıdır; admin panelinden veya bir migration/seed betiğiyle uygulanmalıdır. Admin şifresi gibi kimlik bilgileri hiçbir dosyada saklanmaz — kurulum sonrası admin panelinden değiştirin.
+
+### Durum
+- [x] Docker altyapısı (nginx + php-fpm + MariaDB)
+- [x] Flarum çekirdek kurulumu
+- [x] Türkçe dil paketi etkin
+- [x] Kategoriler: Gündem, Üniversiteler, Emlak, İkinci El, Ulaşım, Serbest Meydan
+- [ ] Özel roller (öğrenci/işletme grupları)
+- [ ] İlan/reklam sistemi (özel geliştirme gerektiriyor)
+- [ ] Canlı hosting kurulumu
 
 ## Lisans
 MIT — bkz. [LICENSE](LICENSE)

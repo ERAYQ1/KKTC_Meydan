@@ -4,19 +4,20 @@
     "description": "KKTC Meydan - Kıbrıs'ın Özgür Tartışma ve Topluluk Meydanı",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.8.0",
         "flarum-lang/turkish": "*",
-        "flarum/tags": "*",
-        "flarum/subscriptions": "*",
+        "flarum/approval": "*",
+        "flarum/bbcode": "*",
+        "flarum/core": "^1.8.0",
+        "flarum/emoji": "*",
+        "flarum/flags": "*",
         "flarum/likes": "*",
         "flarum/lock": "*",
-        "flarum/mentions": "*",
         "flarum/markdown": "*",
-        "flarum/bbcode": "*",
-        "flarum/emoji": "*",
-        "flarum/suspend": "*",
+        "flarum/mentions": "*",
         "flarum/sticky": "*",
-        "flarum/approval": "*"
+        "flarum/subscriptions": "*",
+        "flarum/suspend": "*",
+        "flarum/tags": "*"
     },
     "config": {
         "preferred-install": "dist",
