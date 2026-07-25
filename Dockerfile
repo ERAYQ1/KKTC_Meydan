@@ -25,6 +25,9 @@ RUN apk add --no-cache \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Hide PHP version fingerprint
+RUN echo "expose_php = Off" > /usr/local/etc/php/conf.d/expose-php-off.ini
+
 # Set working directory
 WORKDIR /var/www/html
 
