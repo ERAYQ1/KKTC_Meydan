@@ -13,6 +13,8 @@ KKTC'de yaşayan öğrencilerin, yerel halkın, çalışanların, işletmelerin 
 - Etkinlik paylaşımı
 - Reklam sistemi (kategori/şehir/üniversite hedefleme)
 
+Detaylı içerik mimarisi ve yapılacaklar listesi için bkz. [ROADMAP.md](ROADMAP.md).
+
 ## Teknoloji
 - PHP 8.2
 - MariaDB 10.11
