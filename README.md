@@ -5,11 +5,12 @@ Kıbrıs'ın özgür tartışma ve topluluk meydanı.
 KKTC'de yaşayan öğrencilerin, yerel halkın, çalışanların, işletmelerin ve ziyaretçilerin bilgi paylaşabileceği, soru sorabileceği, tartışabileceği ve yerel hizmetleri keşfedebileceği merkezi dijital topluluk platformu.
 
 ## Özellikler (planlanan ve mevcut)
-- Şehir bazlı topluluklar (Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Karpaz)
+- Bölge bazlı topluluklar (6 resmi ilçe: Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Lefke + tüm alt yerleşimler)
 - Üniversite toplulukları (KKTC'deki tüm üniversiteler — bkz. `site_settings.json`)
+- Sorun Bildir (altyapı/belediye sorunları, durum takibi: bildirildi → inceleniyor → yetkiliye iletildi → çözüldü)
+- İşletme profilleri (adres/telefon/WhatsApp/çalışma saati, hesaba bağlı)
+- İlan sistemi (satılık/kiralık/iş ilanı/ev arkadaşı/ikinci el)
 - Anonim ve hesaplı paylaşım
-- İşletme/mekan profilleri
-- İkinci el, iş ilanı, ev/yurt ilanları
 - Etkinlik paylaşımı
 - Reklam sistemi (kategori/şehir/üniversite hedefleme)
 
@@ -19,6 +20,7 @@ Detaylı içerik mimarisi ve yapılacaklar listesi için bkz. [ROADMAP.md](ROADM
 - PHP 8.2
 - MariaDB 10.11
 - nginx
+- Node.js (özel extension'ların JS derlemesi için)
 - Docker / Docker Compose
 
 ## Kurulum (Docker)
@@ -54,15 +56,23 @@ docker compose exec flarum-app php seed.php
 Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.json`'daki ayarları ve kategorileri uygular, ayrıca her kategoride örnek kullanıcı ve konu oluşturarak forumun boş görünmesini engeller. Admin şifresi gibi kimlik bilgileri hiçbir dosyada saklanmaz — kurulum sonrası admin panelinden değiştirin.
 
 ### Durum
-- [x] Docker altyapısı (nginx + php-fpm + MariaDB)
+- [x] Docker altyapısı (nginx + php-fpm + MariaDB + Node.js)
 - [x] Flarum çekirdek kurulumu
 - [x] Türkçe dil paketi etkin
-- [x] Kategoriler: Gündem, Üniversiteler, Emlak, İkinci El, Ulaşım, Serbest Meydan
+- [x] 8 ana kategori: KKTC Gündem, Bölgeler, Üniversiteler, Ulaşım, Yaşam, Keşfet, Sorun Bildir, Genel Meydan
 - [x] Seed betiği (site ayarları, kategoriler, örnek kullanıcı/konu)
 - [x] Özel roller (Öğrenci, İşletme, Yerel Halk, Güvenilir Üye — şimdilik sadece rozet, ek izin yok, admin en yetkili grup olarak kalıyor)
-- [x] Şehir/üniversite hashtag'leri (ikincil etiket olarak, kategoriyle birlikte kullanılıyor) + gerçek KKTC konularıyla genişletilmiş örnek içerik
-- [ ] İlan/reklam sistemi (özel geliştirme gerektiriyor)
+- [x] Bölge/üniversite/konu hashtag'leri (ikincil etiket olarak, kategoriyle birlikte kullanılıyor) + gerçek KKTC konularıyla genişletilmiş örnek içerik
+- [x] Sorun Bildir sistemi v1 (durum hashtag'leriyle)
+- [x] İlan sistemi v1 (hashtag + standart format konvansiyonuyla)
+- [x] İşletme dizini v1 (özel extension — bkz. `extensions/business-profile`)
+- [ ] Reklam sistemi (kategori/şehir/üniversite hedefleme)
+- [ ] Etkinlik takvimi
+- [ ] Anonim paylaşım
+- [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu
+
+Detaylı durum ve teknik notlar için bkz. [ROADMAP.md](ROADMAP.md).
 
 ## Lisans
 MIT — bkz. [LICENSE](LICENSE)
