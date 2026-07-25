@@ -4,58 +4,126 @@
   "default_locale": "tr",
   "theme_color": "#0891b2",
   "welcome_title": "KKTC Meydan'a Hoş Geldiniz! 🌴",
-  "welcome_subtitle": "Kıbrıs hakkında gündem, üniversite yaşamı, emlak, ulaşım ve serbest konuları burada tartışın.",
+  "welcome_subtitle": "Kıbrıs hakkında gündem, bölgeler, üniversite yaşamı, ulaşım, yaşam ve meydan konularını burada tartışın.",
   "categories": [
     {
       "slug": "gundem",
-      "name": "Gündem & Son Dakika",
+      "legacy_slugs": [],
+      "name": "KKTC Gündem",
       "color": "#ef4444",
       "icon": "fas fa-bullhorn",
-      "description": "KKTC haberleri, resmi duyurular ve yerel gelişmeler"
+      "description": "Haberler, resmi duyurular, kamu hizmetleri, ekonomi, siyaset, eğitim/sağlık gündemi"
+    },
+    {
+      "slug": "bolgeler",
+      "legacy_slugs": [],
+      "name": "Bölgeler",
+      "color": "#0891b2",
+      "icon": "fas fa-map-marked-alt",
+      "description": "Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Lefke — bölge bazlı paylaşımlar"
     },
     {
       "slug": "universite",
-      "name": "Üniversiteler & Kampüs",
+      "legacy_slugs": [],
+      "name": "Üniversiteler",
       "color": "#6366f1",
       "icon": "fas fa-graduation-cap",
-      "description": "DAÜ, YDÜ, LAÜ, UKÜ öğrenci sohbetleri, ders notları ve ev arkadaşı ilanları"
-    },
-    {
-      "slug": "emlak",
-      "name": "Emlak & Konaklama",
-      "color": "#10b981",
-      "icon": "fas fa-home",
-      "description": "Girne, Lefkoşa, Mağusa kiralık/satılık daireler ve yurtlar"
-    },
-    {
-      "slug": "ikinci-el",
-      "name": "İkinci El & İlanlar",
-      "color": "#f59e0b",
-      "icon": "fas fa-shopping-bag",
-      "description": "Vasıta, elektronik ve ev eşyası alım-satım ilanları"
+      "description": "Üniversite tercihleri, kampüs yaşamı, sınav, burs, yatay/dikey geçiş, yurt, ev arkadaşı"
     },
     {
       "slug": "ulasim",
-      "name": "Ulaşım & Seyahat",
+      "legacy_slugs": [],
+      "name": "Ulaşım",
       "color": "#0284c7",
       "icon": "fas fa-plane-departure",
-      "description": "Ercan Havalimanı, otobüs saatleri, feribot ve taksi paylaşımları"
+      "description": "Ercan Havalimanı, otobüs saatleri, taksi/araç paylaşımı, trafik, kaza/tehlike bildirimi"
+    },
+    {
+      "slug": "yasam",
+      "legacy_slugs": ["emlak"],
+      "name": "Yaşam (Ev, Yurt, İş)",
+      "color": "#10b981",
+      "icon": "fas fa-home",
+      "description": "Kiralık/satılık ev, öğrenci evi, ev/oda arkadaşı, iş ilanı, staj, ikinci el eşya"
+    },
+    {
+      "slug": "kesfet",
+      "legacy_slugs": [],
+      "name": "Keşfet",
+      "color": "#eab308",
+      "icon": "fas fa-compass",
+      "description": "Restoran/kafe önerileri, etkinlikler, gezi ve turizm"
+    },
+    {
+      "slug": "sorun-bildir",
+      "legacy_slugs": [],
+      "name": "Sorun Bildir",
+      "color": "#dc2626",
+      "icon": "fas fa-triangle-exclamation",
+      "description": "Çukur, sokak lambası, su/elektrik kesintisi, yol/trafik ışığı gibi altyapı sorunlarını bildirin"
     },
     {
       "slug": "serbest",
-      "name": "Serbest Meydan",
+      "legacy_slugs": [],
+      "name": "Genel Meydan",
       "color": "#8b5cf6",
       "icon": "fas fa-coffee",
-      "description": "Günlük sohbetler, kültür, mekan önerileri ve soru-cevap"
+      "description": "Günlük sohbetler, mizah, itiraf, tartışma ve soru-cevap"
+    }
+  ],
+  "retired_categories": [
+    {
+      "slug": "ikinci-el",
+      "migrate_to": "yasam",
+      "add_hashtags": ["ikinci-el"]
     }
   ],
   "hashtags": [
-    { "slug": "lefkosa", "name": "Lefkoşa" },
-    { "slug": "girne", "name": "Girne" },
-    { "slug": "gazimagusa", "name": "Gazimağusa" },
-    { "slug": "guzelyurt", "name": "Güzelyurt" },
-    { "slug": "iskele", "name": "İskele" },
-    { "slug": "karpaz", "name": "Karpaz" },
+    { "slug": "lefkosa", "name": "Lefkoşa", "parent": "bolgeler" },
+    { "slug": "girne", "name": "Girne", "parent": "bolgeler" },
+    { "slug": "gazimagusa", "name": "Gazimağusa", "parent": "bolgeler" },
+    { "slug": "guzelyurt", "name": "Güzelyurt", "parent": "bolgeler" },
+    { "slug": "iskele", "name": "İskele", "parent": "bolgeler" },
+    { "slug": "lefke", "name": "Lefke", "parent": "bolgeler" },
+
+    { "slug": "lefkosa-merkez", "name": "Lefkoşa Merkez", "parent": "lefkosa" },
+    { "slug": "gonyeli", "name": "Gönyeli", "parent": "lefkosa" },
+    { "slug": "alaykoy", "name": "Alayköy", "parent": "lefkosa" },
+    { "slug": "haspolat", "name": "Haspolat", "parent": "lefkosa" },
+    { "slug": "hamitkoy", "name": "Hamitköy", "parent": "lefkosa" },
+    { "slug": "k-kaymakli", "name": "K.Kaymaklı", "parent": "lefkosa" },
+    { "slug": "ortakoy", "name": "Ortaköy", "parent": "lefkosa" },
+    { "slug": "yenisehir", "name": "Yenişehir", "parent": "lefkosa" },
+
+    { "slug": "girne-merkez", "name": "Girne Merkez", "parent": "girne" },
+    { "slug": "karaoglanoglu", "name": "Karaoğlanoğlu", "parent": "girne" },
+    { "slug": "alsancak", "name": "Alsancak", "parent": "girne" },
+    { "slug": "lapta", "name": "Lapta", "parent": "girne" },
+    { "slug": "catalkoy", "name": "Çatalköy", "parent": "girne" },
+    { "slug": "esentepe", "name": "Esentepe", "parent": "girne" },
+
+    { "slug": "gazimagusa-merkez", "name": "Gazimağusa Merkez", "parent": "gazimagusa" },
+    { "slug": "sakarya-magusa", "name": "Sakarya", "parent": "gazimagusa" },
+    { "slug": "karakol", "name": "Karakol", "parent": "gazimagusa" },
+    { "slug": "canakkale-kktc", "name": "Çanakkale", "parent": "gazimagusa" },
+    { "slug": "tuzla-kktc", "name": "Tuzla", "parent": "gazimagusa" },
+    { "slug": "yenibogazici", "name": "Yeniboğaziçi", "parent": "gazimagusa" },
+
+    { "slug": "iskele-merkez", "name": "İskele Merkez", "parent": "iskele" },
+    { "slug": "long-beach", "name": "Long Beach", "parent": "iskele" },
+    { "slug": "bafra", "name": "Bafra", "parent": "iskele" },
+    { "slug": "mehmetcik", "name": "Mehmetçik", "parent": "iskele" },
+    { "slug": "karpaz", "name": "Karpaz", "parent": "iskele" },
+
+    { "slug": "guzelyurt-merkez", "name": "Güzelyurt Merkez", "parent": "guzelyurt" },
+    { "slug": "kalkanli", "name": "Kalkanlı", "parent": "guzelyurt" },
+    { "slug": "gemikonagi", "name": "Gemikonağı", "parent": "guzelyurt" },
+
+    { "slug": "lefke-merkez", "name": "Lefke Merkez", "parent": "lefke" },
+    { "slug": "cengizkoy", "name": "Cengizköy", "parent": "lefke" },
+    { "slug": "gaziveren", "name": "Gaziveren", "parent": "lefke" },
+    { "slug": "yesilyurt", "name": "Yeşilyurt", "parent": "lefke" },
+
     { "slug": "adakent", "name": "Ada Kent Üniversitesi" },
     { "slug": "akdeniz-karpaz", "name": "Akdeniz Karpaz Üniversitesi" },
     { "slug": "altinbas-kibris", "name": "Altınbaş Kıbrıs Üniversitesi" },
@@ -79,9 +147,30 @@
     { "slug": "fiu", "name": "FIU" },
     { "slug": "uku", "name": "UKÜ" },
     { "slug": "ydu", "name": "YDÜ" },
+
     { "slug": "ercan-havalimani", "name": "Ercan Havalimanı" },
     { "slug": "elektrik-su", "name": "Elektrik-Su" },
-    { "slug": "trafik", "name": "Trafik" }
+    { "slug": "trafik", "name": "Trafik" },
+    { "slug": "otobus", "name": "Otobüs" },
+    { "slug": "taksi", "name": "Taksi" },
+    { "slug": "ev", "name": "Ev" },
+    { "slug": "yurt", "name": "Yurt" },
+    { "slug": "is", "name": "İş" },
+    { "slug": "staj", "name": "Staj" },
+    { "slug": "burs", "name": "Burs" },
+    { "slug": "internet", "name": "İnternet" },
+
+    { "slug": "cozuldu", "name": "Çözüldü" },
+    { "slug": "acil", "name": "Acil" },
+    { "slug": "guncel", "name": "Güncel" },
+    { "slug": "duyuru", "name": "Duyuru" },
+    { "slug": "tartisma", "name": "Tartışma" },
+
+    { "slug": "satilik", "name": "Satılık" },
+    { "slug": "kiralik", "name": "Kiralık" },
+    { "slug": "is-ilani", "name": "İş İlanı" },
+    { "slug": "ev-arkadasi", "name": "Ev Arkadaşı" },
+    { "slug": "ikinci-el", "name": "İkinci El" }
   ],
   "roles": [
     {

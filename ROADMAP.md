@@ -32,9 +32,9 @@ Alt seviyede kalabilecek ek kategoriler: Teknoloji, Spor, Hayvanlar, Güvenlik/A
 ### Flarum'un mevcut özellikleriyle doğrudan yapılabilir (hızlı, ek kod gerektirmez)
 
 - [x] Temel kategori + hashtag altyapısı (6 kategori, 23 üniversite hashtag'i) — bkz. `seed.php`, `site_settings.json`
-- [ ] 8 ana kategoriye geçiş (mevcut 6 kategoriyi yeni yapıya taşı, discussion'ları yeniden etiketle)
-- [ ] Konum hashtag hiyerarşisi (şehir tag + alt-yerleşim child tag)
-- [ ] Konu/durum/ilan-tipi hashtag setleri
+- [x] 8 ana kategoriye geçiş (KKTC Gündem, Bölgeler, Üniversiteler, Ulaşım, Yaşam, Keşfet, Sorun Bildir, Genel Meydan — emlak/ikinci-el eski kategorileri Yaşam altında birleştirildi, discussion'lar otomatik taşındı)
+- [x] Konum hashtag hiyerarşisi (6 resmi ilçe — Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Lefke — + Bölgeler'e bağlı, altlarında tüm alt yerleşimler child tag olarak)
+- [x] Konu/durum/ilan-tipi hashtag setleri (otobüs/taksi/ev/yurt/iş/staj/burs/internet, çözüldü/acil/güncel/duyuru/tartışma, satılık/kiralık/iş-ilanı/ev-arkadaşı/ikinci-el)
 - [ ] Kullanıcı takip etme / engelleme (mevcut extension ekosisteminde araştırılacak)
 - [ ] Anket (poll) — mevcut extension ekosisteminde araştırılacak
 - [ ] Video/YouTube embed — mevcut extension ekosisteminde araştırılacak

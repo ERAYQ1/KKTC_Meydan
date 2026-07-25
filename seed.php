@@ -78,6 +78,19 @@ $tagIds = [];
 foreach ($config['categories'] as $position => $cat) {
     $tag = Tag::where('slug', $cat['slug'])->first();
 
+    // One-time rename migration: category slug changed (e.g. emlak -> yasam),
+    // find the old tag by its previous slug and repurpose it in place so
+    // existing discussions keep their tag association.
+    if (! $tag) {
+        foreach ($cat['legacy_slugs'] ?? [] as $legacySlug) {
+            $tag = Tag::where('slug', $legacySlug)->first();
+            if ($tag) {
+                $tag->slug = $cat['slug'];
+                break;
+            }
+        }
+    }
+
     if ($tag) {
         $tag->name = $cat['name'];
         $tag->color = $cat['color'];
@@ -103,7 +116,51 @@ foreach ($config['categories'] as $position => $cat) {
     echo "Kategori hazir: {$cat['name']} (#{$tag->id})\n";
 }
 
-// --- 3b. Hashtags (secondary tags: no position, no parent) -----------------
+// --- 3a. Retired categories: migrate discussions, then delete the old tag --
+
+$retiredDiscussionIds = [];
+
+foreach ($config['retired_categories'] ?? [] as $retired) {
+    // Only match an actual (not-yet-retired) primary category tag - a hashtag
+    // that happens to share the same slug (e.g. #ikinci-el) must never be
+    // mistaken for the legacy category and re-deleted on every run.
+    $oldTag = Tag::where('slug', $retired['slug'])->whereNotNull('position')->first();
+
+    if (! $oldTag) {
+        continue;
+    }
+
+    $newTagId = $tagIds[$retired['migrate_to']] ?? null;
+    $discussionIds = Tag::query()->getConnection()->table('discussion_tag')
+        ->where('tag_id', $oldTag->id)
+        ->pluck('discussion_id');
+
+    $retiredDiscussionIds[$retired['slug']] = $discussionIds;
+
+    if ($newTagId) {
+        foreach ($discussionIds as $discussionId) {
+            $exists = Tag::query()->getConnection()->table('discussion_tag')
+                ->where('discussion_id', $discussionId)
+                ->where('tag_id', $newTagId)
+                ->exists();
+
+            if (! $exists) {
+                Tag::query()->getConnection()->table('discussion_tag')->insert([
+                    'discussion_id' => $discussionId,
+                    'tag_id' => $newTagId,
+                ]);
+            }
+        }
+
+        echo "Emekli kategori tasindi: {$retired['slug']} -> {$retired['migrate_to']} ({$discussionIds->count()} konu)\n";
+    }
+
+    Tag::query()->getConnection()->table('discussion_tag')->where('tag_id', $oldTag->id)->delete();
+    $oldTag->delete();
+    echo "Emekli kategori silindi: {$retired['slug']}\n";
+}
+
+// --- 3b. Hashtags (secondary tags: no position, optional parent) -----------
 
 $hashtagIds = [];
 
@@ -117,12 +174,48 @@ foreach ($config['hashtags'] ?? [] as $tagData) {
 
     $tag->name = $tagData['name'];
     $tag->position = null;
-    $tag->parent_id = null;
     $tag->is_hidden = false;
     $tag->save();
 
     $hashtagIds[$tagData['slug']] = $tag->id;
     echo "Hashtag hazir: #{$tagData['name']} (#{$tag->id})\n";
+}
+
+// Second pass: link parents (parent can be a category slug or another hashtag slug)
+foreach ($config['hashtags'] ?? [] as $tagData) {
+    if (empty($tagData['parent'])) {
+        continue;
+    }
+
+    $parentId = $hashtagIds[$tagData['parent']] ?? $tagIds[$tagData['parent']] ?? null;
+
+    if ($parentId) {
+        Tag::where('id', $hashtagIds[$tagData['slug']])->update(['parent_id' => $parentId]);
+    }
+}
+
+foreach ($config['retired_categories'] ?? [] as $retired) {
+    foreach ($retired['add_hashtags'] ?? [] as $hashtagSlug) {
+        $hashtagId = $hashtagIds[$hashtagSlug] ?? null;
+
+        if (! $hashtagId) {
+            continue;
+        }
+
+        foreach ($retiredDiscussionIds[$retired['slug']] ?? [] as $discussionId) {
+            $exists = Tag::query()->getConnection()->table('discussion_tag')
+                ->where('discussion_id', $discussionId)
+                ->where('tag_id', $hashtagId)
+                ->exists();
+
+            if (! $exists) {
+                Tag::query()->getConnection()->table('discussion_tag')->insert([
+                    'discussion_id' => $discussionId,
+                    'tag_id' => $hashtagId,
+                ]);
+            }
+        }
+    }
 }
 
 // --- 4. Roles (cosmetic groups, no extra permissions - admin stays highest) --
@@ -223,7 +316,7 @@ $seedThreads = [
         'replyAuthor' => 'zeynep_dau',
     ],
     [
-        'tag' => 'emlak',
+        'tag' => 'yasam',
         'hashtags' => ['girne'],
         'title' => 'Girne merkezde ogrenciye uygun kiralik daire arayanlar',
         'body' => "Girne merkeze yakin, esyali, tek+bir veya iki+bir daire arayanlar burada bilgi paylassin.",
@@ -232,7 +325,7 @@ $seedThreads = [
         'replyAuthor' => 'ada_lefkosa',
     ],
     [
-        'tag' => 'emlak',
+        'tag' => 'yasam',
         'hashtags' => ['gazimagusa', 'dau'],
         'title' => 'Magusa DAU cevresinde yurt mu apartman mi daha mantikli?',
         'body' => "Ilk yil ogrencileri icin butce ve ulasim acisindan yurt/apartman karsilastirmasi yapalim, deneyimlerinizi yazin.",
@@ -241,7 +334,7 @@ $seedThreads = [
         'replyAuthor' => 'hasan_karpaz',
     ],
     [
-        'tag' => 'ikinci-el',
+        'tag' => 'yasam',
         'hashtags' => ['gazimagusa'],
         'title' => 'Donem sonu tasinacaklar icin ikinci el esya ilanlari',
         'body' => "Okul bitince ya da yurt degistirirken elden cikaracaginiz esyalari buraya yazabilirsiniz.",
@@ -250,7 +343,7 @@ $seedThreads = [
         'replyAuthor' => 'zeynep_dau',
     ],
     [
-        'tag' => 'ikinci-el',
+        'tag' => 'yasam',
         'hashtags' => ['lefkosa'],
         'title' => 'Ikinci el vasita alirken KKTCde dikkat edilmesi gerekenler?',
         'body' => "Gumruk durumu, muayene ve sigorta konusunda tecrubesi olanlar paylasabilir mi?",
