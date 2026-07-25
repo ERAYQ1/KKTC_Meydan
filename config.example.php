@@ -21,7 +21,11 @@
     'engine' => 'InnoDB',
     'sslmode' => 'prefer',
   ),
-  'headers' => 
+  'flarum_announcements' =>
+  array (
+    'disabled' => true,
+  ),
+  'headers' =>
   array (
     'poweredByHeader' => false,
     'referrerPolicy' => 'same-origin',
