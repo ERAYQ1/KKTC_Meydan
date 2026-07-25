@@ -28,6 +28,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Hide PHP version fingerprint
 RUN echo "expose_php = Off" > /usr/local/etc/php/conf.d/expose-php-off.ini
 
+# Raise upload/memory limits for avatar & attachment uploads (defaults are too low for photos)
+RUN { \
+        echo "upload_max_filesize = 20M"; \
+        echo "post_max_size = 25M"; \
+        echo "memory_limit = 256M"; \
+    } > /usr/local/etc/php/conf.d/zz-flarum-limits.ini
+
 # Set working directory
 WORKDIR /var/www/html
 

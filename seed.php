@@ -3,9 +3,13 @@
 /*
  * KKTC Meydan seed script.
  *
- * Applies site_settings.json (forum name/description/locale/theme, tags)
- * and creates example users + discussions per category so the forum
- * doesn't look empty on first boot.
+ * Applies site_settings.json (forum name/description/locale/theme, tags,
+ * cosmetic roles) and creates example users + discussions per category so
+ * the forum doesn't look empty on first boot.
+ *
+ * Roles (Öğrenci/İşletme/Yerel Halk/Güvenilir Üye) are cosmetic badges only
+ * - no permissions are granted, admin/mod groups remain the only groups
+ * with elevated permissions.
  *
  * Usage (inside the app container):
  *   docker compose exec flarum-app php seed.php
@@ -49,6 +53,11 @@ $settings->set('theme_primary_color', $config['theme_color']);
 $settings->set('theme_secondary_color', $config['theme_color']);
 $settings->set('welcome_title', $config['welcome_title']);
 $settings->set('welcome_message', $config['welcome_subtitle']);
+
+$themeLessPath = __DIR__ . '/assets/theme.less';
+if (file_exists($themeLessPath)) {
+    $settings->set('custom_less', file_get_contents($themeLessPath));
+}
 
 echo "Site ayarlari uygulandi: {$config['site_name']}\n";
 
@@ -94,13 +103,35 @@ foreach ($config['categories'] as $position => $cat) {
     echo "Kategori hazir: {$cat['name']} (#{$tag->id})\n";
 }
 
-// --- 4. Example users --------------------------------------------------
+// --- 4. Roles (cosmetic groups, no extra permissions - admin stays highest) --
+
+$roleIds = [];
+
+foreach ($config['roles'] ?? [] as $role) {
+    $group = Group::where('name_singular', $role['name_singular'])->first();
+
+    if (! $group) {
+        $group = new Group();
+    }
+
+    $group->name_singular = $role['name_singular'];
+    $group->name_plural = $role['name_plural'];
+    $group->color = $role['color'];
+    $group->icon = $role['icon'];
+    $group->is_hidden = false;
+    $group->save();
+
+    $roleIds[$role['name_singular']] = $group->id;
+    echo "Rol hazir: {$role['name_singular']} (#{$group->id})\n";
+}
+
+// --- 5. Example users ----------------------------------------------------
 
 $exampleUsers = [
-    ['username' => 'ada_lefkosa', 'email' => 'ada.lefkosa@example.kktcmeydan.test'],
-    ['username' => 'mehmet_girne', 'email' => 'mehmet.girne@example.kktcmeydan.test'],
-    ['username' => 'zeynep_dau', 'email' => 'zeynep.dau@example.kktcmeydan.test'],
-    ['username' => 'can_maguza', 'email' => 'can.maguza@example.kktcmeydan.test'],
+    ['username' => 'ada_lefkosa', 'email' => 'ada.lefkosa@example.kktcmeydan.test', 'role' => 'Yerel Halk'],
+    ['username' => 'mehmet_girne', 'email' => 'mehmet.girne@example.kktcmeydan.test', 'role' => 'Güvenilir Üye'],
+    ['username' => 'zeynep_dau', 'email' => 'zeynep.dau@example.kktcmeydan.test', 'role' => 'Öğrenci'],
+    ['username' => 'can_maguza', 'email' => 'can.maguza@example.kktcmeydan.test', 'role' => 'İşletme'],
 ];
 
 $members = Group::where('id', Group::MEMBER_ID)->first();
@@ -120,11 +151,15 @@ foreach ($exampleUsers as $u) {
         }
     }
 
+    if (isset($roleIds[$u['role']]) && ! $user->groups->contains($roleIds[$u['role']])) {
+        $user->groups()->attach($roleIds[$u['role']]);
+    }
+
     $userIds[$u['username']] = $user->id;
-    echo "Kullanici hazir: {$u['username']} (#{$user->id})\n";
+    echo "Kullanici hazir: {$u['username']} ({$u['role']}) (#{$user->id})\n";
 }
 
-// --- 5. Example discussions per category --------------------------------
+// --- 6. Example discussions per category --------------------------------
 
 $seedThreads = [
     'gundem' => [

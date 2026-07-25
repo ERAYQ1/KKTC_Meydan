@@ -48,5 +48,31 @@
       "icon": "fas fa-coffee",
       "description": "Günlük sohbetler, kültür, mekan önerileri ve soru-cevap"
     }
+  ],
+  "roles": [
+    {
+      "name_singular": "Öğrenci",
+      "name_plural": "Öğrenciler",
+      "color": "#6366f1",
+      "icon": "fas fa-graduation-cap"
+    },
+    {
+      "name_singular": "İşletme",
+      "name_plural": "İşletmeler",
+      "color": "#f59e0b",
+      "icon": "fas fa-store"
+    },
+    {
+      "name_singular": "Yerel Halk",
+      "name_plural": "Yerel Halk",
+      "color": "#0891b2",
+      "icon": "fas fa-map-marker-alt"
+    },
+    {
+      "name_singular": "Güvenilir Üye",
+      "name_plural": "Güvenilir Üyeler",
+      "color": "#eab308",
+      "icon": "fas fa-shield-alt"
+    }
   ]
 }

@@ -56,7 +56,7 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] Türkçe dil paketi etkin
 - [x] Kategoriler: Gündem, Üniversiteler, Emlak, İkinci El, Ulaşım, Serbest Meydan
 - [x] Seed betiği (site ayarları, kategoriler, örnek kullanıcı/konu)
-- [ ] Özel roller (öğrenci/işletme grupları)
+- [x] Özel roller (Öğrenci, İşletme, Yerel Halk, Güvenilir Üye — şimdilik sadece rozet, ek izin yok, admin en yetkili grup olarak kalıyor)
 - [ ] İlan/reklam sistemi (özel geliştirme gerektiriyor)
 - [ ] Canlı hosting kurulumu
 
