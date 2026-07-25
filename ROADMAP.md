@@ -45,7 +45,8 @@ Alt seviyede kalabilecek ek kategoriler: Teknoloji, Spor, Hayvanlar, Güvenlik/A
 
 ### Özel geliştirme gerektirir (Flarum'da hazır yok, extension yazılacak)
 
-- [ ] **Sorun Bildir sistemi** — konum + fotoğraf + açıklama + kategori ile bildirim, durum akışı: 🔴 Bildirildi → 🟡 İnceleniyor → 🔵 İlgili kuruma iletildi → 🟢 Çözüldü. Projenin en ayırt edici özelliği.
+- [x] **Sorun Bildir sistemi — v1 (tag tabanlı)**: "Sorun Bildir" kategorisi + durum hashtag'leri (🔴 #bildirildi, 🟡 #inceleniyor, 🔵 #yetkiliye-iletildi, 🟢 #çözüldü, her biri renkli). Kullanıcı konum hashtag'i + durum hashtag'iyle bildirim açar, moderatör durumu değiştirmek için hashtag'i değiştirir (core tag-edit yetkisiyle, ek kod gerekmedi). 3 örnek konu farklı durumlarda eklendi.
+- [ ] **Sorun Bildir v2 (özel extension)** — gerçek "status" alanı + otomatik renkli rozet + mod paneli dropdown. **Engel: container'da Node.js/npm yok**, Flarum extension JS derlemesi (webpack/Mithril) için gerekli. Önce Dockerfile'a Node eklenmeli.
 - [ ] **İşletme/Esnaf dizini** — işletme profili (adres, harita, telefon, WhatsApp, çalışma saati, fotoğraf, hizmetler, yorum/puan, doğrulanmış işletme rozeti)
 - [ ] **Etkinlik takvimi** — takvim görünümlü etkinlik paylaşımı
 - [ ] **Anonim paylaşım** — kullanıcı hesabıyla ya da anonim paylaşabilir; moderatör gerçek kimliği görebilir, normal kullanıcı göremez; IP/log güvenli tutulur; taciz/tehdit içeriği için moderasyon uygulanır. Gizlilik/hukuki risk taşıdığı için dikkatli tasarlanacak.

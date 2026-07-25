@@ -173,6 +173,7 @@ foreach ($config['hashtags'] ?? [] as $tagData) {
     }
 
     $tag->name = $tagData['name'];
+    $tag->color = $tagData['color'] ?? null;
     $tag->position = null;
     $tag->is_hidden = false;
     $tag->save();
@@ -386,6 +387,33 @@ $seedThreads = [
         'author' => 'hasan_karpaz',
         'reply' => 'Golden Beach oncesi Dipkarpaz kasabasindaki balik lokantasini kacirmayin.',
         'replyAuthor' => 'aylin_iskele',
+    ],
+    [
+        'tag' => 'sorun-bildir',
+        'hashtags' => ['girne', 'bildirildi'],
+        'title' => 'Alsancak sahil yolunda buyuk bir cukur var',
+        'body' => "Konum: Alsancak sahil yolu, eczane karsisi. Fotograf: (eklenecek). Iki gundur duruyor, arac lastigine zarar verebilir.",
+        'author' => 'mehmet_girne',
+        'reply' => 'Ben de gordum, gece karanlikta fark edilmiyor, tehlikeli.',
+        'replyAuthor' => 'ada_lefkosa',
+    ],
+    [
+        'tag' => 'sorun-bildir',
+        'hashtags' => ['lefkosa', 'inceleniyor'],
+        'title' => 'Gonyeli meydaninda sokak lambalari bir haftadir yanmiyor',
+        'body' => "Konum: Gonyeli meydani ve cevresi. Aksam saatlerinde yayalar icin guvenlik riski olusturuyor.",
+        'author' => 'ada_lefkosa',
+        'reply' => 'Belediyeye bildirdim, ekip gonderileceği soylendi, takipteyim.',
+        'replyAuthor' => 'zeynep_dau',
+    ],
+    [
+        'tag' => 'sorun-bildir',
+        'hashtags' => ['gazimagusa', 'cozuldu'],
+        'title' => 'Sakarya bolgesinde 3 gundur su kesintisi vardi',
+        'body' => "Konum: Sakarya, Gazimagusa. Bildirimden 3 gun sonra su verildi, cozuldu olarak isaretliyorum.",
+        'author' => 'can_maguza',
+        'reply' => 'Bizim sokakta da dun aksam su geldi, tesekkurler bilgi icin.',
+        'replyAuthor' => 'hasan_karpaz',
     ],
 ];
 

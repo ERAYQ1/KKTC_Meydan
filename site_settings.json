@@ -160,7 +160,10 @@
     { "slug": "burs", "name": "Burs" },
     { "slug": "internet", "name": "İnternet" },
 
-    { "slug": "cozuldu", "name": "Çözüldü" },
+    { "slug": "bildirildi", "name": "Bildirildi", "color": "#ef4444" },
+    { "slug": "inceleniyor", "name": "İnceleniyor", "color": "#eab308" },
+    { "slug": "yetkiliye-iletildi", "name": "Yetkiliye İletildi", "color": "#3b82f6" },
+    { "slug": "cozuldu", "name": "Çözüldü", "color": "#22c55e" },
     { "slug": "acil", "name": "Acil" },
     { "slug": "guncel", "name": "Güncel" },
     { "slug": "duyuru", "name": "Duyuru" },
