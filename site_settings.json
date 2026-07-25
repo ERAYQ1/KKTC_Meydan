@@ -49,6 +49,22 @@
       "description": "Günlük sohbetler, kültür, mekan önerileri ve soru-cevap"
     }
   ],
+  "hashtags": [
+    { "slug": "lefkosa", "name": "Lefkoşa" },
+    { "slug": "girne", "name": "Girne" },
+    { "slug": "gazimagusa", "name": "Gazimağusa" },
+    { "slug": "guzelyurt", "name": "Güzelyurt" },
+    { "slug": "iskele", "name": "İskele" },
+    { "slug": "karpaz", "name": "Karpaz" },
+    { "slug": "dau", "name": "DAÜ" },
+    { "slug": "ydu", "name": "YDÜ" },
+    { "slug": "uku", "name": "UKÜ" },
+    { "slug": "lau", "name": "LAÜ" },
+    { "slug": "gau", "name": "GAÜ" },
+    { "slug": "ercan-havalimani", "name": "Ercan Havalimanı" },
+    { "slug": "elektrik-su", "name": "Elektrik-Su" },
+    { "slug": "trafik", "name": "Trafik" }
+  ],
   "roles": [
     {
       "name_singular": "Öğrenci",

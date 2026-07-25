@@ -103,6 +103,28 @@ foreach ($config['categories'] as $position => $cat) {
     echo "Kategori hazir: {$cat['name']} (#{$tag->id})\n";
 }
 
+// --- 3b. Hashtags (secondary tags: no position, no parent) -----------------
+
+$hashtagIds = [];
+
+foreach ($config['hashtags'] ?? [] as $tagData) {
+    $tag = Tag::where('slug', $tagData['slug'])->first();
+
+    if (! $tag) {
+        $tag = new Tag();
+        $tag->slug = $tagData['slug'];
+    }
+
+    $tag->name = $tagData['name'];
+    $tag->position = null;
+    $tag->parent_id = null;
+    $tag->is_hidden = false;
+    $tag->save();
+
+    $hashtagIds[$tagData['slug']] = $tag->id;
+    echo "Hashtag hazir: #{$tagData['name']} (#{$tag->id})\n";
+}
+
 // --- 4. Roles (cosmetic groups, no extra permissions - admin stays highest) --
 
 $roleIds = [];
@@ -132,6 +154,8 @@ $exampleUsers = [
     ['username' => 'mehmet_girne', 'email' => 'mehmet.girne@example.kktcmeydan.test', 'role' => 'Güvenilir Üye'],
     ['username' => 'zeynep_dau', 'email' => 'zeynep.dau@example.kktcmeydan.test', 'role' => 'Öğrenci'],
     ['username' => 'can_maguza', 'email' => 'can.maguza@example.kktcmeydan.test', 'role' => 'İşletme'],
+    ['username' => 'aylin_iskele', 'email' => 'aylin.iskele@example.kktcmeydan.test', 'role' => 'Yerel Halk'],
+    ['username' => 'hasan_karpaz', 'email' => 'hasan.karpaz@example.kktcmeydan.test', 'role' => 'Öğrenci'],
 ];
 
 $members = Group::where('id', Group::MEMBER_ID)->first();
@@ -162,51 +186,117 @@ foreach ($exampleUsers as $u) {
 // --- 6. Example discussions per category --------------------------------
 
 $seedThreads = [
-    'gundem' => [
+    [
+        'tag' => 'gundem',
+        'hashtags' => ['lefkosa'],
         'title' => 'Bugun KKTC genelinde neler oluyor?',
         'body' => "Gundemi burada takip edelim. Onemli bir haber gordugunuzde paylasin, kaynak eklemeyi unutmayin.",
         'author' => 'ada_lefkosa',
         'reply' => 'Ercan havalimaninda bugun yogunluk varmis, yola cikacaklar erken gitsin.',
         'replyAuthor' => 'mehmet_girne',
     ],
-    'universite' => [
+    [
+        'tag' => 'gundem',
+        'hashtags' => ['elektrik-su'],
+        'title' => 'Planli elektrik kesintileri hangi bolgelerde, ne zaman?',
+        'body' => "Kurumun yayinladigi kesinti programini takip edip guncel bolge/saat bilgisini burada paylasalim.",
+        'author' => 'mehmet_girne',
+        'reply' => 'Girne merkez bu hafta sali ogleden sonra kesinti varmis, resmi duyuruyu gordum.',
+        'replyAuthor' => 'aylin_iskele',
+    ],
+    [
+        'tag' => 'universite',
+        'hashtags' => ['dau', 'ydu'],
         'title' => 'DAU ve YDU icin donem basi ders notu paylasim konusu',
         'body' => "Ders notlariniz, gecmis sinav sorulariniz varsa buraya birakabilirsiniz. Bolumunuzu belirtmeyi unutmayin.",
         'author' => 'zeynep_dau',
         'reply' => 'Bilgisayar muhendisligi 2. sinif icin veri yapilari notlarim var, paylasirim.',
         'replyAuthor' => 'can_maguza',
     ],
-    'emlak' => [
+    [
+        'tag' => 'universite',
+        'hashtags' => ['uku', 'lau'],
+        'title' => 'UKU ve LAU ogrencileri icin kayit yenileme sureci nasil isliyor?',
+        'body' => "Bu donem kayit yenileme tarihlerini ve online sistem uzerinden yasadiginiz sorunlari paylasin, birbirimize yardimci olalim.",
+        'author' => 'hasan_karpaz',
+        'reply' => 'Ogrenci isleri ofisine gitmeden online sistemden hallettim, 10 dakika surdu.',
+        'replyAuthor' => 'zeynep_dau',
+    ],
+    [
+        'tag' => 'emlak',
+        'hashtags' => ['girne'],
         'title' => 'Girne merkezde ogrenciye uygun kiralik daire arayanlar',
         'body' => "Girne merkeze yakin, esyali, tek+bir veya iki+bir daire arayanlar burada bilgi paylassin.",
         'author' => 'mehmet_girne',
         'reply' => 'Karakum bolgesinde uygun fiyatli birkac secenek gordum, ilan linkini atarim.',
         'replyAuthor' => 'ada_lefkosa',
     ],
-    'ikinci-el' => [
+    [
+        'tag' => 'emlak',
+        'hashtags' => ['gazimagusa', 'dau'],
+        'title' => 'Magusa DAU cevresinde yurt mu apartman mi daha mantikli?',
+        'body' => "Ilk yil ogrencileri icin butce ve ulasim acisindan yurt/apartman karsilastirmasi yapalim, deneyimlerinizi yazin.",
+        'author' => 'can_maguza',
+        'reply' => 'Ilk yil yurtta kaldim, ikinci yil arkadaslarla apartmana gectik, daha ekonomik oldu.',
+        'replyAuthor' => 'hasan_karpaz',
+    ],
+    [
+        'tag' => 'ikinci-el',
+        'hashtags' => ['gazimagusa'],
         'title' => 'Donem sonu tasinacaklar icin ikinci el esya ilanlari',
         'body' => "Okul bitince ya da yurt degistirirken elden cikaracaginiz esyalari buraya yazabilirsiniz.",
         'author' => 'can_maguza',
         'reply' => 'Az kullanilmis mini buzdolabi ve masa satiyorum, Magusa icinde teslim ederim.',
         'replyAuthor' => 'zeynep_dau',
     ],
-    'ulasim' => [
+    [
+        'tag' => 'ikinci-el',
+        'hashtags' => ['lefkosa'],
+        'title' => 'Ikinci el vasita alirken KKTCde dikkat edilmesi gerekenler?',
+        'body' => "Gumruk durumu, muayene ve sigorta konusunda tecrubesi olanlar paylasabilir mi?",
+        'author' => 'ada_lefkosa',
+        'reply' => 'Muayeneden gecmis ve gumruklu arac almak uzun vadede bas agrisini azaltiyor.',
+        'replyAuthor' => 'mehmet_girne',
+    ],
+    [
+        'tag' => 'ulasim',
+        'hashtags' => ['ercan-havalimani'],
         'title' => 'Ercan - sehir merkezi otobus ve minibus saatleri',
         'body' => "Guncel sefer saatlerini ve fiyatlarini burada paylasip guncel tutalim.",
         'author' => 'zeynep_dau',
         'reply' => 'Lefkosa - Ercan hatti sabah 06:00dan itibaren saat basi kalkiyor.',
         'replyAuthor' => 'mehmet_girne',
     ],
-    'serbest' => [
+    [
+        'tag' => 'ulasim',
+        'hashtags' => ['trafik', 'girne'],
+        'title' => 'Girne - Lefkosa otoyolunda yogun saatler ve alternatif guzergahlar',
+        'body' => "Sabah/aksam yogunluguna takilmamak icin kullandiginiz alternatif yollari paylasir misiniz?",
+        'author' => 'aylin_iskele',
+        'reply' => 'Sabah 8den once cikinca otoyol rahat oluyor, sonrasi Ozankoy civari tikaniyor.',
+        'replyAuthor' => 'can_maguza',
+    ],
+    [
+        'tag' => 'serbest',
+        'hashtags' => ['girne'],
         'title' => 'KKTCde en sevdiginiz kahvalti / kahve mekanlari?',
         'body' => "Yerel onerilerinizi paylasin, yeni gelenler icin faydali olur.",
         'author' => 'ada_lefkosa',
         'reply' => 'Girne limaninda sahil kenarindaki kucuk kahvaltici cok iyi, tavsiye ederim.',
         'replyAuthor' => 'can_maguza',
     ],
+    [
+        'tag' => 'serbest',
+        'hashtags' => ['karpaz'],
+        'title' => 'Karpaz bolgesine gunubirlik gezi onerileri',
+        'body' => "Golden Beach, Kantara Kalesi ve cevresinde gezilecek yerler + yemek onerilerinizi paylasin.",
+        'author' => 'hasan_karpaz',
+        'reply' => 'Golden Beach oncesi Dipkarpaz kasabasindaki balik lokantasini kacirmayin.',
+        'replyAuthor' => 'aylin_iskele',
+    ],
 ];
 
-foreach ($seedThreads as $slug => $thread) {
+foreach ($seedThreads as $thread) {
     $existing = \Flarum\Discussion\Discussion::where('title', $thread['title'])->first();
 
     if ($existing) {
@@ -216,6 +306,14 @@ foreach ($seedThreads as $slug => $thread) {
 
     $author = User::find($userIds[$thread['author']]);
 
+    $tagData = [
+        ['type' => 'tags', 'id' => (string) $tagIds[$thread['tag']]],
+    ];
+
+    foreach ($thread['hashtags'] ?? [] as $hashtagSlug) {
+        $tagData[] = ['type' => 'tags', 'id' => (string) $hashtagIds[$hashtagSlug]];
+    }
+
     $discussion = $bus->dispatch(new StartDiscussion($author, [
         'attributes' => [
             'title' => $thread['title'],
@@ -223,9 +321,7 @@ foreach ($seedThreads as $slug => $thread) {
         ],
         'relationships' => [
             'tags' => [
-                'data' => [
-                    ['type' => 'tags', 'id' => (string) $tagIds[$slug]],
-                ],
+                'data' => $tagData,
             ],
         ],
     ], '127.0.0.1'));

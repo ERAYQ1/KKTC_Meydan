@@ -57,6 +57,7 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] Kategoriler: Gündem, Üniversiteler, Emlak, İkinci El, Ulaşım, Serbest Meydan
 - [x] Seed betiği (site ayarları, kategoriler, örnek kullanıcı/konu)
 - [x] Özel roller (Öğrenci, İşletme, Yerel Halk, Güvenilir Üye — şimdilik sadece rozet, ek izin yok, admin en yetkili grup olarak kalıyor)
+- [x] Şehir/üniversite hashtag'leri (ikincil etiket olarak, kategoriyle birlikte kullanılıyor) + gerçek KKTC konularıyla genişletilmiş örnek içerik
 - [ ] İlan/reklam sistemi (özel geliştirme gerektiriyor)
 - [ ] Canlı hosting kurulumu
 
