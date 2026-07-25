@@ -6,14 +6,12 @@ KKTC'de yaşayan öğrencilerin, yerel halkın, çalışanların, işletmelerin 
 
 ## Özellikler (planlanan ve mevcut)
 - Şehir bazlı topluluklar (Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Karpaz)
-- Üniversite toplulukları (YDÜ, DAÜ, UKÜ, LAÜ, GAÜ)
+- Üniversite toplulukları (KKTC'deki tüm üniversiteler — bkz. `site_settings.json`)
 - Anonim ve hesaplı paylaşım
 - İşletme/mekan profilleri
 - İkinci el, iş ilanı, ev/yurt ilanları
 - Etkinlik paylaşımı
 - Reklam sistemi (kategori/şehir/üniversite hedefleme)
-
-Detaylı ürün ve mimari dokümantasyonu için bkz. [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [ROADMAP.md](ROADMAP.md).
 
 ## Teknoloji
 - PHP 8.2
