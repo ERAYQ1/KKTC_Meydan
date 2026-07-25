@@ -1,12 +1,6 @@
 <?php return array (
-  'debug' => true,
-  'url' => 'http://localhost:8080',
-  'paths' => 
-  array (
-    'api' => 'api',
-    'admin' => 'admin',
-  ),
-  'database' => 
+  'debug' => false,
+  'database' =>
   array (
     'driver' => 'mysql',
     'host' => 'flarum-db',
@@ -19,7 +13,13 @@
     'prefix' => '',
     'strict' => false,
     'engine' => 'InnoDB',
-    'sslmode' => 'prefer',
+    'prefix_indexes' => true,
+  ),
+  'url' => 'http://localhost:8080',
+  'paths' =>
+  array (
+    'api' => 'api',
+    'admin' => 'admin',
   ),
   'flarum_announcements' =>
   array (

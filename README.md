@@ -29,10 +29,10 @@ cd KKTC_Meydan
 cp config.example.php config.php
 # config.php içindeki veritabanı bilgilerini düzenleyin (bu dosya .gitignore'da, asla commit etmeyin)
 docker compose up -d --build
-composer install
+docker compose exec flarum-app composer install
 ```
 
-Uygulama varsayılan olarak `http://localhost:8080` üzerinden erişilebilir olacaktır.
+Uygulama varsayılan olarak `http://localhost:8080` üzerinden erişilebilir olacaktır. `public/assets/` içindeki derlenmiş JS/CSS dosyaları git'e dahil değildir (`.gitignore`'da) — Flarum bunları ilk istekte kendiliğinden derler; forum sayfasını ve admin panelini (giriş yaptıktan sonra) birer kez ziyaret etmek yeterlidir.
 
 İlk kurulumdan sonra gerekli eklentileri etkinleştirin:
 
@@ -42,13 +42,20 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval
 ```
 
-Kategoriler (tag) ve site ayarları (isim, açıklama, tema rengi, hoş geldin mesajı) `site_settings.json` içinde tanımlıdır; admin panelinden veya bir migration/seed betiğiyle uygulanmalıdır. Admin şifresi gibi kimlik bilgileri hiçbir dosyada saklanmaz — kurulum sonrası admin panelinden değiştirin.
+Kategoriler (tag) ve site ayarları (isim, açıklama, tema rengi, hoş geldin mesajı) `site_settings.json` içinde tanımlıdır ve `seed.php` betiği ile otomatik uygulanır:
+
+```bash
+docker compose exec flarum-app php seed.php
+```
+
+Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.json`'daki ayarları ve kategorileri uygular, ayrıca her kategoride örnek kullanıcı ve konu oluşturarak forumun boş görünmesini engeller. Admin şifresi gibi kimlik bilgileri hiçbir dosyada saklanmaz — kurulum sonrası admin panelinden değiştirin.
 
 ### Durum
 - [x] Docker altyapısı (nginx + php-fpm + MariaDB)
 - [x] Flarum çekirdek kurulumu
 - [x] Türkçe dil paketi etkin
 - [x] Kategoriler: Gündem, Üniversiteler, Emlak, İkinci El, Ulaşım, Serbest Meydan
+- [x] Seed betiği (site ayarları, kategoriler, örnek kullanıcı/konu)
 - [ ] Özel roller (öğrenci/işletme grupları)
 - [ ] İlan/reklam sistemi (özel geliştirme gerektiriyor)
 - [ ] Canlı hosting kurulumu

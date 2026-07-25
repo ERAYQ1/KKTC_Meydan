@@ -1,11 +1,18 @@
 # Flarum runtime & generated files
 /vendor/
+/public/assets/*.js
+/public/assets/*.js.map
+/public/assets/*.css
+/public/assets/rev-manifest.json
+/public/assets/fonts/
+/public/assets/xslt-polyfill/
 /storage/cache/*
 /storage/formatter/*
 /storage/logs/*
 /storage/sessions/*
 /storage/views/*
 /storage/less/*
+/storage/locale/*
 !/storage/logs/.gitkeep
 
 # Sensitive config files
