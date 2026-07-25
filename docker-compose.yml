@@ -1,0 +1,50 @@
+name: kktc_meydan
+
+services:
+  flarum-db:
+    image: mariadb:10.11
+    container_name: kktc_meydan_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: kktc_root_secret
+      MYSQL_DATABASE: kktc_meydan_db
+      MYSQL_USER: kktc_user
+      MYSQL_PASSWORD: kktc_user_secret
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - kktc_net
+
+  flarum-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kktc_meydan_app
+    restart: always
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - flarum-db
+    networks:
+      - kktc_net
+
+  flarum-web:
+    image: nginx:alpine
+    container_name: kktc_meydan_web
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html:ro
+      - ./.nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - flarum-app
+    networks:
+      - kktc_net
+
+volumes:
+  db_data:
+
+networks:
+  kktc_net:
+    driver: bridge

@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+$site = require __DIR__ . '/site.php';
+
+/*
+|--------------------------------------------------------------------------
+| Execute Flarum CLI
+|--------------------------------------------------------------------------
+|
+| Boot and run Flarum CLI console application.
+|
+*/
+
+$console = new Flarum\Console\Server($site);
+
+$console->listen();

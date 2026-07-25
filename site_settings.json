@@ -1,0 +1,52 @@
+{
+  "site_name": "KKTC Meydan",
+  "site_description": "Kıbrıs'ın Özgür Tartışma ve Topluluk Meydanı",
+  "default_locale": "tr",
+  "theme_color": "#0891b2",
+  "welcome_title": "KKTC Meydan'a Hoş Geldiniz! 🌴",
+  "welcome_subtitle": "Kıbrıs hakkında gündem, üniversite yaşamı, emlak, ulaşım ve serbest konuları burada tartışın.",
+  "categories": [
+    {
+      "slug": "gundem",
+      "name": "Gündem & Son Dakika",
+      "color": "#ef4444",
+      "icon": "fas fa-bullhorn",
+      "description": "KKTC haberleri, resmi duyurular ve yerel gelişmeler"
+    },
+    {
+      "slug": "universite",
+      "name": "Üniversiteler & Kampüs",
+      "color": "#6366f1",
+      "icon": "fas fa-graduation-cap",
+      "description": "DAÜ, YDÜ, LAÜ, UKÜ öğrenci sohbetleri, ders notları ve ev arkadaşı ilanları"
+    },
+    {
+      "slug": "emlak",
+      "name": "Emlak & Konaklama",
+      "color": "#10b981",
+      "icon": "fas fa-home",
+      "description": "Girne, Lefkoşa, Mağusa kiralık/satılık daireler ve yurtlar"
+    },
+    {
+      "slug": "ikinci-el",
+      "name": "İkinci El & İlanlar",
+      "color": "#f59e0b",
+      "icon": "fas fa-shopping-bag",
+      "description": "Vasıta, elektronik ve ev eşyası alım-satım ilanları"
+    },
+    {
+      "slug": "ulasim",
+      "name": "Ulaşım & Seyahat",
+      "color": "#0284c7",
+      "icon": "fas fa-plane-departure",
+      "description": "Ercan Havalimanı, otobüs saatleri, feribot ve taksi paylaşımları"
+    },
+    {
+      "slug": "serbest",
+      "name": "Serbest Meydan",
+      "color": "#8b5cf6",
+      "icon": "fas fa-coffee",
+      "description": "Günlük sohbetler, kültür, mekan önerileri ve soru-cevap"
+    }
+  ]
+}

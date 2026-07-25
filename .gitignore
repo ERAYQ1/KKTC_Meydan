@@ -1,0 +1,22 @@
+# Flarum runtime & generated files
+/vendor/
+/storage/cache/*
+/storage/formatter/*
+/storage/logs/*
+/storage/sessions/*
+/storage/views/*
+/storage/less/*
+!/storage/logs/.gitkeep
+
+# Sensitive config files
+config.php
+.env
+
+# Database data volume
+/db_data/
+
+# System / Editor files
+.DS_Store
+.idea/
+.vscode/
+*.log
