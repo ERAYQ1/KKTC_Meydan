@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/business-profile",
+    "description": "Isletme sahiplerinin hesaplarina adres/telefon/whatsapp/calisma saati bilgisi eklemesini saglar",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\BusinessProfile\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Isletme Profili",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

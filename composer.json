@@ -17,8 +17,15 @@
         "flarum/sticky": "*",
         "flarum/subscriptions": "*",
         "flarum/suspend": "*",
-        "flarum/tags": "*"
+        "flarum/tags": "*",
+        "kktcmeydan/business-profile": "*@dev"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "extensions/*"
+        }
+    ],
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,

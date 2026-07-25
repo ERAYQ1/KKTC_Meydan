@@ -15,6 +15,10 @@
 /storage/locale/*
 !/storage/logs/.gitkeep
 
+# Local extension JS build tooling (dist/ is committed so a fresh clone
+# works without running npm install/build; node_modules is regenerable)
+/extensions/*/js/node_modules/
+
 # Sensitive config files
 config.php
 .env

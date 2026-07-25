@@ -247,7 +247,15 @@ $exampleUsers = [
     ['username' => 'ada_lefkosa', 'email' => 'ada.lefkosa@example.kktcmeydan.test', 'role' => 'Yerel Halk'],
     ['username' => 'mehmet_girne', 'email' => 'mehmet.girne@example.kktcmeydan.test', 'role' => 'Güvenilir Üye'],
     ['username' => 'zeynep_dau', 'email' => 'zeynep.dau@example.kktcmeydan.test', 'role' => 'Öğrenci'],
-    ['username' => 'can_maguza', 'email' => 'can.maguza@example.kktcmeydan.test', 'role' => 'İşletme'],
+    [
+        'username' => 'can_maguza', 'email' => 'can.maguza@example.kktcmeydan.test', 'role' => 'İşletme',
+        'business' => [
+            'business_address' => 'Sakarya, Gazimağusa',
+            'business_phone' => '+90 392 555 00 00',
+            'business_whatsapp' => '+90 542 555 00 00',
+            'business_hours' => 'Her gün 08:00 - 22:00',
+        ],
+    ],
     ['username' => 'aylin_iskele', 'email' => 'aylin.iskele@example.kktcmeydan.test', 'role' => 'Yerel Halk'],
     ['username' => 'hasan_karpaz', 'email' => 'hasan.karpaz@example.kktcmeydan.test', 'role' => 'Öğrenci'],
 ];
@@ -271,6 +279,11 @@ foreach ($exampleUsers as $u) {
 
     if (isset($roleIds[$u['role']]) && ! $user->groups->contains($roleIds[$u['role']])) {
         $user->groups()->attach($roleIds[$u['role']]);
+    }
+
+    if (isset($u['business'])) {
+        $user->preferences = array_merge($user->preferences, $u['business']);
+        $user->save();
     }
 
     $userIds[$u['username']] = $user->id;

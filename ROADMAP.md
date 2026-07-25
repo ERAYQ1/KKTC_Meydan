@@ -46,8 +46,11 @@ Alt seviyede kalabilecek ek kategoriler: Teknoloji, Spor, Hayvanlar, Güvenlik/A
 ### Özel geliştirme gerektirir (Flarum'da hazır yok, extension yazılacak)
 
 - [x] **Sorun Bildir sistemi — v1 (tag tabanlı)**: "Sorun Bildir" kategorisi + durum hashtag'leri (🔴 #bildirildi, 🟡 #inceleniyor, 🔵 #yetkiliye-iletildi, 🟢 #çözüldü, her biri renkli). Kullanıcı konum hashtag'i + durum hashtag'iyle bildirim açar, moderatör durumu değiştirmek için hashtag'i değiştirir (core tag-edit yetkisiyle, ek kod gerekmedi). 3 örnek konu farklı durumlarda eklendi.
-- [ ] **Sorun Bildir v2 (özel extension)** — gerçek "status" alanı + otomatik renkli rozet + mod paneli dropdown. **Engel: container'da Node.js/npm yok**, Flarum extension JS derlemesi (webpack/Mithril) için gerekli. Önce Dockerfile'a Node eklenmeli.
-- [ ] **İşletme/Esnaf dizini** — işletme profili (adres, harita, telefon, WhatsApp, çalışma saati, fotoğraf, hizmetler, yorum/puan, doğrulanmış işletme rozeti)
+- [x] **Node.js/npm Dockerfile'a eklendi** — custom Flarum extension geliştirmenin önündeki engel kalktı (v24.17.0 + npm 11.12.1)
+- [ ] **Sorun Bildir v2 (özel extension)** — gerçek "status" alanı + otomatik renkli rozet + mod paneli dropdown.
+- [x] **İşletme dizini — v1 (özel extension, ilk custom Flarum extension'ımız)**: `extensions/business-profile/` — kullanıcı hesabına adres/telefon/WhatsApp/çalışma saati eklenebiliyor (Ayarlar sayfasında form), profilde herkese açık gösteriliyor (UserCard'a eklendi). Doğrulanmış işletme rozeti zaten var olan "İşletme" rolüyle karşılanıyor (admin manuel atar). Örnek işletme kullanıcısı (can_maguza) gerçek iletişim bilgisiyle seed edildi.
+  - Teknik not: Flarum'un `preferences` alanı sadece hesap sahibine özel (CurrentUserSerializer) — işletme bilgisi herkese görünür olmalı, bu yüzden `Extend\ApiSerializer(UserSerializer::class)` ile ayrı public attribute olarak eklendi.
+  - Kalan: harita entegrasyonu, fotoğraf, yorum/puan sistemi — v2.
 - [ ] **Etkinlik takvimi** — takvim görünümlü etkinlik paylaşımı
 - [ ] **Anonim paylaşım** — kullanıcı hesabıyla ya da anonim paylaşabilir; moderatör gerçek kimliği görebilir, normal kullanıcı göremez; IP/log güvenli tutulur; taciz/tehdit içeriği için moderasyon uygulanır. Gizlilik/hukuki risk taşıdığı için dikkatli tasarlanacak.
 - [x] **İlan sistemi — v1 (konvansiyon + hashtag)**: "Yaşam" kategorisi altında #satılık/#kiralık/#iş-ilanı/#ev-arkadaşı/#ikinci-el hashtag'i + standart başlık formatı (📍 Konum, 💰 Fiyat, 📞 İletişim, 📅 Tarih). 4 örnek ilan eklendi (kiralık daire, satılık daire, iş ilanı, ev arkadaşı). Kategori açıklamasında format kullanıcıya gösteriliyor.

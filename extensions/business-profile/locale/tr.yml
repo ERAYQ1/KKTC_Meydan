@@ -1,0 +1,9 @@
+kktcmeydan-business-profile:
+  forum:
+    settings:
+      heading: İşletme Bilgileri
+      address_label: Adres
+      phone_label: Telefon
+      whatsapp_label: WhatsApp
+      hours_label: Çalışma Saatleri
+      save_button: Kaydet

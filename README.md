@@ -39,8 +39,11 @@ Uygulama varsayılan olarak `http://localhost:8080` üzerinden erişilebilir ola
 ```bash
 docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-lang-turkish \
   flarum-subscriptions flarum-likes flarum-lock flarum-mentions flarum-markdown \
-  flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval
+  flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval \
+  kktcmeydan-business-profile
 ```
+
+Özel geliştirilen extension'lar `extensions/` klasöründe tutulur (bkz. `extensions/business-profile` — işletme hesaplarına adres/telefon/WhatsApp/çalışma saati ekler). Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodunda değişiklik yaparsan `extensions/<isim>/js` içinde `npm install && npm run build` çalıştırman gerekir.
 
 Kategoriler (tag) ve site ayarları (isim, açıklama, tema rengi, hoş geldin mesajı) `site_settings.json` içinde tanımlıdır ve `seed.php` betiği ile otomatik uygulanır:
 
