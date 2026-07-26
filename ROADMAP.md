@@ -35,13 +35,13 @@ Alt seviyede kalabilecek ek kategoriler: Teknoloji, Spor, Hayvanlar, Güvenlik/A
 - [x] 8 ana kategoriye geçiş (KKTC Gündem, Bölgeler, Üniversiteler, Ulaşım, Yaşam, Keşfet, Sorun Bildir, Genel Meydan — emlak/ikinci-el eski kategorileri Yaşam altında birleştirildi, discussion'lar otomatik taşındı)
 - [x] Konum hashtag hiyerarşisi (6 resmi ilçe — Lefkoşa, Girne, Gazimağusa, Güzelyurt, İskele, Lefke — + Bölgeler'e bağlı, altlarında tüm alt yerleşimler child tag olarak)
 - [x] Konu/durum/ilan-tipi hashtag setleri (otobüs/taksi/ev/yurt/iş/staj/burs/internet, çözüldü/acil/güncel/duyuru/tartışma, satılık/kiralık/iş-ilanı/ev-arkadaşı/ikinci-el)
-- [ ] Kullanıcı takip etme / engelleme (mevcut extension ekosisteminde araştırılacak)
-- [ ] Anket (poll) — mevcut extension ekosisteminde araştırılacak
-- [ ] Video/YouTube embed — mevcut extension ekosisteminde araştırılacak
-- [ ] SEO (sitemap, meta/OG, schema.org) — mevcut extension ekosisteminde araştırılacak
-- [ ] Google ile giriş — mevcut extension ekosisteminde araştırılacak
-- [ ] Rozet / itibar / seviye sistemi (gamification) — mevcut extension ekosisteminde araştırılacak
-- [ ] En iyi cevap / çözüldü işaretleme — mevcut extension ekosisteminde araştırılacak
+- [x] Kullanıcı takip etme (`ianm/follow-users` + bağımlılığı `fof/follow-tags`) — kuruldu, etkinleştirildi, Türkçe çeviri tamamlandı. Not: "engelleme" (blocking) bu paket kapsamında değil, sadece takip; engelleme ayrı bir extension gerektirir, henüz araştırılmadı.
+- [x] Anket (poll) — `fof/polls` kuruldu, etkinleştirildi, Türkçe çeviri tamamlandı
+- [x] Video/YouTube embed + zengin medya kartları — `fof/formatting` kuruldu, etkinleştirildi (Autovideo/Autoimage/MediaEmbed alt eklentileri dahil), Türkçe çeviri tamamlandı
+- [x] SEO & otomatik sitemap — `fof/sitemap` kuruldu, etkinleştirildi, `/sitemap.xml` canlı doğrulandı, Türkçe çeviri tamamlandı. Meta/OG/schema.org etiketleri bu paketin kapsamında değil, ayrı bir SEO extension'ı gerektirir — henüz yapılmadı.
+- [x] Google ile giriş (altyapı) — `fof/oauth` kuruldu, etkinleştirildi, Türkçe çeviri tamamlandı. **Admin panelinden gerçek Google OAuth Client ID/Secret girilmeden çalışmaz** — bunlar Google Cloud Console'da oluşturulup admin panelinde (`fof-oauth` ayarları) girilmeli, bu bilgiler dışarıdan sağlanamadığı için kod tarafı hazır, devreye alma admin'e kalıyor.
+- [x] Rozet / itibar / seviye sistemi (gamification) — `fof/gamification` kuruldu, etkinleştirildi, Türkçe çeviri tamamlandı (olumlu/olumsuz oy, puan, rütbe, sıralama sayfası)
+- [x] En iyi cevap / çözüldü işaretleme — `fof/best-answer` kuruldu, etkinleştirildi, Türkçe çeviri tamamlandı. Not: hangi etiketlerde aktif olacağı admin panelinden (Ayarlar → FoF Best Answer) seçilmeli, varsayılan olarak hiçbir etikette açık değil.
 
 ### Özel geliştirme gerektirir (Flarum'da hazır yok, extension yazılacak)
 

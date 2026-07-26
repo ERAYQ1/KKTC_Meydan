@@ -63,8 +63,12 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   flarum-subscriptions flarum-likes flarum-lock flarum-mentions flarum-markdown \
   flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval \
   kktcmeydan-business-profile kktcmeydan-report-status kktcmeydan-classifieds \
-  kktcmeydan-event-calendar kktcmeydan-anonymous-posting
+  kktcmeydan-event-calendar kktcmeydan-anonymous-posting fof-follow-tags \
+  ianm-follow-users fof-sitemap fof-polls fof-oauth fof-gamification \
+  fof-formatting fof-best-answer
 ```
+
+Üçüncü parti (`fof/*`, `ianm/*`) paketler sadece İngilizce dil dosyasıyla gelir; Türkçe çevirileri `locale-overrides/tr.yml` içinde (kök `extend.php` ile `Extend\Locales` olarak bağlı) tamamlanmıştır — Flarum birden fazla locale dizinini aynı dile birleştirdiği için bu, paketlerin kendi çevirisiymiş gibi devreye girer.
 
 Kategoriler (tag), site adı/açıklaması, tema rengi, hoş geldin mesajı ve alt bilgi metni `site_settings.json` içinde tanımlıdır ve `seed.php` betiği ile otomatik uygulanır:
 
@@ -90,6 +94,7 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] İşletme dizini v1 (özel eklenti — bkz. `extensions/business-profile`)
 - [x] Etkinlik takvimi altyapısı (özel eklenti — bkz. `extensions/event-calendar`: `eventStartAt`/`eventEndAt` alanları, composer formu, tarih rozeti)
 - [x] Anonim paylaşım (özel eklenti — bkz. `extensions/anonymous-posting`: sadece Genel Meydan, telefon/küfür filtresi, sunucu taraflı kimlik maskeleme, moderatör-only ifşa)
+- [x] Topluluk paketleri: en iyi cevap (`fof/best-answer`), anket (`fof/polls`), kullanıcı takibi (`ianm/follow-users`), Google OAuth altyapısı (`fof/oauth` — gerçek Client ID/Secret admin panelinden girilmeli), sitemap/SEO (`fof/sitemap`), YouTube/medya gömme (`fof/formatting`), rozet/itibar (`fof/gamification`) — hepsi kurulu, etkin, Türkçe çevirileri tamam
 - [ ] Reklam sistemi (kategori/şehir/üniversite hedefleme)
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu

@@ -1,0 +1,849 @@
+# KKTC Meydan — üçüncü parti (fof/*, ianm/*) eklentiler için Türkçe çeviri
+# tamamlayıcısı. Bu paketler kendi içlerinde sadece en.yml ile geliyor;
+# Flarum birden fazla Locales dizinini aynı locale için birleştirdiğinden
+# (bkz. extend.php -> Extend\Locales), bu dosyadaki anahtarlar paketin
+# kendi çevirisi gibi devreye girer. Kapsanmayan nadir/teknik anahtarlar
+# İngilizce olarak kalır (Flarum eksik anahtarda otomatik fallback yapar).
+
+fof-best-answer:
+  admin:
+    permissions:
+      best_answer: En İyi Cevabı Seç (kendi konusunda)
+      best_answer_not_own_discussion: En İyi Cevabı Seç (başkasının konusunda)
+      allow_select_own_post: Kendi mesajını en iyi cevap olarak seçebilir
+    settings:
+      label:
+        tags: En İyi Cevap Etiketleri
+        general: Genel
+        reminders: Hatırlatmalar
+        search: Arama
+        advanced: Gelişmiş
+        reminders_notice: Hatırlatmaların çalışması için Flarum zamanlayıcısının doğru kurulmuş olması gerekir.
+      show_max_lines_label: Mesaj önizlemesinde gösterilecek maksimum satır
+      show_max_lines_help: Kapatmak için 0 girin. Mesaj bu satır sayısından uzunsa önizlemede solma efektiyle kısaltılır.
+      select_best_answer_reminder_days: Hatırlatma sıklığı
+      select_best_answer_reminder_days_help: Konu sahibine en iyi cevabı seçmesi için yapılandırılabilir gün sayısı sonra hatırlatma gönder, 0 = hatırlatmaları kapat.
+      select_best_answer_tags_label: En iyi cevaplı konular için etiketler
+      select_best_answer_tags_help: En iyi cevap seçildiğinde konuya hangi etiketlerin ekleneceğini seçin. Sadece ikincil etiketlere izin verilir. En iyi cevap kaldırılırsa bu etiketler de kaldırılır.
+      schedule_on_one_server: Zamanlayıcı görevi için 'onOneServer()' yönergesini kullan
+      schedule_on_one_server_help: Redis/Memcache gerektirir
+      schedule_stop_overnight: Gece saatlerinde hatırlatma bildirimi gönderilmesini engelle
+      schedule_stop_overnight_help: Sunucu saatiyle 21:00 - 08:00 arası
+      schedule_log_output: Zamanlayıcı çıktısını log dosyasına ekle
+      show_filter_label: En iyi cevap filtre menüsünü göster
+      show_filter_help: En iyi cevap özelliği açık etiketler için, konu listesinde çözüldü/çözülmedi filtre seçeneğini göster
+      use_alt_ui: Alternatif görünüm
+      use_alt_ui_help: Mesaj altlığında en iyi cevap kontrolleri
+      documentation: Dokümantasyon
+      enabled_tags_label: Etkin Etiketler
+      enabled_tags_help: En iyi cevap özelliğinin hangi etiketlerde etkin olacağını seçin. Bu etiketler "Soru-Cevap" biçimli etiketlere dönüşür ve en iyi cevap belirlenebilir hale gelir.
+      remind_tags_label: Hatırlatma Etiketleri
+      remind_tags_help: Hangi etiketler için hatırlatma gönderileceğini seçin. Hatırlatmalar sadece bu etiketli konular için gönderilir.
+      tags_info: |
+        Bir etikette en iyi cevap özelliği açıldığında, hangi kullanıcı gruplarının cevap belirleyebileceğini (kendi konusu, herhangi bir konu) ayarlayın. İzinler genel olarak (en iyi cevap açık her etiket için) veya etiket bazında verilebilir.
+      solution_search: Çözüm arama
+      solution_search_help: En iyi cevaplı konularda arama yapabilme özelliğini etkinleştir
+      remove_solutions_from_main_search: Çözümleri genel aramadan çıkar
+      remove_solutions_from_main_search_help: En iyi cevaplı konuları genel "tüm konular" arama sonuçlarından çıkar
+      display_tags: Arama sonuçlarında etiketleri göster
+      display_tags_help: En iyi cevaplı konuların arama sonuçlarında etiket(ler)ini göster
+      discussion_sidebar_jump_button: Konu kenar çubuğunda en iyi cevaba git düğmesini göster
+      discussion_sidebar_jump_button_help: Konu kenar çubuğuna, mesaj akışında en iyi cevaba atlayan bir düğme ekler.
+    edit_tag:
+      qna_label: Bu etikette en iyi cevap belirlenebilsin
+      reminders: Bu etiketteki konularda en iyi cevap belirlemek için hatırlatma gönder
+  forum:
+    answered_badge: Cevaplandı
+    this_best_answer: En İyi Cevabı Seç
+    remove_best_answer: En İyi Cevap Seçimini Kaldır
+    best_answer_button: En İyi Cevap
+    best_answer_label: <a>{username}</a> tarafından {time_set} belirlendi
+    errors:
+      mismatch: "Seçilen mesaj bu konuda bulunmuyor."
+    notification:
+      best_answer_in_discussion: "{username} bu konuda bir en iyi cevap belirledi"
+      content: Sorunuz cevaplandıysa lütfen en iyi cevabı seçin
+      awarded: Mesajınız {username} tarafından en iyi cevap olarak seçildi
+      preferences:
+        awarded_best_answer: Biri mesajımı en iyi cevap olarak seçtiğinde
+        best_answer_in_discussion: Katıldığım bir konuda en iyi cevap belirlendiğinde
+        select_best_answer: Başlattığım bir konuda en iyi cevap seçmem için otomatik hatırlatma
+    index:
+      ask_question: Soru Sor
+      cannot_ask_question: Soru Soramazsınız
+      solved_link: Çözülen konular
+      unsolved_link: Çözülmeyen konular
+    filter:
+      all_label: Tüm sorular
+      solved_label: Çözülen sorular
+      unsolved_label: Çözülmeyen sorular
+      accessible_label: Çözüldü/çözülmedi seçimi
+    composer:
+      titlePlaceholder: Soru başlığı
+    user:
+      best-answer-count: "{count, plural, one {{count} en iyi cevap} other {{count} en iyi cevap}}"
+    search:
+      discussions_solutions_heading: "Çözümü olan konular"
+      all_discussions_solutions_button: "\"{query}\" için çözümü olan tüm konularda ara"
+    discussion:
+      jump_to_best_answer_button: En İyi Cevabı Görüntüle
+  email:
+    subject:
+      awarded: Mesajınız {display_name} tarafından en iyi cevap olarak seçildi
+      ba-set: "{display_name} bir en iyi cevap belirledi"
+      select: Sorunuza cevap bulabildiniz mi?
+    body:
+      awarded: |
+        Merhaba {recipient_display_name},
+
+        Tebrikler, {actor_display_name} mesajınızı şu konuda en iyi cevap olarak seçti: {discussion_title}. Yardımcı olduğunuz için teşekkürler.
+
+        Buradan görüntüleyin: {discussion_url}
+      ba-set: |
+        Merhaba {recipient_display_name},
+
+        {actor_display_name} katıldığınız şu konuda bir en iyi cevap belirledi: {discussion_title}.
+
+        Göz atın: {discussion_url}
+      select: |
+        Merhaba {recipient_display_name},
+
+        Kontrol etmek istedik; şu ana kadar sorunuza dair epey cevap almış olmalısınız: {discussion_title}. Umarız içlerinden biri sorununuzu çözmüştür.
+
+        Öyleyse, sorunuza bir en iyi cevap belirlemeniz gelecekteki üyeler için gerçekten faydalı olur. Aynı sorunu yaşayanların ihtiyaç duydukları cevabı bulmasına yardımcı olur, ayrıca size yardım eden üyelere de bir teşekkür niteliği taşır. Zamanlarını gönüllü olarak ayırdılar, iyi iş çıkardıklarını bilmelerini sağlamak güzel olur.
+
+        Konuyu buradan ziyaret edin: {discussion_url} ve en uygun mesajı en iyi cevap olarak seçin.
+
+        Teşekkürler!
+
+fof-user-directory:
+  lib:
+    sort:
+      most_best_answers: En çok en iyi cevap
+      least_best_answers: En az en iyi cevap
+
+flarum-audit:
+  lib:
+    browser:
+      discussion:
+        best_answer_set: "{post}, {discussion} konusunda en iyi cevap olarak belirlendi"
+        best_answer_unset: "{post} için {discussion} konusundaki en iyi cevap kaldırıldı"
+
+fof-polls:
+  admin:
+    settings:
+      general:
+        heading: Genel Ayarlar
+        help: Bu ayarlar Anket eklentisinin temel özelliklerini kontrol eder.
+      global_polls:
+        heading: Genel Anketler
+        help: Bu ayarlar genel anket özelliğini kontrol eder.
+      image:
+        heading: Görsel Ayarları
+        help: Bu ayarlar anketler ve seçenekleri için görsel ayarlarını kontrol eder.
+      allow_option_image: Her anket seçeneği için görsel URL'si girilmesine izin ver
+      allow_image_uploads: Anketler ve seçenekleri için görsel yüklemeye izin ver
+      allow_image_uploads_help: Etkinleştirilirse kullanıcılar görsel URL'si girmenin yanında görsel de yükleyebilir (seçenekler için etkinse, anketin kendisi için her zaman etkindir).
+      enable_global_polls: Genel anketleri etkinleştir
+      enable_global_polls_help: Genel anketler belirli bir mesaja bağlı değildir ve ayrı bir anketler sayfasından erişilebilir.
+      enabled_poll_groups: Anket gruplarını etkinleştir
+      enabled_poll_groups_help: Anket grupları, genel anketleri bir arada gruplayıp ayrı bir sayfada göstermenizi sağlar.
+      max_options: Anket başına maksimum seçenek sayısı
+      options_color_blend: Anket seçeneklerinde renk karışımlı metin
+      options_color_blend_help: Anket seçeneklerini daha okunabilir kılmak için renk karıştırma kullanır. Forumunuzun görünümünde sorun yaratıyorsa ve okunabilirliği azaltıyorsa kapatın.
+      image_height: Görsel yüksekliğini yeniden boyutlandır
+      image_width: Görsel genişliğini yeniden boyutlandır
+    permissions:
+      view_results_without_voting: Oy vermeden sonuçları görüntüle
+      start: Anket başlat
+      start_global: Genel anket başlat
+      self_edit: Oluşturulan anketleri düzenle (mesaj düzenleme izni gerekir)
+      self_post_edit: Kendi mesajlarındaki *tüm* anketleri düzenle (mesaj düzenleme izni gerekir)
+      upload_images: Kullanıcıların anketler için görsel yüklemesine izin ver
+      vote: Anketlere oy ver
+      change_vote: Oyu değiştir
+      moderate: Anketleri düzenle ve kaldır
+      view_group: Anket gruplarını görüntüle
+      start_group: Anket grubu oluştur
+      moderate_group: Anket gruplarını düzenle ve kaldır
+  forum:
+    days_remaining: Anket {time} sona eriyor.
+    no_permission: Oy verme izniniz yok
+    poll_ended: Bu anket sona erdi.
+    public_poll: Oy verenleri görüntüle
+    max_votes_allowed: "Anket {max, plural, one {# seçenek} other {# seçenek}} için oy vermeye izin veriyor."
+    polls_count: "{count, plural, one {{count} oy} other {{count} oy}}"
+    poll_never_ends: Anket asla sona ermez
+    answers: Cevaplar
+    poll:
+      cannot_change_vote: Oy verdikten sonra oyunuzu değiştiremezsiniz.
+      submit_button: Oy Ver
+      start_poll_button: Genel Anket Başlat
+      cannot_start_poll_button: Anket Başlatılamaz
+      total_votes: "{count, plural, one {# oy verildi} other {# oy verildi}}"
+      draft_label: Taslak
+      scheduled_label: "{date} için zamanlandı"
+      scheduled_error_tooltip: Bu zamanlanmış yayın başarısız oldu. Nedenini görmek için anketi açın.
+    poll_controls:
+      edit_label: => core.ref.edit
+      delete_label: => core.ref.delete
+      view_label: => core.ref.view
+      delete_confirmation: Bu anketi silmek istediğinizden emin misiniz?
+      delete_success_message: Anket başarıyla silindi.
+      delete_error_message: Anket silinirken bir sorun oluştu.
+      publish_label: Şimdi yayınla
+      publish_success: Anket yayınlandı.
+      schedule_publish_label: Yayını zamanla
+      edit_schedule_publish_label: Zamanlanmış yayını düzenle
+      cancel_schedule_label: Zamanlanmış yayını iptal et
+      cancel_schedule_success: Zamanlanmış yayın iptal edildi.
+      unpublish_label: Taslağa geri al
+      unpublish_confirmation: Bu anket taslağa geri alınsın mı? Vitrinden kaybolacak.
+      unpublish_success: Anket taslağa alındı.
+      unpublish_error_has_votes: Yayından kaldırılamaz — ankette zaten oy var. Bunun yerine silin.
+    poll_form:
+      delete: Anketi Sil
+      error: Anket kaydedilirken bir hata oluştu, lütfen bir yöneticiyle iletişime geçin.
+    poll_groups:
+      composer:
+        add_title: Anket Grubu Ekle
+        edit_title: Anket Grubunu Düzenle
+        save_changes: => core.ref.save_changes
+        delete: Anket Grubunu Sil
+        groups_manager: Anket Grupları Yöneticisi
+        view_group: Anket Grubunu Görüntüle
+        success: Anket grubu başarıyla kaydedildi.
+      list_page:
+        title: Anket Grupları
+        start_poll_group_button: Anket Grubu Başlat
+        cannot_start_poll_group_button: Anket Grubu Başlatılamaz
+        empty_text: Burada henüz anket grubu yok gibi görünüyor.
+        load_more_button: => core.ref.load_more
+        no_polls: Bu grupta anket yok.
+        add_poll_button: Gruba Anket Ekle
+      controls:
+        add_poll_label: Anket Ekle
+        edit_label: => core.ref.edit
+        view_label: Anket Grubunu Görüntüle
+        delete_label: => core.ref.delete
+        delete_confirmation: Bu anket grubunu silmek istediğinizden emin misiniz?
+        delete_success_message: Anket grubu başarıyla silindi.
+        delete_error_message: Anket grubu silinirken bir sorun oluştu.
+    polls_page:
+      title: Anketler
+    polls_list:
+      empty_text: Burada henüz topluluk geneli anket yok gibi görünüyor.
+      load_more_button: => core.ref.load_more
+      sort_dropdown:
+        newest: En yeni
+        oldest: En eski
+        most_voted: En çok oylanan
+        least_voted: En az oylanan
+        sort_dropdown.default: => fof-polls.forum.polls_list.sort_dropdown.newest
+      status_filter:
+        all: Tümü
+        published: Yayınlanan
+        draft: Taslaklar
+    composer_discussion:
+      add_poll: => fof-polls.forum.moderation.add
+      edit_poll: => fof-polls.forum.moderation.edit
+      no_permission_alert: Anket başlatma izniniz yok.
+    compose:
+      add_title: Anket Ekle
+      edit_title: Anketi Düzenle
+      polls_manager: Anket Yöneticisi
+      polls_preview: Anketi Görüntüle
+      continue_editing: Düzenlemeye Devam Et
+      success: Anket başarıyla kaydedildi.
+      submit: Gönder
+      save_as_draft: Taslak olarak kaydet
+      update_draft: Taslağı güncelle
+      draft_saved: Taslak kaydedildi
+      publish: Yayınla
+      schedule_publication: Yayını zamanla
+      schedule_publication_edit: Zamanlanmış yayını düzenle
+      schedule_datetime_label: Yayınlanma zamanı
+      schedule_submit: Zamanla
+      schedule: Zamanla
+    modal:
+      add_title: Anket Ekle
+      add_option_label: Seçenek Ekle
+      date_placeholder: Anket bitiş tarihi (isteğe bağlı)
+      edit_title: Anketi Düzenle
+      include_question: Bir soru eklemelisiniz
+      max: En fazla {max} cevap girebilirsiniz
+      min: En az 2 cevap girmelisiniz
+      empty_answers: "{count, plural, one {# cevap boş — lütfen doldurun ya da kaldırın.} other {# cevap boş — lütfen doldurun ya da kaldırın.}}"
+      no_voters: Oy Yok
+      option_placeholder: Cevap
+      image_option_placeholder: Görsel URL'si (isteğe bağlı)
+      options_label: Cevaplar
+      public_poll_label: Kimin oy verdiğini insanların görmesine izin ver
+      allow_multiple_votes_label: Birden fazla seçeneğe oy verilmesine izin ver
+      max_votes_label: Kullanıcı başına maksimum oy
+      max_votes_help: Kullanıcıların tüm seçeneklere oy vermesine izin vermek için 0 girin.
+      hide_votes_label: Anket bitene kadar oyları gizle
+      hide_votes_label_help: Anketi başlatan kullanıcı oyları her zaman görebilir.
+      allow_change_vote_label: Kullanıcıların oylarını değiştirmesine izin ver
+      question_placeholder: Soru
+      subtitle_placeholder: Alt başlık/Açıklama (isteğe bağlı)
+      submit: Gönder
+      delete: => core.ref.delete
+      error: => core.lib.error.generic_message
+      poll_image:
+        label: Anket Görseli
+        help: Anketin yanında gösterilecek bir görsel yükleyin (isteğe bağlı).
+        alt_label: Görsel Alternatif Metni
+        alt_help_text: Görsel ayarlandığında bu metin zorunludur, görsel yüklenemezse gösterilir.
+        later_help: Anketi oluşturduktan sonra bir görsel yükleyebileceksiniz.
+      poll_option_image:
+        label: Anket Cevabı Görseli
+        help: Anket cevabının yanında gösterilecek bir görsel yükleyin (isteğe bağlı).
+      tooltip:
+        options:
+          add-button: Cevap Ekle
+    moderation:
+      add: Anket Ekle
+      delete: Anketi Kaldır
+      delete_confirm: Bu anketi silmek istediğinizden emin misiniz?
+      edit: Anketi Düzenle
+    page:
+      nav: Anketler
+      nav-all: Tüm Genel Anketler
+      nav-groups: Anket Grupları
+    showcase:
+      active-polls: Aktif Anketler
+      ended-polls: Sona Eren Anketler
+      no-active-polls: Şu anda aktif anket yok.
+      no-recent-polls: Şu anda yakın zamanda sona eren anket yok.
+    tooltip:
+      badge: Anket
+      votes: "{count, plural, one {# oy} other {# oy}}"
+    votes_modal:
+      title: Oy Verenler
+    upload_image:
+      remove_button: Görseli Sil
+      upload_button: Görsel Yükle
+
+flarum-gdpr:
+  lib:
+    data:
+      followuser:
+        export_description: Takip edilen ve takip eden kullanıcıların bilgilerini dışa aktarır.
+        anonymize_description: "=> flarum-gdpr.lib.data.followuser.delete_description"
+        delete_description: Kullanıcı takibiyle ilgili tüm verileri siler.
+      tagsubscription:
+        export_description: Bir etikete abonelik seviyesini (varsa) dışa aktarır.
+        anonymize_description: Kullanıcının etikete olan aboneliğini kaldırır.
+
+ianm-follow-users:
+  admin:
+    permissions:
+      be_followed_label: Kullanıcıların takip etmesine izin ver
+    settings:
+      button-on-profile-label: Profil başlığında doğrudan Takip Et düğmesini göster
+      stats-on-profile-label: Kullanıcı profillerinde takipçi ve takip edilen sayısını göster
+  forum:
+    followed: Takip Edildi
+    followers: "{count, plural, one {Takipçi} other {Takipçi}}"
+    profile_link: => ianm-follow-users.lib.following_link
+    followers_link: Takipçiler
+    profile_page:
+      no_following: Henüz kimseyi takip etmiyor gibisiniz.
+      no_followers: Henüz hiç takipçiniz yok gibi görünüyor.
+    user_controls:
+      follow_button: => ianm-follow-users.lib.follow
+      unfollow_button: => ianm-follow-users.lib.unfollow
+      change_button: => ianm-follow-users.lib.change_follow_type
+    settings:
+      notify_new_follower_label: Biri beni takip ettiğinde
+      notify_new_unfollower_label: Biri beni takip etmeyi bıraktığında
+      notify_new_discussion_label: Takip ettiğim biri konu başlattığında
+      notify_new_post_label: Takip ettiğim biri mevcut bir konuya mesaj yazdığında
+      block_follow: Kullanıcıların beni takip etmesini engelle
+    index:
+      follow_tag_button: => ianm-follow-users.lib.follow
+      unfollow_tag_button: => ianm-follow-users.lib.change_follow_type
+    notifications:
+      new_discussion_text: "{username} başlattı"
+      new_post_text: "{username} bir konuya mesaj yazdı"
+      new_follower_text: "{username} sizi takip etti"
+      new_unfollower_text: "{username} sizi takip etmeyi bıraktı"
+    badge:
+      label:
+        follow: Konuları takip ediyor
+        lurk: Her şeyi takip ediyor
+    filter:
+      following: Takip edilen kullanıcılar
+    modals:
+      select_follow_level:
+        title: "{username} için takip seviyesi seçin"
+        description: "<em>{username}</em> kullanıcısını nasıl takip etmek istediğinizi seçin."
+        follow_levels_heading: "Takip seviyeleri"
+        follow_select_label: "Takip türü"
+        no_user_attr_provided_err: "Bir şeyler ters gitti, bu pencere açılırken bir sorun oluştu."
+        no_user_attr_provided_err_debug: "SelectFollowUserLevel penceresi oluşturulurken `user` özniteliği aktarılmadı. Pencere gösterilemiyor."
+        save_btn: "Kaydet"
+        cancel_btn: "Vazgeç"
+  email:
+    new_discussion_by_user_subject: "[Kullanıcı Takibi] {title}"
+    new_follower_subject: "[Kullanıcı Takibi] Yeni bir takipçiniz var!"
+    new_post_subject: "[Kullanıcı Takibi] {title} konusunda yeni mesaj"
+    new_discussion_by_user_body: |
+      Merhaba {recipient_display_name},
+
+      {user_display_name} yeni bir konu başlattı: {discussion_title}
+
+      Yeni konuyu görüntülemek için şu bağlantıya göz atın:
+
+      {discussion_url}
+
+      ---
+
+      {post_content}
+    new_follower_body: |
+      Merhaba {recipient_display_name},
+
+      {follower_display_name} sizi takip etmeye başladı, yeni bir konu başlattığınızda bilgilendirilecekler.
+
+      Profillerini görüntülemek için şu bağlantıya göz atın:
+
+      {profile_url}
+    new_post_body: |
+      Merhaba {recipient_display_name},
+
+      {user_display_name} şu konuya mesaj yazdı: {discussion_title}
+
+      Yeni etkinliği görüntülemek için şu bağlantıya göz atın:
+
+      {post_url}
+
+      ---
+
+      {post_content}
+
+      ---
+
+      Güncel duruma gelene kadar bu konuyla ilgili başka bildirim almayacaksınız.
+  lib:
+    following_link: Takip Edilen Kullanıcılar
+    follow: Takip Et
+    change_follow_type: Takip türünü değiştir
+    unfollow: Takibi Bırak
+    follow_levels:
+      unfollow:
+        name: Takip etme
+        description: |
+          <em>{username}</em> etkinliği için hiçbir bildirim almayın.
+      follow:
+        name: Konuları takip et
+        description: |
+          <em>{username}</em> yeni bir konu başlattığında bildirim alın.
+      lurk:
+        name: Her şeyi takip et
+        description: |
+          <em>{username}</em> yeni bir konu başlattığında veya herhangi bir konuya mesaj yazdığında bildirim alın.
+
+fof-oauth:
+  admin:
+    configure_button_label: FoF OAuth ile Yapılandır
+    settings_accessibility_label: "{name} ayarları"
+    permissions:
+      moderate_user_providers: Kullanıcının bağlı hesaplarını yönet
+    settings:
+      advanced:
+        heading: Gelişmiş
+        log-oauth-errors-label: OAuth hatalarını logla
+        log-oauth-errors-help: Etkinleştirilirse OAuth hataları Flarum log'una kaydedilir. Bu, OAuth sorunlarını gidermede yardımcı olabilir ama hassas bilgi de içerebilir.
+      only_icons_label: Sadece Giriş Yap düğmesi ikonlarını göster (alternatif görünüm)
+      update_email_from_provider_label: E-posta adresini sağlayıcıdan güncelle
+      update_email_from_provider_help: Etkinleştirilirse, kullanıcının e-posta adresi her forum girişinde OAuth sağlayıcısından gelen adresle eşleşecek şekilde güncellenir. Tüm sağlayıcılar güncel e-postayı sağlamaz, bu durumda bu ayarın o sağlayıcılar için etkisi olmaz.
+      disable_avatars_label: Sağlayıcıdan gelen avatarları devre dışı bırak
+      disable_avatars_help: >
+        Etkinleştirilirse, kayıt sırasında kullanıcının avatarı sağlayıcının avatarıyla eşleşecek şekilde güncellenmez.
+        Bu sadece yeni kayıtları etkiler, mevcut kullanıcıların avatarını değiştirmez.
+      fullscreen_popup_label: OAuth için Tam Ekran Açılır Pencere Kullan
+      fullscreen_popup_help: Etkinleştirildiğinde OAuth girişi tam ekran açılır pencerede açılır. Bu etkinse genişlik/yükseklik ayarları yok sayılır.
+      popup_width_label: OAuth Açılır Pencere Genişliği
+      popup_width_help: OAuth açılır pencere genişliğini ayarlayın. "OAuth için Tam Ekran Açılır Pencere Kullan" etkinse bu ayar yok sayılır.
+      popup_height_label: OAuth Açılır Pencere Yüksekliği
+      popup_height_help: OAuth açılır pencere yüksekliğini ayarlayın. "OAuth için Tam Ekran Açılır Pencere Kullan" etkinse bu ayar yok sayılır.
+      providers:
+        callback_url_text: Gerekirse geri çağırma (callback) URL'sini {url} olarak ayarlayın.
+        group_label: Grup Ata
+        group_help: Bu sağlayıcıyla kayıt olan kullanıcılara otomatik atanacak bir grup seçin.
+        no_group_label: Grup ataması yok
+        discord:
+          description: "{link} adresinde bir uygulama oluşturun. Yönlendirme URL'sini OAuth2 sekmesine ekleyin."
+          client_id_label: => fof-oauth.ref.settings.client_id
+          client_secret_label: => fof-oauth.ref.settings.client_secret
+        facebook:
+          description: "{link} adresinde bir uygulama oluşturun."
+          app_id_label: => fof-oauth.ref.settings.app_id
+          app_secret_label: => fof-oauth.ref.settings.app_secret
+        github:
+          description: "{link} adresinde bir OAuth uygulaması oluşturun."
+          client_id_label: => fof-oauth.ref.settings.client_id
+          client_secret_label: => fof-oauth.ref.settings.client_secret
+        gitlab:
+          description: "{link} adresinde bir uygulama oluşturun. Uygulamaya <code>read_user</code> yetkisini verin."
+          client_id_label: => fof-oauth.ref.settings.app_id
+          client_secret_label: => fof-oauth.ref.settings.app_secret
+          domain_label: GitLab Alan Adı
+        twitter:
+          description: "{link} adresinde bir uygulama oluşturun. Bir Kullanım Şartları URL'si ve Gizlilik Politikası URL'si ayarlamanız gerekecek. Ardından e-posta izni talebini eklemeyi unutmayın."
+          api_key_label: API Anahtarı
+          api_secret_label: API Gizli Anahtarı
+        google:
+          description: "{link} adresinde bir uygulama oluşturun."
+          client_id_label: => fof-oauth.ref.settings.client_id
+          client_secret_label: => fof-oauth.ref.settings.client_secret
+          hosted_domain_label: Barındırılan Alan Adı (G Suite/Google Apps for Business, isteğe bağlı)
+        linkedin:
+          description: "{link} adresinde bir uygulama oluşturun."
+          client_id_label: => fof-oauth.ref.settings.client_id
+          client_secret_label: => fof-oauth.ref.settings.client_secret
+  forum:
+    log_in:
+      with_button: "{provider} ile Giriş Yap"
+      with_discord_button: '=> fof-oauth.forum.log_in.with_button'
+      with_facebook_button: '=> fof-oauth.forum.log_in.with_button'
+      with_github_button: '=> fof-oauth.forum.log_in.with_button'
+      with_gitlab_button: '=> fof-oauth.forum.log_in.with_button'
+      with_google_button: '=> fof-oauth.forum.log_in.with_button'
+      with_linkedin_button: '=> fof-oauth.forum.log_in.with_button'
+      with_twitter_button: '=> fof-oauth.forum.log_in.with_button'
+    user:
+      settings:
+        linked-account:
+          label: Bağlı hesaplar
+          last-used-label: Son kullanım
+          link-created-label: Bağlantı oluşturuldu
+          identification-label: "{provider} Kimliği"
+          orphaned-account: Daha önce bu sağlayıcıyla giriş yaptınız, ancak forum bu yöntemle girişi o zamandan beri devre dışı bıraktı.
+          help: Bu bağlı hesaplar, foruma başka sağlayıcılarla giriş yapmanızı sağlar.
+          identifier-label: "{provider} Kimliği"
+          unlink-confirm: "{provider} ile bağlantıyı kaldırmak istediğinizden emin misiniz? Gelecekte tekrar doğrulamadığınız sürece bu foruma giriş yapamayacaksınız."
+    providers:
+      discord: '=> fof-oauth.lib.providers.discord'
+      facebook: '=> fof-oauth.lib.providers.facebook'
+      github: '=> fof-oauth.lib.providers.github'
+      gitlab: '=> fof-oauth.lib.providers.gitlab'
+      google: '=> fof-oauth.lib.providers.google'
+      linkedin: '=> fof-oauth.lib.providers.linkedin'
+      twitter: '=> fof-oauth.lib.providers.twitter'
+    signup:
+      username_help: Burada tanınacağınız bir kullanıcı adı seçin
+    unlink: Bağlantıyı Kaldır
+    error:
+      bad_verification_code: Geçersiz veya süresi dolmuş doğrulama anahtarı. Lütfen tekrar deneyin.
+      invalid_state: Geçersiz durum. Lütfen tekrar deneyin.
+  lib:
+    providers:
+      discord: Discord
+      facebook: Facebook
+      github: GitHub
+      gitlab: GitLab
+      twitter: Twitter
+      google: Google
+      linkedin: LinkedIn
+  ref:
+    settings:
+      app_id: Uygulama Kimliği
+      app_secret: Uygulama Gizli Anahtarı
+      client_id: İstemci Kimliği
+      client_secret: İstemci Gizli Anahtarı
+
+fof-sitemap:
+  admin:
+    settings:
+      exclude_users: Tüm kullanıcı profillerini site haritasından hariç tut
+      exclude_users_help: Varsayılan olarak ziyaretçilere görünen her kullanıcı indekslenir
+      exclude_tags: Tüm etiket sayfalarını site haritasından hariç tut
+      exclude_tags_help: Varsayılan olarak ziyaretçilere görünen her etiket indekslenir
+      build_button: Site Haritalarını Şimdi Yeniden Oluştur
+      build_button_help: Tüm site haritası dosyalarının hemen yeniden oluşturulmasını tetikler. Kuyruk yapılandırılmışsa görev kuyruğa eklenir, değilse hemen çalışır.
+      build_success: Site haritası yeniden oluşturma başarıyla kuyruğa eklendi. İlerlemeyi takip etmek için loglarınızı kontrol edin.
+      build_error: Site haritası yeniden oluşturma kuyruğa eklenemedi. Lütfen loglarınızı ve kuyruk yapılandırmanızı kontrol edin.
+      last_build_time: Son Oluşturma Zamanı
+      mode_label: Çalışma modu
+      mode_help: Forumunuzun büyüklüğüne uygun modu seçmek son derece önemlidir.
+      mode_help_runtime_label: Anlık (Runtime) Mod
+      mode_help_runtime: Konu, kullanıcı, etiket ve sayfa sayısı toplamda 10.000'in altında olan, genellikle paylaşımlı barındırma ortamındaki küçük forumlar için. Site haritası her istekte anlık olarak oluşturulur.
+      mode_help_schedule: Aşağıdaki modlar görevlerini Flarum zamanlayıcısına ekler.
+      mode_help_schedule_setup: Flarum zamanlayıcısı doğru kurulmadan aşağıdaki modlar çalışmaz. Daha fazla bilgi için <a>buraya bakın</a>.
+      mode_help_large: Site haritası dosyaları için teknik sınır 50.000'dir. Daha fazla kaydınız varsa aşağıdaki seçeneği kullanın!
+      mode_help_multi_label: Çok Dosyalı Mod
+      mode_help_multi: 10.000 kayıttan itibaren büyük forumlar için en iyisi. Çok parçalı, sıkıştırılmış site haritası dosyaları oluşturulup /public klasöründe saklanır.
+      advanced_options_label: Gelişmiş seçenekler
+      frequency_label: Zamanlayıcı önbelleğe alınmış site haritasını ne sıklıkla yeniden oluştursun?
+      risky_performance_improvements: Büyük parça (chunk) boyutunu etkinleştir (riskli)
+      risky_performance_improvements_help: "Veritabanı okuma parça boyutunu 75.000'den 150.000 satıra çıkarır. Milyonlarca satırlık veri kümelerinde oluşturmayı hızlandırır ama parça başına en yüksek Eloquent model RAM kullanımını iki katına çıkarır. Sadece sunucunuzda yeterli belleği doğruladıysanız etkinleştirin. Ayrıca sütun ayıklamayı da etkinleştirir (yukarı bakın)."
+      column_pruning: Sütun ayıklamayı etkinleştir
+      column_pruning_help: "SELECT * yerine sadece URL oluşturmak için gereken sütunları çeker (ör. id, slug, kullanıcı adı, tarihler). Büyük forumlarda model başına bellek kullanımını önemli ölçüde azaltır. Varsayılan olarak etkindir — sadece özel bir slug sürücüsü veya görünürlük kapsamı varsayılan seçimde olmayan sütunlar gerektiriyorsa kapatın."
+      include_priority: Site haritasına öncelik değerlerini dahil et
+      include_priority_help: Öncelik değerleri Google tarafından yok sayılır ama Bing ve Yandex gibi diğer arama motorları tarafından kullanılabilir
+      include_changefreq: Site haritasına değişim sıklığı değerlerini dahil et
+      include_changefreq_help: Değişim sıklığı değerleri Google tarafından yok sayılır ama diğer arama motorları tarafından tarama zamanlaması için kullanılabilir
+      modes:
+        runtime: Anlık (Runtime)
+        multi_file: Çok dosyalı
+      frequency:
+        hourly: Saatlik
+        twice_daily: Günde iki kez
+        daily: Günlük
+      soft_404:
+        heading: Soft 404 önleme
+        help: Bir modelin çok az veya hiç ilgili içeriği yoksa, Google ve diğer tarayıcılar bunları "soft 404" sayfa olarak işaretleyebilir. Bunu önlemek için, her uygun öğe türü için gereken minimum öğe sayısını buradan ayarlayın.
+        user:
+          comments:
+            minimum_item_threshold_label: "Kullanıcı: Minimum yorum/mesaj sayısı"
+            minimum_item_threshold_help: Bir kullanıcının profilinin site haritasına dahil edilmesi için sahip olması gereken minimum yorum/mesaj sayısı.
+        tags:
+          discussion:
+            minimum_item_threshold_label: "Etiket: Minimum konu sayısı"
+            minimum_item_threshold_help: Bir etiketin site haritasına dahil edilmesi için sahip olması gereken minimum konu sayısı.
+
+fof-formatting:
+  admin:
+    plugins:
+      Autoimage: Görsel URL'lerini gerçek görsellere dönüştür
+      Autovideo: Video URL'lerini oynatılabilir videolara dönüştür
+      FancyPants: Şık tipografi kullan
+      HTMLEntities: HTML varlıklarını (entities) kullan
+      MediaEmbed: İzin verilen sitelerden içerik göm
+      PipeTables: ASCII biçimli tablolar
+      TaskLists: GitHub/GitLab tarzı yapılacaklar listesi
+
+core:
+  forum:
+    index_sort:
+      hot_button: Trend
+      votes_button: Beğeni Oyu
+
+fof-gamification:
+  forum:
+    votes: Oylar
+    vote_title: Kimin Oy Verdiğini Göster
+    nav:
+      name: Sıralama
+    ranking:
+      rank: Sıra
+      name: Kullanıcı
+      amount: Puan
+    notification:
+      upvote: "{username} mesajınızı olumlu oyladı"
+      downvote: "{username} mesajınızı olumsuz oyladı"
+      prefrences:
+        vote: Mesajlarımdan biri olumlu/olumsuz oylandığında
+    user:
+      card:
+        points: "{count, plural, one {{count} puan} other {{count} puan}}"
+      rank: "{rank}"
+      votes_link: Oylar
+    modal:
+      downvotes_label: 'Olumsuz oy verenler:'
+      title: Oy Verenler
+      upvotes_label: 'Olumlu oy verenler:'
+    mod_item: Oy Verenleri Görüntüle
+    voters:
+      none: Henüz oy veren yok
+      label: Oy Verenler
+      label_none: Oy veren yok
+    post:
+      upvote_button: Mesajı olumlu oyla
+      downvote_button: Mesajı olumsuz oyla
+  admin:
+    permissions:
+      vote_label: Mesajları olumlu/olumsuz oyla
+      see_votes_label: Olumlu/olumsuz oy sayısını gör
+      see_voters_label: Kimin oy verdiğini gör
+      see_ranking_page: Sıralama sayfasını gör
+      upvote_notifications: Olumlu oyda bildirim al
+      downvote_notifications: Olumsuz oyda bildirim al
+    page:
+      rankings:
+        blocked:
+          placeholder: admin, kullanici1, kullanici2
+          title: Yok Sayılan Kullanıcılar
+          help: Bu kullanıcılar sıralama sayfasında gösterilmez. Kullanıcı adları virgül ve ardından boşlukla ayrılmalıdır.
+          title2: Sıralama Sayfası
+        title: Sıralama Sayfası
+        enable: Özel görselleri etkinleştir
+        custom_image_1: 1. sıra görseli
+        custom_image_2: 2. sıra görseli
+        custom_image_3: 3. sıra görseli
+      alt_votes:
+        icon_name: Alternatif görünüm ikon adı
+      votes:
+        points_title: Puan Yer Tutucusu
+        points_placeholder: "Puan: "
+        color_holder: '#ffffff'
+        auto_upvote: Mesajlar paylaşıldığında otomatik olumlu oyla
+        rate_limit: Oy verme hız sınırı uygula (10 saniye)
+        discussion_page: Konu listesinde ilk mesajın toplam oyunu göster
+        alternate_layout: Konu listesinde alternatif oylama görünümünü kullan
+        alternate_post_layout: Mesajlarda alternatif oylama görünümünü kullan
+        title: Oylar
+        vote_color: Oylanmış rengi
+        icon_name: Olumlu/olumsuz oy ikonu
+        icon_help: "Sonuna -up ve -down eklenmiş herhangi bir Font-Awesome ikonu girin. Örnekler: arrow, thumbs, chevron"
+        upvotes_only: Sadece olumlu oylamaya izin ver
+        first_post_only: Bir konudaki sadece ilk mesaj için olumlu/olumsuz oylamaya izin ver
+        allow_self_votes: Kullanıcılar kendi mesajlarını oylayabilir
+      save_settings: Ayarları kaydet
+      convert:
+        button: Beğenileri olumlu oya dönüştür
+        help: Önceki flarum-ext-likes beğenilerinizi olumlu oya dönüştürün ve tüm mevcut konuların popülerliğini hesaplayın.
+        converting: Beğenileriniz şu anda dönüştürülüyor. Birkaç dakika sonra sitenizi yenileyerek işlemin bittiğini görebilirsiniz. (Dönüştürme süresi toplam forum beğeni sayınıza göre değişebilir)
+        converted: "{number} beğeni başarıyla dönüştürüldü"
+      ranks:
+        title: Rütbeler
+        ranks: Özel rütbeler
+        number_title: Kaç rütbe rozeti gösterilsin?
+        help:
+          color: '#ffffff'
+          help: "Gerekli olumlu oy sayısını, rütbe adını ve rütbenin hex renk kodunu girin"
+          points: Puan
+          name: İsim
+      groups:
+        title: Otomatik atanan gruplar
+        help: >
+          Bir kullanıcının puanı değiştiğinde seçilen gruplar gerektiği gibi otomatik olarak eklenir veya kaldırılır.
+          Yapılandırmada değişiklik yaptıysanız, mevcut kullanıcıları güncellemek için <code>php flarum fof:gamification:assign-groups</code> komutunu çalıştırmalısınız.
+          Bir kuralı silmek ve gruptaki tüm kullanıcıları kaldırmak isterseniz, hem minimum hem maksimum değerleri boş bırakıp ayarları kaydedin ve komut satırı komutunu çalıştırın.
+          Son olarak kuralı ayarlardan tamamen silebilirsiniz.
+        column:
+          group: Grup
+          minPoints: Minimum puan (dahil)
+          maxPoints: Maksimum puan (dahil)
+        add: Yeni kural ekle
+        delete: Kuralı sil
+  email:
+    body:
+      postVoted: |
+        Merhaba {recipient_display_name},
+
+        {actor_display_name}, {discussion_title} konusundaki mesajınızı oyladı.
+
+        Buradan görüntüleyin: {discussion_url}
+    subject:
+      postVoted: Mesajınız {display_name} tarafından oylandı
+
+fof-follow-tags:
+  forum:
+    settings:
+      notify_new_discussion_label: Takip ettiğim bir etikette biri konu açtığında
+      notify_new_post_label: Takip ettiğim bir etikette biri mesaj yazdığında
+      notify_new_discussion_tag_label: Biri bir konuyu takip ettiğim bir etikete yeniden etiketlediğinde
+    index:
+      follow_tag_button: Takip Et
+      unfollow_tag_button: Takibi Bırak
+      following:
+        following_none_label: => fof-follow-tags.ref.filtering_options.none
+        following_tags_label: => fof-follow-tags.ref.filtering_options.tags
+    badge:
+      following_tag_tooltip: Takip ediliyor
+      lurking_tag_tooltip: Sessizce takip ediliyor
+    sub_controls:
+      header: "{tagName} için abonelik"
+      subscription_label: "{tagName} için abonelik seviyenizi seçin"
+      follow_button: => fof-follow-tags.ref.follow
+      following_button: => fof-follow-tags.ref.following
+      following_text: Tüm yeni konulardan haberdar olun.
+      hiding_button: => fof-follow-tags.ref.hiding
+      hiding_text: Konuları Tüm Konular sayfasından gizle.
+      ignoring_button: => fof-follow-tags.ref.ignoring
+      ignoring_text: Asla bildirim alma.
+      lurking_button: => fof-follow-tags.ref.lurking
+      lurking_text: Tüm yeni konular ve yanıtlardan haberdar olun.
+      not_following_button: Takip Edilmiyor
+      not_following_text: "Sadece @bahsedildiğinde bildirim alın."
+      notify_alert_tooltip: Yeni konu veya mesaj olduğunda forum bildirimi alın
+      notify_email_tooltip: Yeni konu veya mesaj olduğunda e-posta alın
+      submit_button: Aboneliği Onayla
+    hero:
+      title: => flarum-subscriptions.forum.index.following_link
+    notifications:
+      new_discussion_text: "{username} başlattı"
+      new_post_text: "{username} mesaj yazdı"
+      new_discussion_tag_text: "{username} etiketi değiştirdi"
+    prompt:
+      choose_button: Takip edilecek etiketleri seç
+      modal_title: Takip edilecek etiketleri seçin
+      later_button: Bana sonra hatırlat
+      continue_button: Foruma devam et
+    user:
+      settings:
+        heading: Etiketleri Takip Et
+        filter_label: Takip Ediliyor sayfasında varsayılan olarak ne gösterilsin
+  admin:
+    settings:
+      following_page_default_label: Varsayılan Takip Ediliyor Sayfası Filtresi
+      following_none_label: => fof-follow-tags.ref.filtering_options.none
+      following_tags_label: => fof-follow-tags.ref.filtering_options.tags
+      prompt_new_users_label: Yeni kullanıcılara takip edilecek etiketleri seçmelerini sor
+      prompt_new_users_help: >
+        Henüz seçimini onaylamamış kullanıcılara etiket takibi sormak için bir pencere gösterilir.
+        Kullanıcı "Foruma devam et" düğmesine basana kadar bu pencere her ziyarette tekrar gösterilir.
+      prompt_button_on_following_page_label: Takip Ediliyor sayfasında "Takip edilecek etiketleri seç" düğmesini göster
+      prompt_tag_strategy_label: İstem penceresinde sunulacak etiketler
+      prompt_tag_strategy_options:
+        primary: Birinci seviye ana etiketler
+        primaryAndChildren: Her seviyeden tüm ana etiketler
+        primaryAndSecondary: Birinci seviye ana etiketler ve ikincil etiketler
+        secondary: Sadece ikincil etiketler
+        all: Tüm etiketler
+        list: Aşağıda seçilen etiketler
+      prompt_tag_ids_label: Sunulacak etiketler
+      all_discussions_on_following_page_for_guests_label: Ziyaretçiler için Takip Ediliyor sayfasında tüm konuları göster
+    basics:
+      following_label: => flarum-subscriptions.forum.index.following_link
+  email:
+    subject:
+      newDiscussionInTag: "[Etiket | Yeni Konu] {title}"
+      newPostInTag: "[Etiket | Yeni Mesaj] {title}"
+      newDiscussionTag: "[Etiket | Etiket Değişti] {title}"
+    body:
+      newDiscussionInTag: |
+        Merhaba {recipient_display_name},
+
+        {actor_display_name}, takip ettiğiniz bir etikette bir konu başlattı: {discussion_title}
+
+        Yeni konuyu görüntülemek için şu bağlantıya göz atın:
+        {discussion_url}
+
+        ---
+
+        {post_content}
+      newPostInTag: |
+        Merhaba {recipient_display_name},
+
+        {actor_display_name}, takip ettiğiniz bir etiketteki bir konuya mesaj yazdı: {discussion_title}
+
+        Yeni etkinliği görüntülemek için şu bağlantıya göz atın:
+        {post_url}
+
+        ---
+
+        {post_content}
+
+        ---
+
+        Güncel duruma gelene kadar bu konuyla ilgili başka bildirim almayacaksınız.
+      newDiscussionTag: |
+        Merhaba {recipient_display_name},
+
+        {actor_display_name}, {author_display_name} tarafından açılan bir konunun etiketini takip ettiğiniz bir etikete değiştirdi: {discussion_title}
+
+        Yeni konuyu görüntülemek için şu bağlantıya göz atın:
+        {discussion_url}
+  ref:
+    follow: Takip Et
+    following: Takip Ediliyor
+    hiding: Gizleniyor
+    ignoring: Yok Sayılıyor
+    lurking: Sessizce Takip Ediliyor
+    filtering_options:
+      none: Takip Edilen Konular
+      tags: Takip Edilen Etiketler

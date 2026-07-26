@@ -30,4 +30,10 @@ class DisableAnnouncementsServiceProvider extends AbstractServiceProvider
 return [
     (new Extend\ServiceProvider())
         ->register(DisableAnnouncementsServiceProvider::class),
+
+    // Turkish translations for third-party fof/* and ianm/* packages, which
+    // only ship English locale files. Flarum merges every registered
+    // Locales directory into the same 'tr' catalogue, so this overlay just
+    // adds the missing keys (see locale-overrides/tr.yml for details).
+    (new Extend\Locales(__DIR__.'/locale-overrides')),
 ];
