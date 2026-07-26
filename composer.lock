@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab95d427fcbbca4361999ca96a270abe",
+    "content-hash": "95a74abb7f21cc6e9179ab6d0f7533b3",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -4001,6 +4001,38 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "kktcmeydan/anonymous-posting",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/anonymous-posting",
+                "reference": "43064229c69fff7257b1eb94fabcdd9c1ddf2b9f"
+            },
+            "require": {
+                "flarum/core": "^1.8",
+                "flarum/tags": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Anonim Paylasim",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\AnonymousPosting\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Genel Meydan kategorisinde anonim paylasim: kimlik maskeleme, telefon/doxxing regex filtresi, kufur filtresi, moderator ifsa yetkisi",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "kktcmeydan/business-profile",
@@ -9245,6 +9277,7 @@
     "aliases": [],
     "minimum-stability": "beta",
     "stability-flags": {
+        "kktcmeydan/anonymous-posting": 20,
         "kktcmeydan/business-profile": 20,
         "kktcmeydan/classifieds": 20,
         "kktcmeydan/event-calendar": 20,

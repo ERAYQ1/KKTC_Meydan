@@ -1,0 +1,23 @@
+{
+    "name": "kktcmeydan/anonymous-posting",
+    "description": "Genel Meydan kategorisinde anonim paylasim: kimlik maskeleme, telefon/doxxing regex filtresi, kufur filtresi, moderator ifsa yetkisi",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8",
+        "flarum/tags": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\AnonymousPosting\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Anonim Paylasim",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

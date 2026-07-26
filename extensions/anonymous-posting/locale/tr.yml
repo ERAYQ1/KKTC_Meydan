@@ -1,0 +1,6 @@
+kktcmeydan-anonymous-posting:
+  forum:
+    composer:
+      checkbox_label: "🕵️ Anonim Olarak Paylaş"
+    anonymous_label: "Anonim Üye"
+    content_rejected: "İçerik topluluk kurallarına aykırı ifadeler içermektedir."

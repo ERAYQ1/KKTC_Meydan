@@ -19,6 +19,7 @@
         "flarum/subscriptions": "*",
         "flarum/suspend": "*",
         "flarum/tags": "*",
+        "kktcmeydan/anonymous-posting": "*@dev",
         "kktcmeydan/business-profile": "*@dev",
         "kktcmeydan/classifieds": "*@dev",
         "kktcmeydan/event-calendar": "*@dev",

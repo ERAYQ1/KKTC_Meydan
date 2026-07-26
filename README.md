@@ -31,6 +31,7 @@ Bu repo'ya özel geliştirilen eklentiler `extensions/` klasöründe tutulur:
 - **`extensions/report-status`** — Sorun Bildir konularına gerçek `report_status` alanı, renkli durum rozeti (🔴 bildirildi / 🟡 inceleniyor / 🔵 yetkiliye iletildi / 🟢 çözüldü) ve moderatör paneli dropdown'ı ekler.
 - **`extensions/classifieds`** — İlan konularına yapılandırılmış `price`/`currency`/`location`/`contactPhone`/`classifiedType` alanları ekler (İlan Sistemi v2 altyapısı). Composer'da "Yaşam" veya ilan hashtag'lerinden biri seçilince fiyat/konum/iletişim formu belirir; liste ve detay sayfasında fiyat/konum rozeti gösterir.
 - **`extensions/event-calendar`** — Etkinlik konularına yapılandırılmış `eventStartAt`/`eventEndAt` alanları ekler (Etkinlik Takvimi altyapısı). Composer'da "Keşfet" veya etkinlik hashtag'lerinden biri seçilince başlangıç/bitiş tarihi formu belirir; liste ve detay sayfasında `📅 DD.MM.YYYY HH:mm` rozeti gösterir.
+- **`extensions/anonymous-posting`** — Yalnızca "Genel Meydan" kategorisinde 🕵️ anonim paylaşım. Telefon/doxxing regex filtresi (moderatör onay kuyruğuna düşürür), küfür/hakaret filtresi (gönderiyi reddeder), gerçek yazar bilgisi API seviyesinde herkesten gizlenir — sadece `discussion.viewIpsPosts` izni olan moderatörler `[Anonim] kullanıcı (IP: x.x.x.x)` biçiminde gerçek kimliği görebilir.
 
 Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodunda değişiklik yaparsan ilgili eklentinin `js/` klasöründe `npm install && npm run build` çalıştırman gerekir.
 
@@ -62,7 +63,7 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   flarum-subscriptions flarum-likes flarum-lock flarum-mentions flarum-markdown \
   flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval \
   kktcmeydan-business-profile kktcmeydan-report-status kktcmeydan-classifieds \
-  kktcmeydan-event-calendar
+  kktcmeydan-event-calendar kktcmeydan-anonymous-posting
 ```
 
 Kategoriler (tag), site adı/açıklaması, tema rengi, hoş geldin mesajı ve alt bilgi metni `site_settings.json` içinde tanımlıdır ve `seed.php` betiği ile otomatik uygulanır:
@@ -88,8 +89,8 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] İlan sistemi v2 altyapısı (özel eklenti — bkz. `extensions/classifieds`: gerçek fiyat/konum/iletişim/ilan-türü alanları, composer formu, fiyat/konum rozeti)
 - [x] İşletme dizini v1 (özel eklenti — bkz. `extensions/business-profile`)
 - [x] Etkinlik takvimi altyapısı (özel eklenti — bkz. `extensions/event-calendar`: `eventStartAt`/`eventEndAt` alanları, composer formu, tarih rozeti)
+- [x] Anonim paylaşım (özel eklenti — bkz. `extensions/anonymous-posting`: sadece Genel Meydan, telefon/küfür filtresi, sunucu taraflı kimlik maskeleme, moderatör-only ifşa)
 - [ ] Reklam sistemi (kategori/şehir/üniversite hedefleme)
-- [ ] Anonim paylaşım
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu
 
