@@ -1,7 +1,8 @@
 {
-    "name": "erayq1/kktc-meydan",
+    "name": "kktcmeydan/platform",
     "type": "project",
-    "description": "KKTC Meydan - Kıbrıs'ın Özgür Tartışma ve Topluluk Meydanı",
+    "description": "KKTC Meydan — Kıbrıs'ın Özgür Tartışma, Haber, Ulaşım ve Topluluk Platformu",
+    "keywords": ["kktc", "kibris", "meydan", "topluluk", "forum"],
     "license": "MIT",
     "require": {
         "flarum-lang/turkish": "*",
@@ -18,7 +19,10 @@
         "flarum/subscriptions": "*",
         "flarum/suspend": "*",
         "flarum/tags": "*",
-        "kktcmeydan/business-profile": "*@dev"
+        "kktcmeydan/business-profile": "*@dev",
+        "kktcmeydan/classifieds": "*@dev",
+        "kktcmeydan/event-calendar": "*@dev",
+        "kktcmeydan/report-status": "*@dev"
     },
     "repositories": [
         {

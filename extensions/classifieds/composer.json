@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/classifieds",
+    "description": "Ilan konularina yapilandirilmis fiyat/konum/iletisim/ilan-tipi alanlari ekler (Ilan Sistemi v2 altyapisi)",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\Classifieds\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Ilan Sistemi",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

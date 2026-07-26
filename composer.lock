@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96ff452a9384da8593aa07059fede51d",
+    "content-hash": "ab95d427fcbbca4361999ca96a270abe",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -4029,6 +4029,99 @@
                 "MIT"
             ],
             "description": "Isletme sahiplerinin hesaplarina adres/telefon/whatsapp/calisma saati bilgisi eklemesini saglar",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/classifieds",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/classifieds",
+                "reference": "b8e5e5a2f0a110f060bfe81d9920c9b1e5e27882"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Ilan Sistemi",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\Classifieds\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Ilan konularina yapilandirilmis fiyat/konum/iletisim/ilan-tipi alanlari ekler (Ilan Sistemi v2 altyapisi)",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/event-calendar",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/event-calendar",
+                "reference": "205ed76e76d5a114c0e68d36518f8f37396035c8"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Etkinlik Takvimi",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\EventCalendar\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Etkinlik konularina yapilandirilmis baslangic/bitis tarihi alanlari ekler (Etkinlik Takvimi altyapisi)",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/report-status",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/report-status",
+                "reference": "a3ce556896f7d37506cfb7a879e9de4a1708abb3"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Sorun Bildir - Durum Takibi",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\ReportStatus\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Sorun Bildir kategorisindeki konulara gercek durum alani, renkli rozet ve moderator paneli ekler",
             "transport-options": {
                 "relative": true
             }
@@ -9152,7 +9245,10 @@
     "aliases": [],
     "minimum-stability": "beta",
     "stability-flags": {
-        "kktcmeydan/business-profile": 20
+        "kktcmeydan/business-profile": 20,
+        "kktcmeydan/classifieds": 20,
+        "kktcmeydan/event-calendar": 20,
+        "kktcmeydan/report-status": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

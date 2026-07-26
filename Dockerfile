@@ -1,6 +1,6 @@
 FROM php:8.2-fpm-alpine
 
-# Install system dependencies & PHP extensions required by Flarum
+# Install system dependencies & PHP extensions required by KKTC Meydan Platformu
 RUN apk add --no-cache \
     bash \
     curl \
@@ -35,7 +35,7 @@ RUN { \
         echo "upload_max_filesize = 20M"; \
         echo "post_max_size = 25M"; \
         echo "memory_limit = 256M"; \
-    } > /usr/local/etc/php/conf.d/zz-flarum-limits.ini
+    } > /usr/local/etc/php/conf.d/zz-kktc-meydan-limits.ini
 
 # Set working directory
 WORKDIR /var/www/html

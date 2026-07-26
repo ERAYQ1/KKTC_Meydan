@@ -1,0 +1,18 @@
+kktcmeydan-classifieds:
+  forum:
+    composer:
+      heading: İlan Bilgileri
+      price_label: Fiyat
+      currency_label: Para Birimi
+      location_label: Konum (Şehir/İlçe)
+      contact_phone_label: İletişim Telefonu
+      classified_type_label: İlan Türü
+      classified_type_none: Seçiniz
+      classified_type_satilik: Satılık
+      classified_type_kiralik: Kiralık
+      classified_type_is_ilani: İş İlanı
+      classified_type_ev_arkadasi: Ev Arkadaşı
+      classified_type_ikinci_el: İkinci El
+    badge:
+      location_tooltip: "Konum: {location}"
+      price_tooltip: "Fiyat: {price}"

@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/event-calendar",
+    "description": "Etkinlik konularina yapilandirilmis baslangic/bitis tarihi alanlari ekler (Etkinlik Takvimi altyapisi)",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\EventCalendar\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Etkinlik Takvimi",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

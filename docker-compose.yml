@@ -1,3 +1,4 @@
+# KKTC Meydan Platformu — Docker Compose altyapısı
 name: kktc_meydan
 
 services:

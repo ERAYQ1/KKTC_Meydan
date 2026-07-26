@@ -54,6 +54,10 @@ $settings->set('theme_secondary_color', $config['theme_color']);
 $settings->set('welcome_title', $config['welcome_title']);
 $settings->set('welcome_message', $config['welcome_subtitle']);
 
+if (! empty($config['footer_html'])) {
+    $settings->set('custom_footer', $config['footer_html']);
+}
+
 $themeLessPath = __DIR__ . '/assets/theme.less';
 if (file_exists($themeLessPath)) {
     $settings->set('custom_less', file_get_contents($themeLessPath));

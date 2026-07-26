@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/report-status",
+    "description": "Sorun Bildir kategorisindeki konulara gercek durum alani, renkli rozet ve moderator paneli ekler",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\ReportStatus\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Sorun Bildir - Durum Takibi",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

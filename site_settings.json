@@ -1,10 +1,11 @@
 {
   "site_name": "KKTC Meydan",
-  "site_description": "Kıbrıs'ın Özgür Tartışma ve Topluluk Meydanı",
+  "site_description": "Kıbrıs'ın Özgür Tartışma, Haber ve Topluluk Meydanı",
   "default_locale": "tr",
   "theme_color": "#0891b2",
   "welcome_title": "KKTC Meydan'a Hoş Geldiniz! 🌴",
-  "welcome_subtitle": "Kıbrıs hakkında gündem, bölgeler, üniversite yaşamı, ulaşım, yaşam ve meydan konularını burada tartışın.",
+  "welcome_subtitle": "Kıbrıs gündemi, bölgeler, üniversite yaşamı, emlak/iş ilanları ve ulaşım hakkında özgürce tartışın.",
+  "footer_html": "© 2026 KKTC Meydan — Kıbrıs'ın Özgür Topluluk Platformu",
   "categories": [
     {
       "slug": "gundem",
@@ -173,7 +174,12 @@
     { "slug": "kiralik", "name": "Kiralık" },
     { "slug": "is-ilani", "name": "İş İlanı" },
     { "slug": "ev-arkadasi", "name": "Ev Arkadaşı" },
-    { "slug": "ikinci-el", "name": "İkinci El" }
+    { "slug": "ikinci-el", "name": "İkinci El" },
+
+    { "slug": "etkinlik", "name": "Etkinlik" },
+    { "slug": "konser", "name": "Konser" },
+    { "slug": "festival", "name": "Festival" },
+    { "slug": "workshop", "name": "Workshop" }
   ],
   "roles": [
     {

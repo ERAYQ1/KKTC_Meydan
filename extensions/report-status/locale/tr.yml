@@ -1,0 +1,14 @@
+kktcmeydan-report-status:
+  admin:
+    permissions:
+      edit_report_status_label: Sorun durumunu değiştirebilir
+  forum:
+    status:
+      bildirildi: Bildirildi
+      inceleniyor: İnceleniyor
+      yetkiliye-iletildi: Yetkiliye İletildi
+      cozuldu: Çözüldü
+    discussion_controls:
+      heading: Durum
+      clear_button: Durumu Kaldır
+    badge_tooltip: "Sorun durumu: {status}"

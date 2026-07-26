@@ -1,0 +1,8 @@
+kktcmeydan-event-calendar:
+  forum:
+    composer:
+      heading: Etkinlik Tarihi
+      start_label: Başlangıç Tarihi/Saati
+      end_label: Bitiş Tarihi/Saati
+    badge:
+      tooltip: "Etkinlik: {range}"
