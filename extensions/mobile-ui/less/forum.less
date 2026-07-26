@@ -153,15 +153,25 @@ a {
       min-width: 44px;
       min-height: 28px;
     }
-
-    .Dropdown-menu {
-      bottom: 56px;
-      top: auto !important;
-    }
   }
 
-  .MobileBottomNav-item--profile .Avatar {
-    .Avatar--size(24px);
+  // Sadece alt bar icindeki dropdown menulerini yukari acilacak sekilde
+  // konumlandir. Ust header'daki SessionDropdown (.Header-controls
+  // .SessionDropdown) bu kuraldan kesinlikle etkilenmez.
+  .MobileBottomNav .Dropdown-menu {
+    bottom: 56px;
+    top: auto !important;
+  }
+
+  .MobileBottomNav-item--profile {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+
+    .Avatar {
+      .Avatar--size(24px);
+    }
   }
 
   // Bildirim rozeti: ikonun uzerinde kirmizi sayac.

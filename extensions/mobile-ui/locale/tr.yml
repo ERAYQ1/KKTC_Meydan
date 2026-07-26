@@ -6,6 +6,11 @@ kktcmeydan-mobile-ui:
       new_discussion: Yeni Konu
       notifications: Bildirimler
       profile: Profil
+      settings: Hesap Ayarları
+      admin: Yönetim Paneli
+      log_in: Giriş Yap
+      sign_up: Kayıt Ol
+      log_out: Çıkış Yap
     discover_sheet:
       title: Keşfet
     search_overlay:

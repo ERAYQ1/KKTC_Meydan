@@ -4,13 +4,13 @@ import IndexPage from 'flarum/forum/components/IndexPage';
 import DiscussionComposer from 'flarum/forum/components/DiscussionComposer';
 import LogInModal from 'flarum/forum/components/LogInModal';
 import NotificationsDropdown from 'flarum/forum/components/NotificationsDropdown';
-import SessionDropdown from 'flarum/forum/components/SessionDropdown';
 import Link from 'flarum/common/components/Link';
 import Button from 'flarum/common/components/Button';
 import avatar from 'flarum/common/helpers/avatar';
 import icon from 'flarum/common/helpers/icon';
 import BottomSheet from './BottomSheet';
 import discoverSheetBody from './DiscoverSheetBody';
+import profileSheetBody from './ProfileSheetBody';
 
 function trans(key) {
   return app.translator.trans(`kktcmeydan-mobile-ui.forum.nav.${key}`);
@@ -21,6 +21,7 @@ export default class BottomNav extends Component {
     super.oninit(vnode);
 
     this.discoverOpen = false;
+    this.profileOpen = false;
   }
 
   isHome() {
@@ -33,6 +34,10 @@ export default class BottomNav extends Component {
     }
 
     this.discoverOpen = true;
+  }
+
+  openProfile() {
+    this.profileOpen = true;
   }
 
   startDiscussion() {
@@ -73,19 +78,24 @@ export default class BottomNav extends Component {
             <span>{trans('notifications')}</span>
           </span>
 
-          <span className="MobileBottomNav-item MobileBottomNav-item--dropdown MobileBottomNav-item--profile">
-            {user ? (
-              <SessionDropdown />
-            ) : (
-              <Button className="Button Button--icon" icon="fas fa-user" onclick={() => app.modal.show(LogInModal)} />
-            )}
+          <button
+            className="MobileBottomNav-item MobileBottomNav-item--profile"
+            onclick={() => this.openProfile()}
+          >
+            {user ? avatar(user, { className: 'MobileBottomNav-avatar' }) : icon('fas fa-user')}
             <span>{trans('profile')}</span>
-          </span>
+          </button>
         </nav>
 
         {this.discoverOpen && (
           <BottomSheet title={trans('discover')} onclose={() => (this.discoverOpen = false)}>
             {discoverSheetBody(() => (this.discoverOpen = false))}
+          </BottomSheet>
+        )}
+
+        {this.profileOpen && (
+          <BottomSheet title={trans('profile')} onclose={() => (this.profileOpen = false)}>
+            {profileSheetBody(() => (this.profileOpen = false))}
           </BottomSheet>
         )}
       </div>
