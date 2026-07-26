@@ -72,13 +72,6 @@
       "description": "Günlük sohbetler, mizah, itiraf, tartışma ve soru-cevap"
     }
   ],
-  "retired_categories": [
-    {
-      "slug": "ikinci-el",
-      "migrate_to": "yasam",
-      "add_hashtags": ["ikinci-el"]
-    }
-  ],
   "hashtags": [
     { "slug": "lefkosa", "name": "Lefkoşa", "parent": "bolgeler" },
     { "slug": "girne", "name": "Girne", "parent": "bolgeler" },
@@ -161,10 +154,6 @@
     { "slug": "burs", "name": "Burs" },
     { "slug": "internet", "name": "İnternet" },
 
-    { "slug": "bildirildi", "name": "Bildirildi", "color": "#ef4444" },
-    { "slug": "inceleniyor", "name": "İnceleniyor", "color": "#eab308" },
-    { "slug": "yetkiliye-iletildi", "name": "Yetkiliye İletildi", "color": "#3b82f6" },
-    { "slug": "cozuldu", "name": "Çözüldü", "color": "#22c55e" },
     { "slug": "acil", "name": "Acil" },
     { "slug": "guncel", "name": "Güncel" },
     { "slug": "duyuru", "name": "Duyuru" },
@@ -179,7 +168,11 @@
     { "slug": "etkinlik", "name": "Etkinlik" },
     { "slug": "konser", "name": "Konser" },
     { "slug": "festival", "name": "Festival" },
-    { "slug": "workshop", "name": "Workshop" }
+    { "slug": "workshop", "name": "Workshop" },
+
+    { "slug": "saglik", "name": "Sağlık" },
+    { "slug": "guvenlik-acil-durum", "name": "Güvenlik / Acil Durum" },
+    { "slug": "kamu", "name": "Kamu" }
   ],
   "roles": [
     {

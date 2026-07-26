@@ -1,0 +1,13 @@
+kktcmeydan-mobile-ui:
+  forum:
+    nav:
+      home: Akış
+      discover: Keşfet
+      new_discussion: Yeni Konu
+      notifications: Bildirimler
+      profile: Profil
+    discover_sheet:
+      title: Keşfet
+    search_overlay:
+      placeholder: Konu, kullanıcı veya etiket ara…
+      close: Kapat

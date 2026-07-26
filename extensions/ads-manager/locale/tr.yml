@@ -1,0 +1,40 @@
+kktcmeydan-ads-manager:
+  admin:
+    nav: Reklamlar
+    page:
+      title: Reklam Yönetimi
+      add_button: Yeni Reklam Ekle
+      empty: Henüz reklam eklenmedi.
+      table:
+        title: Başlık
+        target: Hedef
+        stats: Gösterim / Tıklama
+        status: Durum
+        actions: İşlemler
+      status:
+        active: Aktif
+        inactive: Pasif
+      actions:
+        edit: Düzenle
+        delete: Sil
+        activate: Aktif Et
+        deactivate: Pasifleştir
+      delete_confirm: Bu reklamı silmek istediğinizden emin misiniz?
+    modal:
+      add_title: Yeni Reklam
+      edit_title: Reklamı Düzenle
+      title_label: Başlık
+      image_url_label: Görsel URL'si
+      image_url_help: Reklam banner'ında gösterilecek görselin adresi.
+      target_url_label: Yönlendirme Linki
+      target_category_label: Hedef Kategori (isteğe bağlı)
+      target_district_label: Hedef Bölge/Şehir (isteğe bağlı)
+      target_university_label: Hedef Üniversite (isteğe bağlı)
+      target_help: "Hedeflerden biri seçilirse reklam sadece o kategori/bölge/üniversite sayfasında gösterilir. Hiçbiri seçilmezse tüm genel konu listesinde gösterilir."
+      position_label: Konum
+      is_active_label: Aktif
+      save_button: Kaydet
+      cancel_button: Vazgeç
+      none_option: Yok
+  forum:
+    sponsored_label: Sponsorlu

@@ -1,0 +1,17 @@
+{
+    "name": "kktcmeydan/mobile-ui",
+    "description": "Mobil (iOS Safari & Android Chrome) icin native-app hissi: alt navigasyon barı, kart tipi konu listesi, tam ekran arama, klavye/dokunma uyumlulugu",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Mobil Arayuz",
+            "category": "appearance"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,23 @@
+{
+    "name": "kktcmeydan/analytics-dashboard",
+    "description": "Admin paneline DAU/WAU, populer kategori ve toplam icerik istatistiklerini gosteren genisletilmis dashboard ekler",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8",
+        "flarum/tags": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\AnalyticsDashboard\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Analitik Panosu",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

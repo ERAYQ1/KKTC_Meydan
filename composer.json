@@ -26,10 +26,14 @@
         "fof/polls": "^2.3",
         "fof/sitemap": "^2.6",
         "ianm/follow-users": "^1.5",
+        "kktcmeydan/ads-manager": "*@dev",
+        "kktcmeydan/analytics-dashboard": "*@dev",
         "kktcmeydan/anonymous-posting": "*@dev",
+        "kktcmeydan/auto-moderation": "*@dev",
         "kktcmeydan/business-profile": "*@dev",
         "kktcmeydan/classifieds": "*@dev",
         "kktcmeydan/event-calendar": "*@dev",
+        "kktcmeydan/mobile-ui": "*@dev",
         "kktcmeydan/report-status": "*@dev"
     },
     "repositories": [

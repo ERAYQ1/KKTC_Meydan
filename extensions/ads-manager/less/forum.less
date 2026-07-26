@@ -1,0 +1,37 @@
+.AdBanner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: var(--body-bg, #fff);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  text-decoration: none;
+  color: inherit;
+
+  &-image {
+    width: 96px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  &-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+
+  &-title {
+    font-weight: bold;
+    margin-top: 2px;
+  }
+}

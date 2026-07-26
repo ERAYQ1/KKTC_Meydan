@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/ads-manager",
+    "description": "Kategori/sehir/universite hedefli reklam banner sistemi: admin panelinden reklam yonetimi, forumda gosterim ve tiklama sayaci",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\AdsManager\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Reklam Yoneticisi",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

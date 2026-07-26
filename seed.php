@@ -120,50 +120,6 @@ foreach ($config['categories'] as $position => $cat) {
     echo "Kategori hazir: {$cat['name']} (#{$tag->id})\n";
 }
 
-// --- 3a. Retired categories: migrate discussions, then delete the old tag --
-
-$retiredDiscussionIds = [];
-
-foreach ($config['retired_categories'] ?? [] as $retired) {
-    // Only match an actual (not-yet-retired) primary category tag - a hashtag
-    // that happens to share the same slug (e.g. #ikinci-el) must never be
-    // mistaken for the legacy category and re-deleted on every run.
-    $oldTag = Tag::where('slug', $retired['slug'])->whereNotNull('position')->first();
-
-    if (! $oldTag) {
-        continue;
-    }
-
-    $newTagId = $tagIds[$retired['migrate_to']] ?? null;
-    $discussionIds = Tag::query()->getConnection()->table('discussion_tag')
-        ->where('tag_id', $oldTag->id)
-        ->pluck('discussion_id');
-
-    $retiredDiscussionIds[$retired['slug']] = $discussionIds;
-
-    if ($newTagId) {
-        foreach ($discussionIds as $discussionId) {
-            $exists = Tag::query()->getConnection()->table('discussion_tag')
-                ->where('discussion_id', $discussionId)
-                ->where('tag_id', $newTagId)
-                ->exists();
-
-            if (! $exists) {
-                Tag::query()->getConnection()->table('discussion_tag')->insert([
-                    'discussion_id' => $discussionId,
-                    'tag_id' => $newTagId,
-                ]);
-            }
-        }
-
-        echo "Emekli kategori tasindi: {$retired['slug']} -> {$retired['migrate_to']} ({$discussionIds->count()} konu)\n";
-    }
-
-    Tag::query()->getConnection()->table('discussion_tag')->where('tag_id', $oldTag->id)->delete();
-    $oldTag->delete();
-    echo "Emekli kategori silindi: {$retired['slug']}\n";
-}
-
 // --- 3b. Hashtags (secondary tags: no position, optional parent) -----------
 
 $hashtagIds = [];
@@ -196,30 +152,6 @@ foreach ($config['hashtags'] ?? [] as $tagData) {
 
     if ($parentId) {
         Tag::where('id', $hashtagIds[$tagData['slug']])->update(['parent_id' => $parentId]);
-    }
-}
-
-foreach ($config['retired_categories'] ?? [] as $retired) {
-    foreach ($retired['add_hashtags'] ?? [] as $hashtagSlug) {
-        $hashtagId = $hashtagIds[$hashtagSlug] ?? null;
-
-        if (! $hashtagId) {
-            continue;
-        }
-
-        foreach ($retiredDiscussionIds[$retired['slug']] ?? [] as $discussionId) {
-            $exists = Tag::query()->getConnection()->table('discussion_tag')
-                ->where('discussion_id', $discussionId)
-                ->where('tag_id', $hashtagId)
-                ->exists();
-
-            if (! $exists) {
-                Tag::query()->getConnection()->table('discussion_tag')->insert([
-                    'discussion_id' => $discussionId,
-                    'tag_id' => $hashtagId,
-                ]);
-            }
-        }
     }
 }
 
@@ -407,7 +339,8 @@ $seedThreads = [
     ],
     [
         'tag' => 'sorun-bildir',
-        'hashtags' => ['girne', 'bildirildi'],
+        'hashtags' => ['girne'],
+        'report_status' => 'bildirildi',
         'title' => 'Alsancak sahil yolunda buyuk bir cukur var',
         'body' => "Konum: Alsancak sahil yolu, eczane karsisi. Fotograf: (eklenecek). Iki gundur duruyor, arac lastigine zarar verebilir.",
         'author' => 'mehmet_girne',
@@ -416,7 +349,8 @@ $seedThreads = [
     ],
     [
         'tag' => 'sorun-bildir',
-        'hashtags' => ['lefkosa', 'inceleniyor'],
+        'hashtags' => ['lefkosa'],
+        'report_status' => 'inceleniyor',
         'title' => 'Gonyeli meydaninda sokak lambalari bir haftadir yanmiyor',
         'body' => "Konum: Gonyeli meydani ve cevresi. Aksam saatlerinde yayalar icin guvenlik riski olusturuyor.",
         'author' => 'ada_lefkosa',
@@ -425,7 +359,8 @@ $seedThreads = [
     ],
     [
         'tag' => 'sorun-bildir',
-        'hashtags' => ['gazimagusa', 'cozuldu'],
+        'hashtags' => ['gazimagusa'],
+        'report_status' => 'cozuldu',
         'title' => 'Sakarya bolgesinde 3 gundur su kesintisi vardi',
         'body' => "Konum: Sakarya, Gazimagusa. Bildirimden 3 gun sonra su verildi, cozuldu olarak isaretliyorum.",
         'author' => 'can_maguza',
@@ -499,6 +434,11 @@ foreach ($seedThreads as $thread) {
             ],
         ],
     ], '127.0.0.1'));
+
+    if (isset($thread['report_status'])) {
+        $discussion->report_status = $thread['report_status'];
+        $discussion->save();
+    }
 
     $replyAuthor = User::find($userIds[$thread['replyAuthor']]);
 

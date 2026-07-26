@@ -1,0 +1,17 @@
+kktcmeydan-analytics-dashboard:
+  admin:
+    page:
+      title: Analitik Panosu
+      cards:
+        total_discussions: Toplam Konu
+        total_posts: Toplam Mesaj
+        total_users: Toplam Üye
+        dau: Günlük Aktif Kullanıcı
+        wau: Haftalık Aktif Kullanıcı
+      sections:
+        popular_by_discussions: En Çok Konu Açılan Kategoriler
+        popular_by_posts: En Çok Yanıt Alan Kategoriler
+      empty: Henüz yeterli veri yok.
+      loading: Yükleniyor…
+      count_discussions: "{count, plural, one {# konu} other {# konu}}"
+      count_posts: "{count, plural, one {# mesaj} other {# mesaj}}"

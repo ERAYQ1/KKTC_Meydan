@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "074e18bacd9a12e5757945d90c06ed73",
+    "content-hash": "3708c1a292ad7342875652b6096a1842",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -4778,6 +4778,69 @@
             "time": "2020-06-13T08:05:20+00:00"
         },
         {
+            "name": "kktcmeydan/ads-manager",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/ads-manager",
+                "reference": "60476822ed6671bcd0956e715c0c2c967c0f490a"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Reklam Yoneticisi",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\AdsManager\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Kategori/sehir/universite hedefli reklam banner sistemi: admin panelinden reklam yonetimi, forumda gosterim ve tiklama sayaci",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/analytics-dashboard",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/analytics-dashboard",
+                "reference": "7343ff90115581ecbf194125845f19508a40bfd8"
+            },
+            "require": {
+                "flarum/core": "^1.8",
+                "flarum/tags": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Analitik Panosu",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\AnalyticsDashboard\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Admin paneline DAU/WAU, populer kategori ve toplam icerik istatistiklerini gosteren genisletilmis dashboard ekler",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "kktcmeydan/anonymous-posting",
             "version": "dev-main",
             "dist": {
@@ -4805,6 +4868,39 @@
                 "MIT"
             ],
             "description": "Genel Meydan kategorisinde anonim paylasim: kimlik maskeleme, telefon/doxxing regex filtresi, kufur filtresi, moderator ifsa yetkisi",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/auto-moderation",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/auto-moderation",
+                "reference": "d213a9856a1d50b34e30bc6a9a66d4b4fe8c2c3b"
+            },
+            "require": {
+                "flarum/core": "^1.8",
+                "flarum/flags": "*",
+                "flarum/tags": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Otomatik Moderasyon",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\AutoModeration\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Saglik, Guvenlik/Acil Durum ve Kamu kategorilerinde TC/KKTC kimlik numarasi, ozel saglik ihlali ve doktor/kurum hedefli karalama icerigini otomatik tespit edip moderator onay kuyruguna dusuren ve guvenlik ihlallerinde otomatik rapor olusturan koruma katmani",
             "transport-options": {
                 "relative": true
             }
@@ -4898,6 +4994,32 @@
                 "MIT"
             ],
             "description": "Etkinlik konularina yapilandirilmis baslangic/bitis tarihi alanlari ekler (Etkinlik Takvimi altyapisi)",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/mobile-ui",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/mobile-ui",
+                "reference": "c6e5c54e5c0379863b887fc790bfd34fce8d6ce7"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Mobil Arayuz",
+                    "category": "appearance"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Mobil (iOS Safari & Android Chrome) icin native-app hissi: alt navigasyon barı, kart tipi konu listesi, tam ekran arama, klavye/dokunma uyumlulugu",
             "transport-options": {
                 "relative": true
             }
@@ -10509,10 +10631,14 @@
     "aliases": [],
     "minimum-stability": "beta",
     "stability-flags": {
+        "kktcmeydan/ads-manager": 20,
+        "kktcmeydan/analytics-dashboard": 20,
         "kktcmeydan/anonymous-posting": 20,
+        "kktcmeydan/auto-moderation": 20,
         "kktcmeydan/business-profile": 20,
         "kktcmeydan/classifieds": 20,
         "kktcmeydan/event-calendar": 20,
+        "kktcmeydan/mobile-ui": 20,
         "kktcmeydan/report-status": 20
     },
     "prefer-stable": true,

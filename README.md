@@ -32,6 +32,9 @@ Bu repo'ya özel geliştirilen eklentiler `extensions/` klasöründe tutulur:
 - **`extensions/classifieds`** — İlan konularına yapılandırılmış `price`/`currency`/`location`/`contactPhone`/`classifiedType` alanları ekler (İlan Sistemi v2 altyapısı). Composer'da "Yaşam" veya ilan hashtag'lerinden biri seçilince fiyat/konum/iletişim formu belirir; liste ve detay sayfasında fiyat/konum rozeti gösterir.
 - **`extensions/event-calendar`** — Etkinlik konularına yapılandırılmış `eventStartAt`/`eventEndAt` alanları ekler (Etkinlik Takvimi altyapısı). Composer'da "Keşfet" veya etkinlik hashtag'lerinden biri seçilince başlangıç/bitiş tarihi formu belirir; liste ve detay sayfasında `📅 DD.MM.YYYY HH:mm` rozeti gösterir.
 - **`extensions/anonymous-posting`** — Yalnızca "Genel Meydan" kategorisinde 🕵️ anonim paylaşım. Telefon/doxxing regex filtresi (moderatör onay kuyruğuna düşürür), küfür/hakaret filtresi (gönderiyi reddeder), gerçek yazar bilgisi API seviyesinde herkesten gizlenir — sadece `discussion.viewIpsPosts` izni olan moderatörler `[Anonim] kullanıcı (IP: x.x.x.x)` biçiminde gerçek kimliği görebilir.
+- **`extensions/ads-manager`** — Kategori/bölge/üniversite hedefli reklam banner sistemi. Admin panelinde tam CRUD sayfası (görsel URL, yönlendirme linki, hedef seçimi), forumda konu listesinin üstünde gösterim, gösterim/tıklama sayacı.
+- **`extensions/analytics-dashboard`** — Admin paneline DAU/WAU, toplam konu/mesaj/üye sayaçları ve en popüler kategoriler (konu/yanıt bazında) gösteren salt-okunur istatistik sayfası.
+- **`extensions/auto-moderation`** — Sağlık/Güvenlik-Acil Durum/Kamu kategorilerinde kimlik numarası, sağlık mahremiyeti ihlali ve kurum/meslek hedefli karalama içeriğini tespit edip moderatör kuyruğuna düşüren, güvenlik ihlallerinde otomatik `flarum-flags` raporu oluşturan arka plan koruma katmanı.
 
 Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodunda değişiklik yaparsan ilgili eklentinin `js/` klasöründe `npm install && npm run build` çalıştırman gerekir.
 
@@ -63,7 +66,8 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   flarum-subscriptions flarum-likes flarum-lock flarum-mentions flarum-markdown \
   flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval \
   kktcmeydan-business-profile kktcmeydan-report-status kktcmeydan-classifieds \
-  kktcmeydan-event-calendar kktcmeydan-anonymous-posting fof-follow-tags \
+  kktcmeydan-event-calendar kktcmeydan-anonymous-posting kktcmeydan-ads-manager \
+  kktcmeydan-analytics-dashboard kktcmeydan-auto-moderation fof-follow-tags \
   ianm-follow-users fof-sitemap fof-polls fof-oauth fof-gamification \
   fof-formatting fof-best-answer
 ```
@@ -95,7 +99,9 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] Etkinlik takvimi altyapısı (özel eklenti — bkz. `extensions/event-calendar`: `eventStartAt`/`eventEndAt` alanları, composer formu, tarih rozeti)
 - [x] Anonim paylaşım (özel eklenti — bkz. `extensions/anonymous-posting`: sadece Genel Meydan, telefon/küfür filtresi, sunucu taraflı kimlik maskeleme, moderatör-only ifşa)
 - [x] Topluluk paketleri: en iyi cevap (`fof/best-answer`), anket (`fof/polls`), kullanıcı takibi (`ianm/follow-users`), Google OAuth altyapısı (`fof/oauth` — gerçek Client ID/Secret admin panelinden girilmeli), sitemap/SEO (`fof/sitemap`), YouTube/medya gömme (`fof/formatting`), rozet/itibar (`fof/gamification`) — hepsi kurulu, etkin, Türkçe çevirileri tamam
-- [ ] Reklam sistemi (kategori/şehir/üniversite hedefleme)
+- [x] Reklam sistemi (özel eklenti — bkz. `extensions/ads-manager`: hedefli banner, admin CRUD paneli, gösterim/tıklama sayacı)
+- [x] Detaylı istatistik/analitik admin paneli (özel eklenti — bkz. `extensions/analytics-dashboard`: DAU/WAU, popüler kategoriler, toplam sayaçlar)
+- [x] Otomatik moderasyon (özel eklenti — bkz. `extensions/auto-moderation`: kimlik no/sağlık mahremiyeti/karalama tespiti, Sağlık-Güvenlik-Kamu kategorilerinde)
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu
 

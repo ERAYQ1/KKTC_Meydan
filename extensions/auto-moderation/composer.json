@@ -1,0 +1,24 @@
+{
+    "name": "kktcmeydan/auto-moderation",
+    "description": "Saglik, Guvenlik/Acil Durum ve Kamu kategorilerinde TC/KKTC kimlik numarasi, ozel saglik ihlali ve doktor/kurum hedefli karalama icerigini otomatik tespit edip moderator onay kuyruguna dusuren ve guvenlik ihlallerinde otomatik rapor olusturan koruma katmani",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8",
+        "flarum/tags": "*",
+        "flarum/flags": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\AutoModeration\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Otomatik Moderasyon",
+            "category": "feature"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
