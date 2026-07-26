@@ -36,7 +36,7 @@ export default class BottomNav extends Component {
   }
 
   startDiscussion() {
-    if (app.session.user) {
+    if (app.session?.user) {
       app.composer.load(DiscussionComposer, { user: app.session.user });
       app.composer.show();
     } else {
@@ -45,7 +45,7 @@ export default class BottomNav extends Component {
   }
 
   view() {
-    const user = app.session.user;
+    const user = app.session?.user;
 
     return (
       <div className="MobileBottomNav-wrapper">
