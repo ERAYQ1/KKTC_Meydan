@@ -335,6 +335,9 @@ flarum-gdpr:
       tagsubscription:
         export_description: Bir etikete abonelik seviyesini (varsa) dışa aktarır.
         anonymize_description: Kullanıcının etikete olan aboneliğini kaldırır.
+      userpolicydata:
+        export_description: Kullanıcının şartları kabul etme bilgileri
+        delete_description: Kullanıcının şartları kabul etme kaydını kaldırır
 
 ianm-follow-users:
   admin:
@@ -847,3 +850,429 @@ fof-follow-tags:
     filtering_options:
       none: Takip Edilen Konular
       tags: Takip Edilen Etiketler
+
+fof-pages:
+  admin:
+    edit_page:
+      content_label: => fof-pages.ref.content
+      content_placeholder: => fof-pages.ref.content
+      delete_page_button: Sayfayı sil
+      delete_page_confirmation: "Bu sayfayı silmek istediğinizden emin misiniz?"
+      hidden_label: Taslak olarak kaydet
+      restricted_label: Erişimi kısıtla (kimlerin erişebileceğini İzinler sekmesinden ayarlayın)
+      html_label: HTML'i etkinleştir
+      set_as_home_page_confirmation: "Bu sayfayı ana sayfa olarak ayarlamak istediğinizden emin misiniz?"
+      set_as_home_page_done: Ana sayfa güncellendi
+      slug_label: => fof-pages.ref.slug
+      slug_placeholder: => fof-pages.ref.slug
+      submit_button: => core.ref.save_changes
+      title: => fof-pages.ref.create_page
+      title_label: => fof-pages.ref.title
+      title_placeholder: => fof-pages.ref.title
+      url_label: => fof-pages.ref.url
+      url_placeholder: => fof-pages.ref.url
+    pages:
+      create_button: => fof-pages.ref.create_page
+    pages_list:
+      empty_text: Burada henüz bir sayfa yok gibi görünüyor.
+      title: => fof-pages.ref.title
+    permissions:
+      restricted: Kısıtlı sayfaları görüntüle
+    badges:
+      hidden: Taslak
+      restricted: Kısıtlı
+
+  ref:
+    content: İçerik
+    create_page: Sayfa oluştur
+    pages: Sayfalar
+    slug: Kısa ad (slug)
+    title: Başlık
+    url: URL
+
+fof-seo:
+  admin:
+    common:
+      close: Kapat
+      save_changes: Değişiklikleri kaydet
+      learn_more: Daha fazla bilgi
+
+    permissions:
+      configure_seo: "SEO yapılandırmasına izin ver"
+      category_label: SEO
+
+    header:
+      title: Arama Motoru Optimizasyonu
+      tools: Araçlar
+      health_check: Sağlık kontrolü
+      seo_settings: SEO ayarları
+      sitemap_info: Site haritası bilgisi
+      search_engines_info: Arama motoru bilgisi
+      setup_ssl: SSL kurulumu
+
+    dashboard:
+      widget:
+        review_prompt: "SEO ayarlarınızı gözden geçirmenin zamanı geldi!"
+        cta: Sağlık kontrolünü yap!
+
+    modals:
+      crawl_post:
+        title: Mesaj tarama ayarları
+        intro: <b>Bu iletişim kutusunu dikkatle okuyun.</b> Bu işlev yalnızca bir konu sayfası yenilendiğinde çalışır. Bu seçeneği daha sonra her zaman değiştirebilirsiniz.
+        mode_main_title: Sadece ana mesajı indeksle (varsayılan)
+        mode_main_help: Arama motoru arama sonuçlarında sadece ana mesajı gösterir. Forum bağlantıları üzerinden konuya gidildiğinde yükleme hızını etkilemez.
+        mode_all_title: Bir konudaki tüm mesajları indeksle (ayar etkin)
+        mode_all_help: Arama motorları konuları anlar ve arama sonuçlarının altında ilgili bazı mesajları bile gösterebilir. Forumunuzda '<a>en iyi cevap</a>' eklentisi kuruluysa, konuyu arama sonuçlarında 'cevaplandı' olarak işaretler ve kullanıcıyı o mesaja yönlendirir. Her yanıt, beğeni ve oy sayılarıyla birlikte açığa çıkar, böylece arama motorları en iyi cevap eklentisi olmadan bile en yararlı cevapları belirleyebilir. <b>Ancak sunucu ayarlarınıza bağlı olarak bu daha ağır olabilir</b>. Bir miktar performansa mal olabilir, bu yüzden bu özelliği etkinleştirmek sunucunuzun ne kadar hızlı olduğuna bağlıdır.
+        question: Bu özelliği etkinleştirmek istiyor musunuz?
+        switch_label: "Tüm mesajları tara (sayfa yenilemede daha yavaştır, ancak arama sonuçları daha iyi olur)"
+
+      dofollow:
+        title: Do-follow listesi
+        intro: Do-follow listesine eklemek istediğiniz alan adlarının <b>host adlarını</b> girin.
+        default_note: Flarum kurulumunuz için kullandığınız alan adı varsayılan olarak listeye eklenir.
+        learn_more_line: Do-follow listesi hakkında <a>daha fazla bilgi edinin</a>.
+        add_placeholder: Bir alan adına izin ver
+        duplicate_error: Bu alan adı zaten do-follow listenizde mevcut.
+
+    settings:
+      keywords:
+        heading: Forum anahtar kelimeleri
+        help: Forumunuzu tanımlayan bir veya daha fazla anahtar kelime girin.
+        placeholder: Birkaç anahtar kelime ekleyin
+        comma_note: "Not: Anahtar kelimeleri virgülle ayırın."
+        example: "Örnek: flarum, web geliştirme, forum, elma, güvenlik"
+
+      info:
+        overview: Bu sayfa yönetim alanının farklı yerlerinden bazı diğer ayarları içerir. Ancak bu ayarlara genel bir bakışa sahip olmak faydalıdır. SEO kontrolünü yapmayı unutmayın.
+        maintain: Bu eklentiyi ilk kurduğunuzda tüm ayarlarınızı kontrol edin. En iyi arama sonuçlarını almak için bunları düzenli tutun.
+
+      twitter_card:
+        heading: X (eski adıyla Twitter) kart boyutu
+        help: Forumunuz X'te (eski adıyla Twitter) paylaşıldığında bir görsel içerir (bir sosyal medya görseli ayarlanmışsa). Bu, büyük görselli büyük bir kart veya daha küçük görselli küçük bir kart (özet) olabilir.
+        option_large: Büyük kart (büyük görsel)
+        option_summary: Özet kart (küçük görsel)
+
+      social_media_image:
+        heading: Sosyal medya görseli
+        help_size: Kare bir görsel bekleniyor. Önerilen boyut 1200x1200 pikseldir. Aksi halde yatay bir görsel kullanın, önerilen boyut 1200x630'dur.
+        help_usage: Bu görsel, bir kullanıcı web sitenizdeki bir sayfayı paylaştığında Sosyal Medya tarafından kullanılır (Facebook, X (eski adıyla Twitter), Reddit).
+
+      crawl:
+        heading: Konu mesajı tarama ayarları
+        help: Bu, konu mesajlarınızın arama sonuçlarında taranmasıyla ilgili önemli bir ayardır.
+        button: Mesaj tarama ayarlarını kur
+
+      indexing:
+        heading: İndeksleme kontrolleri
+        profiles_label: Profil sayfalarını indeksten çıkar
+        profiles_help: Etkinleştirildiğinde, kullanıcı profil sayfaları arama sonuçlarında görünmemesi için bir 'noindex' meta etiketi yayar. Sayfadaki bağlantılar yine de takip edilir, böylece tarayıcılar işaret ettikleri içeriğe yine de ulaşabilir.
+        tags_help: Seçilen etiketlerdeki konular (ve bu etiketlerin kendi listeleme sayfaları) 'noindex' meta etiketiyle arama sonuçları dışında tutulur. Bağlantılar yine de takip edilir. Bir üst etiketi seçmek alt etiketlerini de kapsar.
+        tags_button: Etiket seç
+        tags_none_selected: İndekslemeden hariç tutulan etiket yok.
+
+      nofollow:
+        heading: No-follow bağlantılar
+        help: Harici alan adlarına giden tüm bağlantılar varsayılan olarak bir '<i>nofollow</i>' özniteliği alır. Bu, insanların daha fazla yönlendirme almak için forumunuzu başka alan adlarına bağlantılarla spamlamamasını sağlar.
+        help_dofollow: Bu ayarla, alan adlarını 'do-follow' listesine ekleyebilirsiniz. Örneğin, bu web sitesine giden bağlantıların 'nofollow' özniteliği almamasını sağlamak için <i>flarum.org</i>'u ekleyebilirsiniz.
+        button: Alan adı do-follow listesini aç
+
+      new_tab:
+        heading: Harici bağlantıları yeni sekmede aç
+        help: Bu eklenti ayrıca harici bağlantıların (başka alan adlarına) yeni bir sekmede açılmasını sağlar. Şu anda bu ayarı devre dışı bırakmak mümkün değildir.
+
+      updated:
+        heading: Bu ayarı güncellediniz mi?
+        help: Hazır olduğunuzu düşündüğünüzde, bu ayarın durumunu yeniden kontrol etmek için aşağıdaki düğmeye tıklayın.
+        button: Genel bakışa dön ve yeniden kontrol et
+
+    pages:
+      search_engines:
+        heading: Web sitenizi Arama Motorlarına gönderin
+        intro: Arama Motorlarına sitenizin var olduğunu bildirmek iyi bir uygulamadır. Bu sayfa bunu başarıyla yapmanız için size rehberlik edecek.
+        sitemap_tip: Bu kılavuzu tamamlamadan önce bir site haritasının hazır olması önerilir. Henüz bir site haritanız yoksa, <a>bunlar hakkında daha fazla bilgi için buraya tıklayın</a>.
+        google_heading: Web sitenizi Google arama sonuçlarına ekleyin
+        google_visit: Web sitenizi Google arama sonuçlarına eklemek istiyorsanız {link} adresini ziyaret edin. Web sitenizi eklemeniz ve ilişkili alan adının sahibi olduğunuzu doğrulamanız gerekir.
+        google_www: "Alan adınızı girdiğinizde şu soruyu kendiniz için yanıtlamanız gerekir: Arama sonuçlarında 'www' alt alan adını kullanmak istiyor musunuz? Bunu daha sonra değiştire<strong>mez</strong>siniz. Alan adınızı Google Search Console'a birden fazla kez kaydetmek daha iyi bir sıralama sağlamaz."
+        google_sitemap: Google Search Console'daki kaydı tamamladığınızda, <b>Site Haritaları</b> sayfasını ziyaret edin. <b>sitemap.xml</b> dosyanızı Google'a iletin. Google'ın site haritanızı tarayabildiğinden ve bunu sürdüreceğinden emin olun.
+        bing_heading: Web sitenizi Bing arama sonuçlarına ekleyin
+        bing_visit: Web sitenizi Bing arama sonuçlarına eklemek istiyorsanız {link} adresini ziyaret edin ve verilen adımları tamamlayın. Tüm alanlar zorunlu değildir.
+        bing_sitemap: Site haritası URL'inizi yapılandırmayı unutmayın. Web sitenizi doğruladıktan sonra hazırsınız ve Bing artık web sitenizi indeksleyecektir.
+        yandex_heading: Web sitenizi Yandex arama sonuçlarına ekleyin
+        yandex_visit: Web sitenizi Yandex arama sonuçlarına eklemek istiyorsanız {link} adresini ziyaret edin ve verilen adımları izleyin.
+        yandex_sitemap: Site haritasını Yandex.Webmaster'da yapılandırmayı unutmayın.
+        yahoo_heading: Web sitenizi Yahoo arama sonuçlarına ekleyin
+        yahoo_body: Web sitenizi Yahoo arama sonuçlarına eklemek istiyorsanız, Bing arama sonuçları kaydınızı tamamlayın. Yahoo bu veriyi kullanacaktır.
+        confirm_button: Bunu okudum
+
+      sitemap:
+        why_heading: Neden bir site haritası kullanmalısınız?
+        why_body: Site haritası, web sitenizdeki tüm mevcut sayfaların listesini içeren bir XML dosyasıdır. Tarayıcılar ve arama motorları tarafından web sitenizdeki sayfaları bulmak için kullanılır.
+        generated_note: Site haritası dosyası otomatik olarak oluşturulur ve herhangi bir bakım gerektirmez.
+        which_extension_heading: Hangi eklentiyi kurmalıyım?
+        which_extension_body: 'Flarum için kurulması önerilen eklenti {link}. Bu eklentiyi kurup etkinleştirmenizi kesinlikle öneririz.'
+        which_extension_details: Bu eklenti, tarayıcıların forumunuzdaki <b>konuları</b>, <b>etiketleri</b> (eklenti etkinse) ve <b>Pages</b> eklentisini (kuruluysa ve etkinse) bulmasını sağlar. Otomatik olarak bir sitemap.xml sunar.
+        robots_heading: Peki ya robots.txt?
+        robots_body: Aynı eklenti forumunuz için bir <b>robots.txt</b> de oluşturur. Bu dosya arama motorlarına hangi alanları tarayabileceklerini söyler ve onları site haritanıza yönlendirir, yani bu eklentiyi kurmak her iki dosyayı da tek seferde halleder — ayrıca yapılandırılacak bir şey yoktur.
+        just_installed_heading: Eklentiyi az önce kurdum
+        just_installed_body: Bu durumda, sol taraftaki kenar çubuğundaki eklentiye tıklayarak etkinleştirin. Ardından bu uyarı kaybolacaktır.
+
+      ssl:
+        intro_heading: Neden güvenli bir bağlantıya ihtiyacım var?
+        intro_body: Web'de güvenlik ve gizlilik bilinci artıyor. <b>Neredeyse her</b> geliştirici/web sitesi sahibi, ziyaretçilerinin verilerinin bilgisayar korsanları veya web sitesi taklitçileri tarafından ele geçirilmesinden korkmamaları için web sitelerinin kullanımının güvenli olmasını ister.
+        rankings_heading: Arama motorları {icon} güvenli bağlantıları
+        rankings_body: Web sitenize güvenli bir bağlantınız yoksa, arama motorları sitenizi diğer sitelere göre çok daha düşük sıralar veya hiç indekslemez.
+        rankings_body_ssl: SSL'iniz varsa, web siteniz daha yüksek bir sıralama alır ve indekslenir.
+        what_heading: SSL veya TLS nedir?
+        what_body: "Çoğu insan güvenli bağlantılar için kullanılan <b>https</b>'i SSL olarak bilir: <i>Secure Sockets Layer</i>. Resmi adı TLS'dir: <i>Transport Layer Security</i>. Bu yöntem, web sunucunuza güvenli bir bağlantı oluşturmak için kullanılır ve saldırganların veya diğer web sunucularının web sitenizi taklit etmesini önler, ziyaretçilerinizi güvende tutar. Bu gerçekleşirse SSL bağlantısı kesilir ve ziyaretçilerin tarayıcıları kullanıcıyı güvenilir olmadığı konusunda uyarır."
+        how_heading: Web siteme nasıl SSL eklerim?
+        how_body: Web barındırma kullanan kişiler için en yaygın yol, barındırma paneline girmek, web sitenizin barındırma ayarlarına gitmek ve SSL'e tıklamaktır. Web sitenize SSL eklemek için adımları izleyebilirsiniz. Günümüzde çoğu web barındırma şirketi popüler sertifika sağlayıcısı {link}'i desteklemektedir.
+        added_heading: Tamam, SSL ekledim!
+        added_body: Harika! Şimdi <b>config.php</b> dosyanızı değiştirin ve <b>'url'</b>'yi <b>https</b> yapın!
+        no_ssl_heading: SSL eklemek istemiyorsam ne olur?
+        no_ssl_body: Bu durumda, bu eklentiyi kaldırabilirsiniz çünkü arama motorları güvenlik nedeniyle <b>forumunuzu indekslemeyecek</b> veya diğer sitelerin çok altında sıralayacaktır.
+
+      health:
+        legend: En iyi arama motoru sonuçları için tüm kontrollerin yeşil olduğundan emin olun.
+        default_button: Ayarı güncelle
+
+        table:
+          technique: Teknik
+          status: Durum
+
+        status:
+          warning: Uyarı!
+          passed: Her şey hazır!
+
+        checks:
+          description:
+            label: Forumunuzun bir açıklaması olup olmadığını kontrol eder
+            reason_missing: Henüz bir forum açıklaması ayarlamadınız!
+            reason_default: Kurulumdan sonra varsayılan forum açıklamasını değiştirmediniz!
+            reason_too_short: Forum açıklamanız 20 karakterden kısa. Daha iyi arama sonuçları için lütfen genişletin.
+            button: Açıklamayı güncelle
+
+          keywords:
+            label: Forumunuzda anahtar kelime ayarlanıp ayarlanmadığını kontrol eder
+            reason: Henüz forum anahtar kelimeleri ayarlamadınız!
+            button: Anahtar kelimeleri güncelle
+
+          ssl:
+            label: Sitenizin güvenli bir bağlantısı (SSL/TLS) olup olmadığını kontrol eder
+            reason: Forumunuz SSL/TLS bağlantısını (web sitenize güvenli bir bağlantı) zorunlu kılmıyor. Çoğu arama motoru güvenli bağlantınız yoksa web sitenizi indekslemez veya sıralamanızı düşürür.
+            button: SSL nasıl kurulur
+
+          crawl:
+            label: Konu mesajı tarama ayarlarını gözden geçir
+            reason: Geçmek için bu ayarı gözden geçirmeniz gerekecek.
+            button: Mesaj ayarlarını gözden geçir
+
+          social_media:
+            label: Bir sosyal medya görseli ayarlayın
+            reason: Forumunuz için bir sosyal medya görseli ayarlamadınız. Bir tane ayarlamanız önerilir. Favicon'unuz şimdilik sosyal medyada önizleme olarak kullanılacak.
+            button: Görseli güncelle
+
+          sitemap:
+            label: Forumunuzda bir site haritası olup olmadığını kontrol eder
+            reason: FriendsOfFlarum Sitemap eklentisini kurmanız kesinlikle önerilir!
+            button: Site haritası eklemek hakkında daha fazla bilgi edinin
+
+          robots:
+            label: Forumunuzda bir robots.txt olup olmadığını kontrol eder
+            reason: robots.txt dosyanız FriendsOfFlarum Sitemap eklentisi tarafından sağlanır. Arama motorlarına bir robots.txt sunmak için bu eklentiyi kurup etkinleştirin.
+            button: robots.txt eklemek hakkında daha fazla bilgi edinin
+
+          meta_tags:
+            label: Forumunuzda meta etiketleri olup olmadığını kontrol eder (bu eklenti tarafından üretilir)
+
+          search_engines:
+            label: Forumunuzu arama motorlarına kaydedin
+            reason: Geçmek için bunu gözden geçirmeniz gerekecek.
+            button: Daha fazla bilgi
+
+          review:
+            label: SEO ayarlarınızı her iki ayda bir gözden geçirin. Bir sonraki gözden geçirme {date} tarihinde gerekiyor
+            reason: SEO ayarlarınızı yeniden gözden geçirme zamanı geldi.
+            button: Tamam! Onları gözden geçirdim!
+
+  forum:
+    profile_title: "{username} kullanıcısının profili"
+    profile_description: "{username} kullanıcısının profili | {discussion_count} konu | {comment_count} mesaj"
+
+    controls:
+      configure_seo: SEO'yu yapılandır
+      update_seo: SEO'yu güncelle
+      reset_seo: SEO'yu sıfırla
+
+    meta_seo:
+      title: SEO ayarları - Meta
+      note_prefix: "Not:"
+      managed: Yönetiliyor
+      saved: Kaydedildi!
+
+      close:
+        close: Kapat
+        save: Kaydet
+        save_autofill: Kaydet ve otomatik doldur
+        autofill_info: Bu değişiklik özel değişiklikleri geri alır ve meta etiketlerini öğe verileriyle doldurur.
+
+      unsupported_object:
+        title: Bu nesne desteklenen bir SeoMeta nesnesi değil
+        docs_link: Dokümantasyon
+        body: Lütfen bu iletişim kutusunu objectType ve objectId özellikleriyle açın veya bunun yerine nesne ilişkisini kaydedin.
+
+      auto_update:
+        label: Meta etiketlerini otomatik güncelle
+        help: Etkinleştirildiğinde, bu öğenin meta etiketleri nesne değiştiğinde otomatik olarak güncellenir.
+        switch: Nesne değiştiğinde SEO'yu güncelle
+
+      meta_title:
+        label: Meta başlık
+        help: Arama motorlarındaki başlık.
+        placeholder: Sayfa başlığını girin
+
+      meta_description:
+        label: Meta açıklama
+        help: Öğeyi tanımlar ve arama motorlarında gösterilir.
+
+      keywords:
+        label: Anahtar kelimeler
+        help: Bu öğeyi tanımlayan bir veya daha fazla anahtar kelime girin.
+        placeholder: Birkaç anahtar kelime ekleyin
+        comma_note: "Not: Anahtar kelimeleri virgülle ayırın."
+        example: "Örnek: flarum, web geliştirme, forum, elma, güvenlik"
+
+      image:
+        label: Meta görsel
+        help: Bir görsel gösterir.
+        placeholder: Görsel URL'i girin
+        managed_by: "Görsel kaynağı {source} tarafından yönetiliyor"
+        upload: Dosya yükle
+
+      robots:
+        label: Robotlar
+        help: Bu öğe için robot-tarama ayarları.
+
+        tags:
+          indexing_allowed: Sayfa indekslemeye izin ver
+          indexing_not_allowed: Sayfa indekslemeye izin verilmiyor
+          follow_allowed: Bağlantı takibine izin ver
+          follow_not_allowed: Bağlantı takibine izin verilmiyor
+          archive_not_allowed: Sayfaları arşivlemeye izin verilmiyor
+          imageindex_not_allowed: Görsel indekslemeye izin verilmiyor
+          snippet_not_allowed: Metin parçacığı almaya izin verilmiyor
+
+        switch:
+          indexing: Sayfa indekslemeye izin ver
+          follow: Farklı sayfalara giden bağlantıları takip etmeye izin ver
+          noarchive: Sayfa arşivlemeyi devre dışı bırak (noarchive)
+          noimageindex: Bu sayfadaki görsellerin indekslenmesini devre dışı bırak (noimageindex)
+          nosnippet: Sayfada metin parçacıklarını devre dışı bırak (nosnippet)
+
+      reading_time:
+        label: Tahmini okuma süresi
+        help: Saniye cinsinden tahmini okuma süresi.
+        placeholder: Saniye cinsinden okuma süresi
+
+      twitter:
+        label: X (eski adıyla Twitter) kartı
+        auto_switch: X (eski adıyla Twitter) kartını otomatik oluştur
+        title: X (eski adıyla Twitter) başlığı
+        description: X (eski adıyla Twitter) açıklaması
+
+        image:
+          label: X (eski adıyla Twitter) görseli
+          help: X'te (eski adıyla Twitter) bir görsel gösterir.
+          reset: Görseli sıfırla
+
+      og:
+        label: Open Graph etiketleri
+        auto_switch: Open Graph etiketlerini otomatik oluştur
+        title: Open Graph başlığı
+
+        description:
+          label: Open Graph açıklaması
+          placeholder: Özel Open Graph açıklaması
+
+fof-terms:
+  admin:
+    settings:
+      title: Şartlar Ayarları
+
+      field:
+        signup-legal-text: Kayıt formunda ek metin
+        hide-updated-at: Güncelleme mevcutken şartların güncellenme tarihini gösterme
+        date-format: Tarih biçimi
+        date-format-help: Herhangi bir geçerli <a>Day.js</a> biçimi kullanabilirsiniz. Varsayılan için boş bırakın.
+
+    titles:
+      policies: Politikalar
+
+    buttons:
+      new-policy: Yeni Politika
+      edit-policy: Politikayı Düzenle
+      add-policy: Politika Ekle
+      save-policy: Politikayı Kaydet
+      delete-policy: Politikayı Sil
+      set-to-now: Şimdiki zamana ayarla
+
+    messages:
+      delete-policy-confirmation: >
+        Bu işlem {name} politikasını ve buna bağlı kabul tarihlerini veritabanından kalıcı olarak siler.
+        Yasal nedenlerle bu tarihlere ihtiyacınız varsa lütfen önce yedeğini aldığınızdan emin olun.
+        Bu politikayı silmek istediğinizden emin misiniz?
+
+    policies:
+      name: Ad
+      name-help: Bu ad, onay kutusunun yanında ve güncelleme penceresinin başlığında gösterilir.
+      url: URL
+      url-help: Şartların okunabileceği sayfanın URL'i. Tıklandığında yeni sekmede açılır.
+      update-message: Güncelleme Mesajı
+      update-message-help: Yeni şartları henüz kabul etmemiş mevcut kullanıcılara gösterilecek mesaj.
+      terms-updated-at: Güncellenme tarihi
+      terms-updated-at-placeholder: YYYY-AA-GG (ss:dd:ss)
+      terms-updated-at-help: >
+        Şartların son güncellenme tarihi.
+        Bu değeri ayarlamak, bu tarihten önce kabul etmiş tüm kullanıcıların tekrar kabul etmesini gerektirir.
+        Geçmişte bir tarih olmalıdır (aksi halde kullanıcılar bu tarihten sonra hiçbir zaman kabul edip pencereyi geçemez).
+      export-url: Dışa Aktarma URL'i
+      export-url-help: >
+        "Tüm politika verilerini dışa aktar" iznine sahip herhangi bir kullanıcı, bu politikayı kabul eden kullanıcı listesini indirmek için bu URL'lere erişebilir.
+        Kullanılabilir seçenekler hakkında daha fazla bilgiyi <a>eklenti wiki'sinde</a> bulabilirsiniz.
+      optional: İsteğe Bağlı Politika
+      optional-help: Etkinleştirildiğinde, kullanıcılar bu politikayı kabul etmeden de forumu kullanabilir ve etkileşime girebilir.
+
+    permissions:
+      see-user-policies-state: Kullanıcı politika durumunu görüntüle
+      postpone-policies-accept: Yeni şartları kabul etmeyi erteleyebilir
+      export-policies: Tüm kullanıcı ve politika verilerini dışa aktar
+
+  forum:
+    signup:
+      i-accept: <a>{policy}</a>'nı kabul ediyorum
+      must-accept: "{policy} kabul edilmelidir."
+
+    accept-modal:
+      title: Şartlar Güncellendi
+      updated-at: Şartlar {date} tarihinde güncellendi
+      updated-recently: Şartlar son ziyaretinizden bu yana güncellendi
+      i-accept: Yeni <a>{policy}</a>'nı kabul ediyorum
+      accept: Onayla
+      close: Kabul ettiğiniz için teşekkürler, artık foruma dönebilirsiniz
+
+    state-modal:
+      title: "{username} kullanıcısının şartları kabul durumu"
+      accepted-at: "{date} tarihinde kabul edildi"
+      not-accepted: Kabul edilmedi
+
+    update-alert:
+      must-accept-message: Yeni şartları inceleyene kadar hesabınıza erişiminizi geçici olarak kısıtladık.
+      can-accept-message: Şartları yakın zamanda güncelledik. Bu web sitesini kullanmaya devam etmek için kabul etmelisiniz.
+      can-accept-optional-message: Şartları yakın zamanda güncelledik. Dilediğiniz zaman inceleyebilirsiniz.
+      review: Yeni şartları incelemek ve kabul etmek için buraya tıklayın
+      close: Kapat
+
+    user_settings:
+      optional_policies_label: Politikalar
+
+    user_controls:
+      state_button: Şartları kabul durumu

@@ -75,7 +75,7 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   kktcmeydan-event-calendar kktcmeydan-anonymous-posting kktcmeydan-ads-manager \
   kktcmeydan-analytics-dashboard kktcmeydan-auto-moderation kktcmeydan-mobile-ui \
   fof-follow-tags ianm-follow-users fof-sitemap fof-polls fof-oauth \
-  fof-gamification fof-formatting fof-best-answer
+  fof-gamification fof-formatting fof-best-answer fof-pages fof-terms fof-seo
 ```
 
 > `fof-follow-tags` doğrudan `composer.json`'da listelenmez; `ianm/follow-users`'ın bağımlılığı olarak kurulur ve ayrıca etkinleştirilmesi gerekir.
@@ -124,12 +124,15 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] İşletme dizini v1 (özel eklenti — bkz. `extensions/business-profile`)
 - [x] Etkinlik takvimi altyapısı (özel eklenti — bkz. `extensions/event-calendar`: `eventStartAt`/`eventEndAt` alanları, composer formu, tarih rozeti)
 - [x] Anonim paylaşım (özel eklenti — bkz. `extensions/anonymous-posting`: sadece Genel Meydan, telefon/küfür filtresi, sunucu taraflı kimlik maskeleme, moderatör-only ifşa)
-- [x] Topluluk paketleri: en iyi cevap (`fof/best-answer`), anket (`fof/polls`), kullanıcı takibi (`ianm/follow-users`), Google OAuth altyapısı (`fof/oauth` — gerçek Client ID/Secret admin panelinden girilmeli), sitemap/SEO (`fof/sitemap`), YouTube/medya gömme (`fof/formatting`), rozet/itibar (`fof/gamification`) — hepsi kurulu, etkin, Türkçe çevirileri tamam
+- [x] Topluluk paketleri: en iyi cevap (`fof/best-answer`), anket (`fof/polls`), kullanıcı takibi (`ianm/follow-users`), Google OAuth altyapısı (`fof/oauth` — gerçek Client ID/Secret admin panelinden girilmeli), sitemap (`fof/sitemap`), YouTube/medya gömme (`fof/formatting`), rozet/itibar (`fof/gamification`) — hepsi kurulu, etkin, Türkçe çevirileri tamam
 - [x] Reklam sistemi (özel eklenti — bkz. `extensions/ads-manager`: hedefli banner, admin CRUD paneli, gösterim/tıklama sayacı)
 - [x] Detaylı istatistik/analitik admin paneli (özel eklenti — bkz. `extensions/analytics-dashboard`: DAU/WAU, popüler kategoriler, toplam sayaçlar)
 - [x] Otomatik moderasyon (özel eklenti — bkz. `extensions/auto-moderation`: kimlik no/sağlık mahremiyeti/karalama tespiti, Sağlık-Güvenlik-Kamu kategorilerinde)
+- [x] SEO meta/OG/Twitter Card/schema.org etiketleri (`fof/seo`), robots.txt (`fof/sitemap` tarafından zaten otomatik üretiliyordu)
+- [x] Gizlilik Politikası + Kullanım Şartları sayfaları (`fof/pages` ile `/p/gizlilik-politikasi` ve `/p/kullanim-sartlari`), kayıtta zorunlu kabul checkbox'ı (`fof/terms`) — **içerik taslaktır, yayına almadan önce hukuki gözden geçirme şart**, `iletisim@kktcmeydan.com` yer tutucudur
+- [x] N+1 sorgu düzeltmeleri (konu listesinde `ianm/follow-users` + `fof/best-answer` kaynaklı gereksiz sorgular — bkz. kök `extend.php`) ve rozetlerin başlığın üzerine binmesi düzeltmesi (bkz. `less-overrides/forum.less`)
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
-- [ ] Canlı hosting kurulumu
+- [ ] Canlı hosting kurulumu (SSL/HTTPS dahil — şu an sadece port 80)
 
 Detaylı durum ve teknik notlar için bkz. [ROADMAP.md](ROADMAP.md).
 

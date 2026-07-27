@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d727c28f3d94e2b81274649fff238e2",
+    "content-hash": "aa6156f07ffd18229f5b670b76beb650",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -2801,6 +2801,88 @@
             "time": "2025-12-17T08:23:59+00:00"
         },
         {
+            "name": "fof/pages",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/pages.git",
+                "reference": "df824eaf1a9d5a370cdfb76e738c2f25c7b317f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/pages/zipball/df824eaf1a9d5a370cdfb76e738c2f25c7b317f8",
+                "reference": "df824eaf1a9d5a370cdfb76e738c2f25c7b317f8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "flarum/core": "^1.2"
+            },
+            "replace": {
+                "sijad/flarum-ext-pages": "*"
+            },
+            "require-dev": {
+                "flarum/phpstan": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/18301"
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "far fa-file-alt",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF Pages",
+                    "category": "feature"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\Pages\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sajjad Hashemian",
+                    "email": "wolaws@gmail.com"
+                },
+                {
+                    "name": "David Sevilla Martín",
+                    "email": "david.s@redevs.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create custom pages with Flarum",
+            "homepage": "https://friendsofflarum.org",
+            "keywords": [
+                "flarum"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/18301",
+                "issues": "https://github.com/FriendsOfFlarum/pages/issues",
+                "source": "https://github.com/FriendsOfFlarum/pages"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/fof/donate",
+                    "type": "website"
+                }
+            ],
+            "time": "2023-11-12T10:51:30+00:00"
+        },
+        {
             "name": "fof/polls",
             "version": "2.3.5",
             "source": {
@@ -2879,6 +2961,99 @@
                 }
             ],
             "time": "2026-07-23T13:49:33+00:00"
+        },
+        {
+            "name": "fof/seo",
+            "version": "3.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/seo.git",
+                "reference": "7adf3bbb89e02352a55080a1394c64393e5295f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/seo/zipball/7adf3bbb89e02352a55080a1394c64393e5295f4",
+                "reference": "7adf3bbb89e02352a55080a1394c64393e5295f4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "flarum/core": "^1.8.0",
+                "flarum/tags": "^1.8",
+                "php": "^8.2"
+            },
+            "conflict": {
+                "franzl/flarum-open-links-in-new-tab": "*",
+                "zerosonesfun/elint": "*"
+            },
+            "replace": {
+                "v17development/flarum-seo": "*"
+            },
+            "require-dev": {
+                "flarum/likes": "^1.8",
+                "flarum/phpstan": "^1.0",
+                "flarum/testing": "^1.0.0",
+                "fof/best-answer": "^1.7",
+                "fof/discussion-language": "*",
+                "fof/discussion-views": "*",
+                "fof/gamification": "*",
+                "fof/pages": "^1.0"
+            },
+            "suggest": {
+                "fof/discussion-language": "Sets per-discussion inLanguage in structured data for multi-language forums.",
+                "fof/discussion-views": "Adds a view-count interaction statistic to discussion structured data.",
+                "fof/sitemap": "Provides sitemap and robots.txt functionality."
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-check",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF SEO",
+                    "category": "feature",
+                    "optional-dependencies": [
+                        "flarum/tags",
+                        "fof/pages",
+                        "fof/sitemap",
+                        "fof/best-answer",
+                        "fof/discussion-views",
+                        "fof/discussion-language"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\Seo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "FriendsOfFlarum",
+                    "homepage": "https://github.com/FriendsOfFlarum"
+                }
+            ],
+            "description": "Adds SEO tags for your Flarum forum",
+            "homepage": "https://friendsofflarum.org",
+            "support": {
+                "docs": "https://github.com/FriendsOfFlarum/seo/blob/1.x/docs/README.md",
+                "forum": "https://discuss.flarum.org/d/39374",
+                "issues": "https://github.com/FriendsOfFlarum/seo/issues",
+                "source": "https://github.com/FriendsOfFlarum/seo"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/fof",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2026-06-15T15:02:48+00:00"
         },
         {
             "name": "fof/sitemap",
@@ -2979,6 +3154,94 @@
                 }
             ],
             "time": "2026-04-27T11:42:46+00:00"
+        },
+        {
+            "name": "fof/terms",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfFlarum/terms.git",
+                "reference": "bce1f9eeaa5c78f35501bfb57757f31ffb73a432"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/terms/zipball/bce1f9eeaa5c78f35501bfb57757f31ffb73a432",
+                "reference": "bce1f9eeaa5c78f35501bfb57757f31ffb73a432",
+                "shasum": ""
+            },
+            "require": {
+                "flarum/core": "^1.8.3"
+            },
+            "conflict": {
+                "reflar/user-management": "^0.1.0"
+            },
+            "replace": {
+                "flagrow/terms": "*"
+            },
+            "require-dev": {
+                "flarum/gdpr": "dev-main",
+                "flarum/phpstan": "*"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flagrow": {
+                    "discuss": "https://discuss.flarum.org/d/11714"
+                },
+                "flarum-cli": {
+                    "modules": {
+                        "githubActions": true
+                    }
+                },
+                "flarum-extension": {
+                    "icon": {
+                        "name": "fas fa-paperclip",
+                        "color": "#fff",
+                        "backgroundColor": "#e74c3c"
+                    },
+                    "title": "FoF Terms",
+                    "category": "feature",
+                    "optional-dependencies": [
+                        "flarum/gdpr"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FoF\\Terms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Clark Winkelmann",
+                    "email": "clark.winkelmann@gmail.com",
+                    "homepage": "https://clarkwinkelmann.com/"
+                }
+            ],
+            "description": "Ask users to accept terms of use before using the forum",
+            "homepage": "https://friendsofflarum.org",
+            "keywords": [
+                "Policy",
+                "extension",
+                "flarum",
+                "terms",
+                "tos"
+            ],
+            "support": {
+                "forum": "https://discuss.flarum.org/d/11714",
+                "issues": "https://github.com/FriendsOfFlarum/terms/issues",
+                "source": "https://github.com/FriendsOfFlarum/terms"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/fof/donate",
+                    "type": "website"
+                }
+            ],
+            "time": "2026-01-02T10:46:16+00:00"
         },
         {
             "name": "franzl/whoops-middleware",
