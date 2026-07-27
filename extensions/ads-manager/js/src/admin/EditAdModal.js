@@ -21,7 +21,6 @@ export default class EditAdModal extends Modal {
     this.targetCategorySlug = Stream(ad ? ad.attribute('targetCategorySlug') || '' : '');
     this.targetDistrictSlug = Stream(ad ? ad.attribute('targetDistrictSlug') || '' : '');
     this.targetUniversitySlug = Stream(ad ? ad.attribute('targetUniversitySlug') || '' : '');
-    this.position = Stream(ad ? ad.attribute('position') : 'discussion_list');
     this.isActive = Stream(ad ? ad.attribute('isActive') : true);
 
     this.loading = false;
@@ -89,7 +88,6 @@ export default class EditAdModal extends Modal {
       targetCategorySlug: this.targetCategorySlug() || null,
       targetDistrictSlug: this.targetDistrictSlug() || null,
       targetUniversitySlug: this.targetUniversitySlug() || null,
-      position: this.position(),
       isActive: this.isActive(),
     };
 

@@ -65,7 +65,11 @@ export default class BottomNav extends Component {
             <span>{trans('discover')}</span>
           </button>
 
-          <button className="MobileBottomNav-item MobileBottomNav-item--main" onclick={() => this.startDiscussion()}>
+          <button
+            className="MobileBottomNav-item MobileBottomNav-item--main"
+            aria-label={trans('new_discussion')}
+            onclick={() => this.startDiscussion()}
+          >
             <span className="MobileBottomNav-mainButton">{icon('fas fa-plus')}</span>
           </button>
 

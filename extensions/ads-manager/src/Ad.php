@@ -12,7 +12,6 @@ use Flarum\Database\AbstractModel;
  * @property string|null $target_category_slug
  * @property string|null $target_district_slug
  * @property string|null $target_university_slug
- * @property string $position
  * @property bool $is_active
  * @property int $impressions_count
  * @property int $clicks_count

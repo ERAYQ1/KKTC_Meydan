@@ -11,4 +11,3 @@ kktcmeydan-report-status:
     discussion_controls:
       heading: Durum
       clear_button: Durumu Kaldır
-    badge_tooltip: "Sorun durumu: {status}"

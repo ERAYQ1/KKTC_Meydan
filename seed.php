@@ -16,6 +16,14 @@
  *
  * Idempotent: safe to run multiple times, existing rows are matched by
  * slug/username and left as-is (tags) or skipped (users/discussions).
+ * `custom_less` is the one exception: it's a raw admin-panel setting, not a
+ * row matched by slug, so a plain re-run leaves it alone once it's already
+ * been set - pass --force to explicitly re-apply assets/theme.less (e.g.
+ * after intentionally editing that file). Without --force this only WRITES
+ * custom_less the first time (when it's still empty), so it can never
+ * silently clobber a theme an admin customized by hand in the admin panel.
+ *
+ *   docker compose exec flarum-app php seed.php --force
  */
 
 require __DIR__ . '/vendor/autoload.php';
@@ -61,9 +69,15 @@ if (! empty($config['footer_html'])) {
     $settings->set('custom_footer', $config['footer_html']);
 }
 
+$forceThemeLess = in_array('--force', $argv, true);
 $themeLessPath = __DIR__ . '/assets/theme.less';
+
 if (file_exists($themeLessPath)) {
-    $settings->set('custom_less', file_get_contents($themeLessPath));
+    if ($forceThemeLess || ! $settings->get('custom_less')) {
+        $settings->set('custom_less', file_get_contents($themeLessPath));
+    } else {
+        echo "custom_less zaten ayarli, --force verilmedigi icin ustune yazilmadi.\n";
+    }
 }
 
 echo "Site ayarlari uygulandi: {$config['site_name']}\n";

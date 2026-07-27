@@ -1,6 +1,7 @@
 <?php
 
 use Flarum\Api\Serializer\DiscussionSerializer;
+use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Discussion\Discussion;
 use Flarum\Discussion\Event\Saving;
 use Flarum\Extend;
@@ -28,6 +29,14 @@ return [
             $actor = $serializer->getActor();
 
             return $actor->can('editReportStatus', $discussion);
+        }),
+
+    // Single source of truth for the status list: SaveReportStatusToDatabase
+    // validates against this same array server-side, so JS can't drift from
+    // what the server actually accepts.
+    (new Extend\ApiSerializer(ForumSerializer::class))
+        ->attribute('reportStatuses', function () {
+            return SaveReportStatusToDatabase::VALID_STATUSES;
         }),
 
     (new Extend\Policy())

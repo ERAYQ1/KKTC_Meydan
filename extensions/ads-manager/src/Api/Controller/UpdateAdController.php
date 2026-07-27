@@ -41,7 +41,6 @@ class UpdateAdController extends AbstractShowController
             'title' => 'title',
             'imageUrl' => 'image_url',
             'targetUrl' => 'target_url',
-            'position' => 'position',
         ] as $jsonKey => $column) {
             if (array_key_exists($jsonKey, $attributes)) {
                 $ad->$column = (string) $attributes[$jsonKey];

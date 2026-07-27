@@ -5,11 +5,16 @@ namespace KktcMeydan\AnonymousPosting\Listener;
 use Flarum\Foundation\ValidationException;
 use Flarum\Post\Event\Saving;
 use Flarum\Post\Post;
+use Illuminate\Contracts\Translation\Translator;
 use KktcMeydan\AnonymousPosting\ContentFilter;
 
 class SetPostAnonymousFlag
 {
     const ALLOWED_TAG_SLUG = 'serbest';
+
+    public function __construct(private Translator $translator)
+    {
+    }
 
     public function handle(Saving $event)
     {
@@ -56,7 +61,7 @@ class SetPostAnonymousFlag
 
         if (ContentFilter::containsProfanity($content)) {
             throw new ValidationException([
-                'content' => 'İçerik topluluk kurallarına aykırı ifadeler içermektedir.',
+                'content' => $this->translator->get('kktcmeydan-anonymous-posting.forum.content_rejected'),
             ]);
         }
 

@@ -39,7 +39,6 @@ class CreateAdController extends AbstractCreateController
         $ad->target_category_slug = Arr::get($attributes, 'targetCategorySlug') ?: null;
         $ad->target_district_slug = Arr::get($attributes, 'targetDistrictSlug') ?: null;
         $ad->target_university_slug = Arr::get($attributes, 'targetUniversitySlug') ?: null;
-        $ad->position = (string) (Arr::get($attributes, 'position') ?: 'discussion_list');
         $ad->is_active = (bool) Arr::get($attributes, 'isActive', true);
         $ad->impressions_count = 0;
         $ad->clicks_count = 0;

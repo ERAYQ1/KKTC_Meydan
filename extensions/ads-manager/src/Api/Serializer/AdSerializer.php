@@ -19,7 +19,6 @@ class AdSerializer extends AbstractSerializer
             'targetCategorySlug' => $ad->target_category_slug,
             'targetDistrictSlug' => $ad->target_district_slug,
             'targetUniversitySlug' => $ad->target_university_slug,
-            'position' => $ad->position,
             'isActive' => (bool) $ad->is_active,
             'impressionsCount' => $ad->impressions_count,
             'clicksCount' => $ad->clicks_count,

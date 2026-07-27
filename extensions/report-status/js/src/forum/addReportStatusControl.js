@@ -4,7 +4,7 @@ import DiscussionControls from 'flarum/forum/utils/DiscussionControls';
 import DiscussionPage from 'flarum/forum/components/DiscussionPage';
 import Dropdown from 'flarum/common/components/Dropdown';
 import Button from 'flarum/common/components/Button';
-import { STATUSES } from './statuses';
+import { getStatuses } from './statuses';
 
 export default function addReportStatusControl() {
   extend(DiscussionControls, 'moderationControls', function (items, discussion) {
@@ -25,7 +25,7 @@ export default function addReportStatusControl() {
             : app.translator.trans('kktcmeydan-report-status.forum.discussion_controls.heading')
         }
       >
-        {STATUSES.map((status) => (
+        {getStatuses().map((status) => (
           <Button
             icon={status === current ? 'fas fa-check' : undefined}
             onclick={() => DiscussionControls.reportStatusAction(discussion, status)}

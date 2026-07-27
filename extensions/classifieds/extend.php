@@ -1,6 +1,7 @@
 <?php
 
 use Flarum\Api\Serializer\DiscussionSerializer;
+use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Discussion\Discussion;
 use Flarum\Discussion\Event\Saving;
 use Flarum\Extend;
@@ -34,6 +35,20 @@ return [
         })
         ->attribute('classifiedType', function (DiscussionSerializer $serializer, Discussion $discussion) {
             return $discussion->classified_type;
+        }),
+
+    // Single source of truth for the currency/type option lists:
+    // SaveClassifiedFieldsToDatabase::VALID_CURRENCIES/VALID_TYPES also
+    // validate incoming data server-side, so the composer's <select>
+    // options come from the exact same array instead of a second,
+    // hand-kept copy in JS that could silently drift from what the server
+    // actually accepts.
+    (new Extend\ApiSerializer(ForumSerializer::class))
+        ->attribute('classifiedCurrencies', function () {
+            return SaveClassifiedFieldsToDatabase::VALID_CURRENCIES;
+        })
+        ->attribute('classifiedTypes', function () {
+            return SaveClassifiedFieldsToDatabase::VALID_TYPES;
         }),
 
     (new Extend\Event())

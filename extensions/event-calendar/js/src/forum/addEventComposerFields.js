@@ -30,6 +30,7 @@ export default function addEventComposerFields() {
     items.add(
       'eventDateFields',
       <div className="EventComposerFields">
+        <h3 className="EventComposerFields-heading">{trans('heading')}</h3>
         <div className="EventComposerFields-field">
           <label>{trans('start_label')}</label>
           <input className="FormControl" type="datetime-local" bidi={fields.eventStartAt} />

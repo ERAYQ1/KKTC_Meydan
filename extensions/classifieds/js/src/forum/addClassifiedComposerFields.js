@@ -2,7 +2,7 @@ import app from 'flarum/forum/app';
 import { extend } from 'flarum/common/extend';
 import DiscussionComposer from 'flarum/forum/components/DiscussionComposer';
 import Stream from 'flarum/common/utils/Stream';
-import { CLASSIFIED_TRIGGER_SLUGS, CURRENCIES, CLASSIFIED_TYPES } from './constants';
+import { CLASSIFIED_TRIGGER_SLUGS, getCurrencies, getClassifiedTypes } from './constants';
 
 function trans(key) {
   return app.translator.trans(`kktcmeydan-classifieds.forum.composer.${key}`);
@@ -30,6 +30,7 @@ export default function addClassifiedComposerFields() {
     items.add(
       'classifiedFields',
       <div className="ClassifiedComposerFields">
+        <h3 className="ClassifiedComposerFields-heading">{trans('heading')}</h3>
         <div className="ClassifiedComposerFields-row">
           <input
             className="FormControl ClassifiedComposerFields-price"
@@ -39,8 +40,12 @@ export default function addClassifiedComposerFields() {
             placeholder={trans('price_label')}
             bidi={fields.price}
           />
-          <select className="FormControl ClassifiedComposerFields-currency" bidi={fields.currency}>
-            {CURRENCIES.map((currency) => (
+          <select
+            className="FormControl ClassifiedComposerFields-currency"
+            aria-label={trans('currency_label')}
+            bidi={fields.currency}
+          >
+            {getCurrencies().map((currency) => (
               <option value={currency}>{currency}</option>
             ))}
           </select>
@@ -58,9 +63,13 @@ export default function addClassifiedComposerFields() {
             placeholder={trans('contact_phone_label')}
             bidi={fields.contactPhone}
           />
-          <select className="FormControl ClassifiedComposerFields-type" bidi={fields.classifiedType}>
+          <select
+            className="FormControl ClassifiedComposerFields-type"
+            aria-label={trans('classified_type_label')}
+            bidi={fields.classifiedType}
+          >
             <option value="">{trans('classified_type_none')}</option>
-            {CLASSIFIED_TYPES.map((type) => (
+            {getClassifiedTypes().map((type) => (
               <option value={type}>{trans('classified_type_' + type)}</option>
             ))}
           </select>
