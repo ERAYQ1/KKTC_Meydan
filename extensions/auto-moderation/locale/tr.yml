@@ -1,0 +1,4 @@
+kktcmeydan-auto-moderation:
+  forum:
+    flag:
+      type_label: "Otomatik Moderasyon"

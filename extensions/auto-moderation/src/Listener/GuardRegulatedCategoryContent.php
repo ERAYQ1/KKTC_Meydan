@@ -52,11 +52,13 @@ class GuardRegulatedCategoryContent
             }
 
             if ($hasIdNumber || $isSecurityTag) {
-                $flag = new Flag;
-                $flag->post_id = $post->id;
-                $flag->type = 'kktcmeydan-auto-moderation';
-                $flag->created_at = Carbon::now();
-                $flag->save();
+                // firstOrCreate: afterSave can run again on a subsequent
+                // edit that still trips the guard - don't stack duplicate
+                // flags for the same post/type pair.
+                Flag::firstOrCreate(
+                    ['post_id' => $post->id, 'type' => 'kktcmeydan-auto-moderation'],
+                    ['created_at' => Carbon::now()]
+                );
             }
         });
     }

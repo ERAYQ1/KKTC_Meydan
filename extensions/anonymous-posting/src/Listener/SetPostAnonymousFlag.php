@@ -14,21 +14,41 @@ class SetPostAnonymousFlag
     public function handle(Saving $event)
     {
         $attributes = $event->data['attributes'] ?? [];
+        $post = $event->post;
 
-        if (! array_key_exists('isAnonymous', $attributes)) {
+        // `isAnonymous` gonderilmisse bayragi guncelle; gonderilmemisse
+        // gonderinin MEVCUT durumu gecerli kalir.
+        //
+        // Eskiden bu metot `isAnonymous` yoksa hemen donuyordu. Bu bir
+        // filtre atlatma aciğiydi: temiz icerikle anonim gonderi ac, sonra
+        // sadece `content` iceren bir PATCH at - `is_anonymous` veritabaninda
+        // true kalir ama kufur/telefon filtresi hic calismazdi.
+        $wasAnonymous = (bool) $post->is_anonymous;
+
+        if (array_key_exists('isAnonymous', $attributes)) {
+            $isAnonymous = (bool) $attributes['isAnonymous'];
+
+            if ($isAnonymous && ! $this->discussionAllowsAnonymous($post)) {
+                $isAnonymous = false;
+            }
+
+            $post->is_anonymous = $isAnonymous;
+        } else {
+            $isAnonymous = $wasAnonymous;
+        }
+
+        if (! $isAnonymous) {
             return;
         }
 
-        $post = $event->post;
-        $isAnonymous = (bool) $attributes['isAnonymous'];
+        $contentChanged = array_key_exists('content', $attributes);
+        $justTurnedAnonymous = ! $wasAnonymous;
 
-        if ($isAnonymous && ! $this->discussionAllowsAnonymous($post)) {
-            $isAnonymous = false;
-        }
-
-        $post->is_anonymous = $isAnonymous;
-
-        if (! $isAnonymous) {
+        // Icerik degismiyor VE gonderi zaten anonimse yeniden dogrulama.
+        // Bu sart kritik: moderatorun onay islemi de bir Post save'i tetikler
+        // ve kosulsuz dogrulama, telefon numarasi iceren bir gonderiyi her
+        // onayda tekrar kuyruga atarak onaylanmasini imkansiz kilardi.
+        if (! $contentChanged && ! $justTurnedAnonymous) {
             return;
         }
 
