@@ -27,10 +27,10 @@ services:
     # 2g'de kararli (gozlemlenen tepe ~1.1GB).
     mem_limit: 2g
     environment:
-      MYSQL_ROOT_PASSWORD: kktc_root_secret
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: kktc_meydan_db
       MYSQL_USER: kktc_user
-      MYSQL_PASSWORD: kktc_user_secret
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:

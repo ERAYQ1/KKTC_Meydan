@@ -7,6 +7,7 @@ use Flarum\Http\RequestUtil;
 use Flarum\User\Exception\PermissionDeniedException;
 use Illuminate\Support\Arr;
 use KktcMeydan\AdsManager\Ad;
+use KktcMeydan\AdsManager\AdUrlValidator;
 use KktcMeydan\AdsManager\Api\Serializer\AdSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
@@ -25,10 +26,16 @@ class CreateAdController extends AbstractCreateController
 
         $attributes = (array) Arr::get($request->getParsedBody(), 'data.attributes', []);
 
+        $imageUrl = (string) Arr::get($attributes, 'imageUrl', '');
+        $targetUrl = (string) Arr::get($attributes, 'targetUrl', '');
+
+        AdUrlValidator::assertValid($imageUrl, 'imageUrl');
+        AdUrlValidator::assertValid($targetUrl, 'targetUrl');
+
         $ad = new Ad;
         $ad->title = (string) Arr::get($attributes, 'title', '');
-        $ad->image_url = (string) Arr::get($attributes, 'imageUrl', '');
-        $ad->target_url = (string) Arr::get($attributes, 'targetUrl', '');
+        $ad->image_url = $imageUrl;
+        $ad->target_url = $targetUrl;
         $ad->target_category_slug = Arr::get($attributes, 'targetCategorySlug') ?: null;
         $ad->target_district_slug = Arr::get($attributes, 'targetDistrictSlug') ?: null;
         $ad->target_university_slug = Arr::get($attributes, 'targetUniversitySlug') ?: null;

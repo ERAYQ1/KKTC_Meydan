@@ -15,7 +15,7 @@ class RecordAdImpressionController implements RequestHandlerInterface
     {
         $id = (int) Arr::get($request->getQueryParams(), 'id');
 
-        Ad::where('id', $id)->increment('impressions_count');
+        Ad::findOrFail($id)->increment('impressions_count');
 
         return new EmptyResponse(204);
     }

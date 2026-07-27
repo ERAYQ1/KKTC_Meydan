@@ -7,6 +7,7 @@ use Flarum\Http\RequestUtil;
 use Flarum\User\Exception\PermissionDeniedException;
 use Illuminate\Support\Arr;
 use KktcMeydan\AdsManager\Ad;
+use KktcMeydan\AdsManager\AdUrlValidator;
 use KktcMeydan\AdsManager\Api\Serializer\AdSerializer;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
@@ -27,6 +28,14 @@ class UpdateAdController extends AbstractShowController
         $ad = Ad::findOrFail($id);
 
         $attributes = (array) Arr::get($request->getParsedBody(), 'data.attributes', []);
+
+        if (array_key_exists('imageUrl', $attributes)) {
+            AdUrlValidator::assertValid((string) $attributes['imageUrl'], 'imageUrl');
+        }
+
+        if (array_key_exists('targetUrl', $attributes)) {
+            AdUrlValidator::assertValid((string) $attributes['targetUrl'], 'targetUrl');
+        }
 
         foreach ([
             'title' => 'title',

@@ -9,6 +9,14 @@ class SaveClassifiedFieldsToDatabase
     const VALID_CURRENCIES = ['TRY', 'GBP', 'USD', 'EUR'];
     const VALID_TYPES = ['satilik', 'kiralik', 'is_ilani', 'ev_arkadasi', 'ikinci_el'];
 
+    // Must match the `discussions` column lengths (see classifieds
+    // migration). With `strict` mode on, MySQL rejects an over-length
+    // INSERT/UPDATE outright instead of silently truncating it - so an
+    // unvalidated long value now fails the whole save rather than just
+    // losing its tail.
+    const LOCATION_MAX_LENGTH = 255;
+    const CONTACT_PHONE_MAX_LENGTH = 32;
+
     public function handle(Saving $event)
     {
         $attributes = $event->data['attributes'] ?? [];
@@ -25,12 +33,12 @@ class SaveClassifiedFieldsToDatabase
         }
 
         if (array_key_exists('location', $attributes)) {
-            $location = trim((string) $attributes['location']);
+            $location = mb_substr(trim((string) $attributes['location']), 0, self::LOCATION_MAX_LENGTH);
             $discussion->location = $location === '' ? null : $location;
         }
 
         if (array_key_exists('contactPhone', $attributes)) {
-            $phone = trim((string) $attributes['contactPhone']);
+            $phone = mb_substr(trim((string) $attributes['contactPhone']), 0, self::CONTACT_PHONE_MAX_LENGTH);
             $discussion->contact_phone = $phone === '' ? null : $phone;
         }
 

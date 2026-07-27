@@ -15,7 +15,7 @@ class RecordAdClickController implements RequestHandlerInterface
     {
         $id = (int) Arr::get($request->getQueryParams(), 'id');
 
-        Ad::where('id', $id)->increment('clicks_count');
+        Ad::findOrFail($id)->increment('clicks_count');
 
         return new EmptyResponse(204);
     }

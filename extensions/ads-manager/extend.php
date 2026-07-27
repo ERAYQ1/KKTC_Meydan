@@ -1,6 +1,7 @@
 <?php
 
 use Flarum\Extend;
+use KktcMeydan\AdsManager\AdRequestThrottler;
 use KktcMeydan\AdsManager\Api\Controller\CreateAdController;
 use KktcMeydan\AdsManager\Api\Controller\DeleteAdController;
 use KktcMeydan\AdsManager\Api\Controller\ListAdsController;
@@ -18,6 +19,9 @@ return [
         ->css(__DIR__.'/less/admin.less'),
 
     (new Extend\Locales(__DIR__.'/locale')),
+
+    (new Extend\ThrottleApi())
+        ->set('kktcmeydanAdsManagerWindow', AdRequestThrottler::class),
 
     (new Extend\Routes('api'))
         ->get('/ads', 'kktcmeydan-ads-manager.ads.index', ListAdsController::class)

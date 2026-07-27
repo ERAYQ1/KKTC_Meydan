@@ -40,8 +40,13 @@ RUN { \
 # Set working directory
 WORKDIR /var/www/html
 
-# Permissions
+# Permissions (build-time baseline; storage/ is re-asserted at container
+# start by entrypoint.sh since the bind-mounted volume overrides this)
 RUN chown -R www-data:www-data /var/www/html
 
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 EXPOSE 9000
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["php-fpm"]

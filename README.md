@@ -53,7 +53,12 @@ Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodun
 git clone https://github.com/ERAYQ1/KKTC_Meydan.git
 cd KKTC_Meydan
 cp config.example.php config.php
-# config.php içindeki veritabanı bilgilerini düzenleyin (bu dosya .gitignore'da, asla commit etmeyin)
+cp .env.example .env
+# config.php'deki 'password' ve .env'deki MYSQL_ROOT_PASSWORD/MYSQL_PASSWORD
+# değerlerini AYNI gerçek şifreyle doldurun (her iki dosya da .gitignore'da,
+# asla commit etmeyin) — docker-compose.yml DB kullanıcı şifresini .env'den
+# okur, config.php ise uygulamanın o kullanıcıyla bağlanmak için kullandığı
+# şifredir; ikisi eşleşmezse uygulama DB'ye bağlanamaz.
 docker compose up -d --build
 docker compose exec flarum-app composer install
 ```
@@ -79,6 +84,7 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
 
 ```bash
 # Bir kereye mahsus: AYRI test veritabanını kurar (hedef DB'deki tüm tabloları siler)
+# DB_PASSWORD, .env'deki MYSQL_PASSWORD ile aynı olmalı
 docker compose exec flarum-app sh -c 'DB_HOST=flarum-db DB_DATABASE=kktc_meydan_test \
   DB_USERNAME=kktc_user DB_PASSWORD=kktc_user_secret \
   FLARUM_TEST_TMP_DIR=/var/www/html/tests/tmp composer test:setup'
