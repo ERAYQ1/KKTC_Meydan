@@ -1,5 +1,6 @@
 import app from 'flarum/forum/app';
 import Component from 'flarum/common/Component';
+import { getAds, matchesTag } from './AdsStore';
 
 export default class AdBanner extends Component {
   oninit(vnode) {
@@ -8,23 +9,15 @@ export default class AdBanner extends Component {
     this.ad = null;
     this.loaded = false;
     this.impressionSent = false;
+    this.observer = null;
 
     const tag = m.route.param('tags') || null;
 
-    app.store
-      .find('ads', { filter: tag ? { tag } : {} })
+    getAds()
       .then((ads) => {
-        this.ad = ads.length ? ads[Math.floor(Math.random() * ads.length)] : null;
+        const eligible = ads.filter((ad) => matchesTag(ad, tag));
+        this.ad = eligible.length ? eligible[Math.floor(Math.random() * eligible.length)] : null;
         this.loaded = true;
-
-        if (this.ad && !this.impressionSent) {
-          this.impressionSent = true;
-
-          app.request({
-            method: 'POST',
-            url: `${app.forum.attribute('apiUrl')}/ads/${this.ad.id()}/impression`,
-          });
-        }
 
         m.redraw();
       })
@@ -32,6 +25,62 @@ export default class AdBanner extends Component {
         this.loaded = true;
         m.redraw();
       });
+  }
+
+  oncreate(vnode) {
+    super.oncreate(vnode);
+    this.watchForImpression();
+  }
+
+  onupdate(vnode) {
+    super.onupdate(vnode);
+    this.watchForImpression();
+  }
+
+  onremove(vnode) {
+    this.disconnectObserver();
+    super.onremove(vnode);
+  }
+
+  // An impression is only meaningful once the banner is actually visible -
+  // firing it as soon as the ad loads (the old behaviour) counted banners
+  // that were still off-screen below the fold, or never scrolled to at all.
+  watchForImpression() {
+    if (this.observer || this.impressionSent || !this.ad || !this.element) {
+      return;
+    }
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          this.sendImpression();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    this.observer.observe(this.element);
+  }
+
+  disconnectObserver() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+  }
+
+  sendImpression() {
+    if (this.impressionSent || !this.ad) {
+      return;
+    }
+
+    this.impressionSent = true;
+    this.disconnectObserver();
+
+    app.request({
+      method: 'POST',
+      url: `${app.forum.attribute('apiUrl')}/ads/${this.ad.id()}/impression`,
+    });
   }
 
   recordClick() {
