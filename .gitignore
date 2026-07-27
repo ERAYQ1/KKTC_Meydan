@@ -6,6 +6,7 @@
 /public/assets/rev-manifest.json
 /public/assets/fonts/
 /public/assets/xslt-polyfill/
+/public/assets/avatars/
 /storage/cache/*
 /storage/formatter/*
 /storage/logs/*
