@@ -82,6 +82,22 @@ if (file_exists($themeLessPath)) {
 
 echo "Site ayarlari uygulandi: {$config['site_name']}\n";
 
+// --- 1b. fof/seo schema fixup ---------------------------------------------
+// fof/seo's `seo_meta` migration creates `created_at` as NOT NULL with no
+// default, but its model extends Flarum\Database\AbstractModel which sets
+// `$timestamps = false` - so Eloquent never fills the column itself. Under
+// this project's strict SQL mode (config.php `'strict' => true`) that's a
+// hard INSERT failure ("Field 'created_at' doesn't have a default value")
+// on the very first page view of any tag, not just an edge case. Giving the
+// column a DB-level default fixes it without touching vendor/. Safe to
+// re-run (MODIFY is idempotent) and a no-op if fof/seo isn't installed.
+$db = $container->make(\Illuminate\Database\ConnectionInterface::class);
+
+if ($db->getSchemaBuilder()->hasTable('seo_meta')) {
+    $db->statement('ALTER TABLE `seo_meta` MODIFY `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP');
+    echo "fof/seo seo_meta.created_at duzeltmesi uygulandi.\n";
+}
+
 // --- 2. System actor (admin) for authored actions -------------------------
 
 /** @var User $actor */
