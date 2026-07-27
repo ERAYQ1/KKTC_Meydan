@@ -95,4 +95,12 @@ return [
     // (Flarum merges eager-load registrations from multiple extensions).
     (new Extend\ApiController(ListDiscussionsController::class))
         ->load(['bestAnswerPost', 'bestAnswerPost.user']),
+
+    // Fixes wide custom badges (classifieds price/location, report-status,
+    // event-calendar) visually overlapping the discussion title in the
+    // list — see less-overrides/forum.less for the root cause. Applies to
+    // every viewport width, unlike extensions/mobile-ui which is scoped to
+    // @media (max-width: 768px) only by design.
+    (new Extend\Frontend('forum'))
+        ->css(__DIR__.'/less-overrides/forum.less'),
 ];

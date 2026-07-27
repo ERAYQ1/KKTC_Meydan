@@ -1,0 +1,86 @@
+// =============================================================
+// KKTC Meydan — site-local core layout fixes.
+// Loaded via extend.php (Extend\Frontend), applies to ALL viewport
+// widths (unlike extensions/mobile-ui, which is intentionally
+// scoped to @media (max-width: 768px) only).
+// =============================================================
+
+// Core's `.DiscussionListItem-badges` is float:left and designed for
+// a couple of small icon badges (sticky pin, lock) a few pixels wide —
+// see vendor/flarum/core/less/forum/DiscussionListItem.less. Our own
+// extensions (classifieds, report-status, event-calendar,
+// anonymous-posting) all add much wider TEXT pill badges through the
+// same `discussion.badges()` API. Those wide floats visually overlap
+// `.DiscussionListItem-title`, which never got a matching clearance
+// margin because core never anticipated badges that wide.
+//
+// Grid (rather than flex) lets the avatar span every row as one grid
+// item, so it stays vertically centered across the whole card no
+// matter how many badge/info rows stack underneath it — a plain flex
+// row only centers items within a single line.
+.DiscussionListItem-content {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-areas:
+    "avatar main"
+    "avatar badges"
+    "avatar count";
+  column-gap: 10px;
+  row-gap: 3px;
+  // Core gave all the vertical breathing room to `.DiscussionListItem-main`
+  // (padding: 12px 0) on the assumption it was the only row — badges/count
+  // used to overlay it via floats instead of taking their own space. Now
+  // that they're real grid rows, put the padding on the shared container
+  // once and zero it on main, or the card grows a lot taller than before.
+  padding: 10px 0;
+
+  > .DiscussionListItem-author {
+    grid-area: avatar;
+    float: none;
+    align-self: center;
+    margin: 0 !important;
+  }
+
+  > .DiscussionListItem-main {
+    grid-area: main;
+    float: none;
+    min-width: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  > .DiscussionListItem-badges {
+    grid-area: badges;
+    float: none;
+    margin: 0 !important;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    white-space: normal;
+
+    // listItems() wraps each badge in an <li>, which is the actual flex
+    // item here (not the .ClassifiedBadge span inside it) — without
+    // flex-shrink:0 the <li> can shrink below the pill's natural width,
+    // and the text wraps mid-badge (e.g. "4.143" / "TL" on two lines).
+    > li {
+      flex-shrink: 0;
+    }
+
+    .Badge,
+    .ClassifiedBadge,
+    .EventDateBadge,
+    .ReportStatusBadge {
+      position: static;
+      margin: 0 !important;
+      white-space: nowrap;
+    }
+  }
+
+  > .DiscussionListItem-count {
+    grid-area: count;
+    justify-self: end;
+    float: none;
+    margin: 0 !important;
+  }
+}
