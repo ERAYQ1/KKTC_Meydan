@@ -12,8 +12,16 @@ use Flarum\User\User;
 use KktcMeydan\AnonymousPosting\AnonymousMasker;
 use KktcMeydan\AnonymousPosting\Listener\SetDiscussionAnonymousFlag;
 use KktcMeydan\AnonymousPosting\Listener\SetPostAnonymousFlag;
+use KktcMeydan\AnonymousPosting\Provider\AnonymityQueryProvider;
 
 return [
+    // Yazar bazli sorgu yollarini (filter[author], filter[q]=author:X)
+    // anonim satirlari eleyecek sekilde degistirir. Yanittaki iliskiyi
+    // gizlemek yetmez: sorgunun kendisi yazara gore daraltilmissa sonuc
+    // kumesi zaten kimligi ele verir.
+    (new Extend\ServiceProvider())
+        ->register(AnonymityQueryProvider::class),
+
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/less/forum.less'),
@@ -66,28 +74,34 @@ return [
             return $realUser ? "[Anonim] {$realUser->username}" : null;
         }),
 
-    // Strip the real `user` relationship from anonymous posts/discussions for
-    // every viewer, on every endpoint that can hand one out. Moderators get
-    // the real identity back via the `anonymousModLabel` attribute above.
+    // Anonim icerikten kimlik tasiyan TUM iliskileri (user, editedUser,
+    // hiddenUser, lastPostedUser + gomulu firstPost/lastPost/mostRelevantPost
+    // ve bildirimlerdeki fromUser) her izleyici icin soker. Moderatorler
+    // gercek kimligi yukaridaki `anonymousModLabel` attribute'undan alir.
+    //
+    // Tek bir `mask` callback'i model tipine gore dallaniyor - eskiden ayri
+    // olan maskPosts/maskDiscussions ikilisi, bir Discussion koleksiyonunda
+    // gomulu post'lari hic gezmedigi icin `mostRelevantPost.user`'i aciyordu.
     (new Extend\ApiController(C\ListPostsController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\ShowPostController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\CreatePostController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\UpdatePostController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
 
     (new Extend\ApiController(C\ListDiscussionsController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskDiscussions'])
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\ShowDiscussionController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskDiscussions'])
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\CreateDiscussionController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskDiscussions'])
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
     (new Extend\ApiController(C\UpdateDiscussionController::class))
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskDiscussions'])
-        ->prepareDataForSerialization([AnonymousMasker::class, 'maskPosts']),
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
+
+    // Abone olunan anonim konuya gelen "yeni yanit" bildiriminin `fromUser`
+    // iliskisi gercek yazari ele veriyordu.
+    (new Extend\ApiController(C\ListNotificationsController::class))
+        ->prepareDataForSerialization([AnonymousMasker::class, 'mask']),
 ];

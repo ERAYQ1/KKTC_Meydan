@@ -51,5 +51,23 @@
         }
     },
     "minimum-stability": "beta",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "flarum/testing": "^1.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KktcMeydan\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:setup": "@php -r \"require 'vendor/autoload.php'; (new Flarum\\Testing\\integration\\Setup\\SetupScript())->run();\"",
+        "verify:anonymity": "@php scripts/verify-anonymity.php"
+    },
+    "scripts-descriptions": {
+        "test": "PHPUnit regresyon testlerini calistirir (once test:setup gerekir).",
+        "test:setup": "AYRI test veritabanini kurar. DB_* ve FLARUM_TEST_TMP_DIR ortam degiskenlerini kullanir. Hedef veritabanindaki TUM tablolari siler - asla canli DB gostermeyin.",
+        "verify:anonymity": "Calisan siteye karsi gercek HTTP istekleriyle anonimlik sizintisi tarar."
+    }
 }

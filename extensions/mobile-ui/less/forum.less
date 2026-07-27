@@ -9,30 +9,35 @@
 // -------------------------------------------------------------
 // 0. Sifir yatay tasma + akici tipografi + dokunma hedefleri
 // -------------------------------------------------------------
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-#content,
-.container,
-.App-content {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.DiscussionListItem-title,
-.Post-body,
-.Post-body pre,
-.Post-body code,
-.TextEditor-editor,
-a {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
 @media @mobile {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  // DIKKAT: buraya `overflow-x: hidden` EKLEME. CSS'te bir eksende
+  // `hidden`, diger eksendeki `visible`i `auto`ya cevirir - yani
+  // `.container`/`.App-content` bir kaydirma/kirpma baglami olur ve
+  // icindeki `position: absolute` header menulerini (SessionDropdown =
+  // profil, NotificationsDropdown = bildirim/flag) kirpar. Yatay tasmayi
+  // kirpmadan `max-width` tek basina onluyor.
+  #content,
+  .container,
+  .App-content {
+    max-width: 100%;
+  }
+
+  .DiscussionListItem-title,
+  .Post-body,
+  .Post-body pre,
+  .Post-body code,
+  .TextEditor-editor,
+  a {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
   body {
     font-size: ~"clamp(0.9rem, 2.5vw, 1.1rem)";
   }
@@ -430,11 +435,11 @@ a {
 // -------------------------------------------------------------
 // 5. Mobil Header (scroll ile gizle/goster) + tam ekran arama
 // -------------------------------------------------------------
-#header {
-  transition: transform 0.25s ease;
-}
-
 @media @mobile {
+  #header {
+    transition: transform 0.25s ease;
+  }
+
   #header.MobileHeader--hidden {
     transform: translateY(-100%);
   }

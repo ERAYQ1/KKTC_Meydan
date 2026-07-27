@@ -31,3 +31,6 @@ config.php
 .idea/
 .vscode/
 *.log
+
+# PHPUnit test ortami (SetupScript tarafindan uretilir)
+/tests/tmp/

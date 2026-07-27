@@ -555,6 +555,17 @@ function kktcCreateDiscussion(array $p, $bus, array $userIds, array $tagIds, arr
     $firstPost = Post::where('discussion_id', $discussion->id)->where('number', 1)->first();
 
     if ($firstPost) {
+        // Konu duzeyindeki bazi bayraklar ilk gonderide de tutulmali. Ozellikle
+        // `is_anonymous`: sadece discussion'a yazilinca liste gorunumu "Anonim
+        // Uye" derken konuyu acinca ilk mesajda gercek yazar goruluyordu.
+        foreach ($p['firstPostExtra'] ?? [] as $column => $value) {
+            $firstPost->{$column} = $value;
+        }
+
+        if (! empty($p['firstPostExtra'])) {
+            $firstPost->save();
+        }
+
         $posts[] = $firstPost;
     }
 
@@ -883,6 +894,7 @@ for ($i = 0; $i < 18; $i++) {
         'author' => $author,
         'tags' => ['serbest'],
         'extra' => ['is_anonymous' => true],
+        'firstPostExtra' => ['is_anonymous' => true],
         'replies' => [
             ['author' => $localPool[($i + 7) % count($localPool)]['username'], 'body' => 'Yalniz degilsin, bu toplulukta konusabilirsin.'],
         ],

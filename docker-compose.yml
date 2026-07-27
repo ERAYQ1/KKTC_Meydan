@@ -6,6 +6,26 @@ services:
     image: mariadb:10.11
     container_name: kktc_meydan_db
     restart: always
+    # MariaDB 10.11 InnoDB buffer pool'u otomatik buyutuyor ve varsayilan ust
+    # sinir pratikte sinirsiz (log: innodb_buffer_pool_size_max=8388608m ~ 8TB).
+    # Sinirsiz birakildiginda surec RAM'i doldurup kernel OOM-killer tarafindan
+    # olduruluyordu (gozlemlenen: anon-rss 10.9GB, mariadbd kill). Havuzu ve
+    # konteyner bellegini acikca sabitliyoruz.
+    command:
+      - --innodb-buffer-pool-size=256M
+      - --innodb-buffer-pool-size-max=256M
+      # InnoDB FULLTEXT onbellegi varsayilan olarak 640M'ye kadar buyuyor ve
+      # arama agirlikli is yukunde havuz kapali olsa bile RSS'i sisiriyordu.
+      - --innodb-ft-cache-size=8M
+      - --innodb-ft-total-cache-size=64M
+      - --tmp-table-size=32M
+      - --max-heap-table-size=32M
+      - --performance-schema=OFF
+      - --max-connections=50
+    # 256M havuz + baglanti/sort/temp tamponlari + InnoDB log & dictionary
+    # icin pay. Olculen: cap oncesi 11GB kacak, 1g sinirinda cgroup OOM,
+    # 2g'de kararli (gozlemlenen tepe ~1.1GB).
+    mem_limit: 2g
     environment:
       MYSQL_ROOT_PASSWORD: kktc_root_secret
       MYSQL_DATABASE: kktc_meydan_db
@@ -13,6 +33,12 @@ services:
       MYSQL_PASSWORD: kktc_user_secret
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     networks:
       - kktc_net
 
@@ -25,7 +51,8 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - flarum-db
+      flarum-db:
+        condition: service_healthy
     networks:
       - kktc_net
 

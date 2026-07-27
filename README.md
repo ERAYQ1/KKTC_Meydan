@@ -35,6 +35,7 @@ Bu repo'ya özel geliştirilen eklentiler `extensions/` klasöründe tutulur:
 - **`extensions/ads-manager`** — Kategori/bölge/üniversite hedefli reklam banner sistemi. Admin panelinde tam CRUD sayfası (görsel URL, yönlendirme linki, hedef seçimi), forumda konu listesinin üstünde gösterim, gösterim/tıklama sayacı.
 - **`extensions/analytics-dashboard`** — Admin paneline DAU/WAU, toplam konu/mesaj/üye sayaçları ve en popüler kategoriler (konu/yanıt bazında) gösteren salt-okunur istatistik sayfası.
 - **`extensions/auto-moderation`** — Sağlık/Güvenlik-Acil Durum/Kamu kategorilerinde kimlik numarası, sağlık mahremiyeti ihlali ve kurum/meslek hedefli karalama içeriğini tespit edip moderatör kuyruğuna düşüren, güvenlik ihlallerinde otomatik `flarum-flags` raporu oluşturan arka plan koruma katmanı.
+- **`extensions/mobile-ui`** — Mobil (iOS Safari & Android Chrome) için native-app hissi: alt navigasyon barı, kart tipi konu listesi, keşfet/profil bottom sheet'leri, tam ekran arama, klavye/dokunma uyumluluğu. Tüm kurallar `@media (max-width: 768px)` altında scope edilir — masaüstü görünümü etkilenmez.
 
 Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodunda değişiklik yaparsan ilgili eklentinin `js/` klasöründe `npm install && npm run build` çalıştırman gerekir.
 
@@ -67,10 +68,29 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   flarum-bbcode flarum-emoji flarum-suspend flarum-sticky flarum-flags flarum-approval \
   kktcmeydan-business-profile kktcmeydan-report-status kktcmeydan-classifieds \
   kktcmeydan-event-calendar kktcmeydan-anonymous-posting kktcmeydan-ads-manager \
-  kktcmeydan-analytics-dashboard kktcmeydan-auto-moderation fof-follow-tags \
-  ianm-follow-users fof-sitemap fof-polls fof-oauth fof-gamification \
-  fof-formatting fof-best-answer
+  kktcmeydan-analytics-dashboard kktcmeydan-auto-moderation kktcmeydan-mobile-ui \
+  fof-follow-tags ianm-follow-users fof-sitemap fof-polls fof-oauth \
+  fof-gamification fof-formatting fof-best-answer
 ```
+
+> `fof-follow-tags` doğrudan `composer.json`'da listelenmez; `ianm/follow-users`'ın bağımlılığı olarak kurulur ve ayrıca etkinleştirilmesi gerekir.
+
+## Test ve doğrulama
+
+```bash
+# Bir kereye mahsus: AYRI test veritabanını kurar (hedef DB'deki tüm tabloları siler)
+docker compose exec flarum-app sh -c 'DB_HOST=flarum-db DB_DATABASE=kktc_meydan_test \
+  DB_USERNAME=kktc_user DB_PASSWORD=kktc_user_secret \
+  FLARUM_TEST_TMP_DIR=/var/www/html/tests/tmp composer test:setup'
+
+# Regresyon testleri (unit + entegrasyon)
+docker compose exec flarum-app vendor/bin/phpunit
+
+# Çalışan siteye karşı gerçek HTTP ile anonimlik sızıntısı taraması
+docker compose exec flarum-app php scripts/verify-anonymity.php
+```
+
+`phpunit.xml` içinde `processIsolation="true"` **zorunludur, hız tercihi değil**: her entegrasyon testi tam bir Flarum uygulaması boot ettiği için tek süreçte ~8 testten sonra PHP bellek limiti tükeniyor ve MariaDB OOM-killer tarafından öldürülüyor.
 
 Üçüncü parti (`fof/*`, `ianm/*`) paketler sadece İngilizce dil dosyasıyla gelir; Türkçe çevirileri `locale-overrides/tr.yml` içinde (kök `extend.php` ile `Extend\Locales` olarak bağlı) tamamlanmıştır — Flarum birden fazla locale dizinini aynı dile birleştirdiği için bu, paketlerin kendi çevirisiymiş gibi devreye girer.
 

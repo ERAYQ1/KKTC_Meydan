@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    cacheResultFile="tests/tmp/.phpunit.result.cache"
+    convertDeprecationsToExceptions="false"
+    processIsolation="true"
+>
+    <!--
+      processIsolation ZORUNLU, hiz tercihi degil.
+
+      Flarum entegrasyon testlerinde her test tam bir uygulama boot ediyor
+      (InstalledSite + migrator + tum extension'lar). Tek surecte biriktiginde
+      ~8 boot sonrasi PHP 256M limitini tuketiyor ve MariaDB cgroup sinirina
+      dayanip OOM-killer tarafindan olduruluyordu; sonraki tum testler
+      "MySQL server has gone away" ile zincirleme dusuyordu.
+
+      Olculen: izolasyonsuz 27 testte 6-7 hata; izolasyonlu 27/27 gecti (2.7s).
+    -->
+    <testsuites>
+        <testsuite name="integration">
+            <directory>tests/integration</directory>
+        </testsuite>
+        <testsuite name="unit">
+            <directory>tests/unit</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <!-- Test veritabani: uretim/gelistirme DB'sinden AYRI. Setup betigi
+             bu veritabanindaki TUM tablolari siler, asla canli DB gostermeyin. -->
+        <env name="DB_HOST" value="flarum-db"/>
+        <env name="DB_PORT" value="3306"/>
+        <env name="DB_DATABASE" value="kktc_meydan_test"/>
+        <env name="DB_USERNAME" value="kktc_user"/>
+        <env name="DB_PASSWORD" value="kktc_user_secret"/>
+        <env name="FLARUM_TEST_TMP_DIR" value="/var/www/html/tests/tmp"/>
+    </php>
+</phpunit>
