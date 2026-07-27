@@ -16,7 +16,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Otomatik Moderasyon",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-shield-alt",
+                "backgroundColor": "#c0392b",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

@@ -14,7 +14,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Ilan Sistemi",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-list-alt",
+                "backgroundColor": "#27ae60",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

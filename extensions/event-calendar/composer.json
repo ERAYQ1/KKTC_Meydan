@@ -14,7 +14,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Etkinlik Takvimi",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-calendar-alt",
+                "backgroundColor": "#8e44ad",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

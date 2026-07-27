@@ -14,7 +14,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Reklam Yoneticisi",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-ad",
+                "backgroundColor": "#e67e22",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

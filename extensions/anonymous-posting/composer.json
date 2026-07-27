@@ -15,7 +15,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Anonim Paylasim",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-user-secret",
+                "backgroundColor": "#34495e",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

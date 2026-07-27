@@ -4783,7 +4783,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/ads-manager",
-                "reference": "60476822ed6671bcd0956e715c0c2c967c0f490a"
+                "reference": "ab55a6378bb59f4b74f87370b6b714c5ed559fff"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -4792,7 +4792,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Reklam Yoneticisi",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-ad",
+                        "backgroundColor": "#e67e22",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4814,7 +4819,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/analytics-dashboard",
-                "reference": "7343ff90115581ecbf194125845f19508a40bfd8"
+                "reference": "67296630b78a3bff8232700da6661137a9c58b43"
             },
             "require": {
                 "flarum/core": "^1.8",
@@ -4824,7 +4829,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Analitik Panosu",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-chart-line",
+                        "backgroundColor": "#16a085",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4846,7 +4856,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/anonymous-posting",
-                "reference": "43064229c69fff7257b1eb94fabcdd9c1ddf2b9f"
+                "reference": "1e60454d6a42a6c50b705562baa4b1f94e65cf7e"
             },
             "require": {
                 "flarum/core": "^1.8",
@@ -4856,7 +4866,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Anonim Paylasim",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-user-secret",
+                        "backgroundColor": "#34495e",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4878,7 +4893,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/auto-moderation",
-                "reference": "d213a9856a1d50b34e30bc6a9a66d4b4fe8c2c3b"
+                "reference": "4599bc5c95083d6778030e665dd910b686d7d686"
             },
             "require": {
                 "flarum/core": "^1.8",
@@ -4889,7 +4904,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Otomatik Moderasyon",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-shield-alt",
+                        "backgroundColor": "#c0392b",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4911,7 +4931,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/business-profile",
-                "reference": "8b515f56e530171322e5138873c1883c2d4193d1"
+                "reference": "aa273a091bbd792f04d677a6f1428926db090bce"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -4920,7 +4940,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Isletme Profili",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-store",
+                        "backgroundColor": "#d35400",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4942,7 +4967,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/classifieds",
-                "reference": "b8e5e5a2f0a110f060bfe81d9920c9b1e5e27882"
+                "reference": "01b02db7eea349f2cc847324f1655a66803789a1"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -4951,7 +4976,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Ilan Sistemi",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-list-alt",
+                        "backgroundColor": "#27ae60",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -4973,7 +5003,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/event-calendar",
-                "reference": "205ed76e76d5a114c0e68d36518f8f37396035c8"
+                "reference": "2bc1e7433abd961fc44a637737a8a3034cfa30a9"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -4982,7 +5012,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Etkinlik Takvimi",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-calendar-alt",
+                        "backgroundColor": "#8e44ad",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {
@@ -5004,7 +5039,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/mobile-ui",
-                "reference": "c6e5c54e5c0379863b887fc790bfd34fce8d6ce7"
+                "reference": "8bf7ef3b2864583b3ccbe761c44f33eee0c187e7"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -5013,7 +5048,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Mobil Arayuz",
-                    "category": "appearance"
+                    "category": "appearance",
+                    "icon": {
+                        "name": "fas fa-mobile-alt",
+                        "backgroundColor": "#2980b9",
+                        "color": "#fff"
+                    }
                 }
             },
             "license": [
@@ -5030,7 +5070,7 @@
             "dist": {
                 "type": "path",
                 "url": "extensions/report-status",
-                "reference": "a3ce556896f7d37506cfb7a879e9de4a1708abb3"
+                "reference": "37c3e914fed0c373cbf3c9e9f80d179e92b74e29"
             },
             "require": {
                 "flarum/core": "^1.8"
@@ -5039,7 +5079,12 @@
             "extra": {
                 "flarum-extension": {
                     "title": "Sorun Bildir - Durum Takibi",
-                    "category": "feature"
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-exclamation-triangle",
+                        "backgroundColor": "#f39c12",
+                        "color": "#fff"
+                    }
                 }
             },
             "autoload": {

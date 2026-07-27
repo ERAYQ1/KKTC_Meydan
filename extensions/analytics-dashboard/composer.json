@@ -15,7 +15,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Analitik Panosu",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-chart-line",
+                "backgroundColor": "#16a085",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

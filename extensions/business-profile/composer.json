@@ -14,7 +14,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Isletme Profili",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-store",
+                "backgroundColor": "#d35400",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

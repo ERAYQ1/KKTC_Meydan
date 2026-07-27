@@ -14,7 +14,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Sorun Bildir - Durum Takibi",
-            "category": "feature"
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-exclamation-triangle",
+                "backgroundColor": "#f39c12",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",

@@ -9,7 +9,12 @@
     "extra": {
         "flarum-extension": {
             "title": "Mobil Arayuz",
-            "category": "appearance"
+            "category": "appearance",
+            "icon": {
+                "name": "fas fa-mobile-alt",
+                "backgroundColor": "#2980b9",
+                "color": "#fff"
+            }
         }
     },
     "minimum-stability": "dev",
