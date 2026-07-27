@@ -16,6 +16,8 @@ use Flarum\Database\AbstractModel;
  * @property bool $is_active
  * @property int $impressions_count
  * @property int $clicks_count
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  */
 class Ad extends AbstractModel
 {

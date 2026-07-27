@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "kktcmeydan-platform-tooling",
+  "description": "Root-level lint/format tooling for extensions/*/js - not a buildable package itself.",
+  "devDependencies": {
+    "@flarum/prettier-config": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@flarum/prettier-config",
+  "scripts": {
+    "lint": "eslint \"extensions/*/js/src/**/*.{js,ts,tsx}\"",
+    "format": "prettier --write \"extensions/*/js/src/**/*.{js,ts,tsx}\"",
+    "format:check": "prettier --check \"extensions/*/js/src/**/*.{js,ts,tsx}\""
+  }
+}

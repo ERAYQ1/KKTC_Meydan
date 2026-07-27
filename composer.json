@@ -53,7 +53,9 @@
     "minimum-stability": "beta",
     "prefer-stable": true,
     "require-dev": {
-        "flarum/testing": "^1.0"
+        "flarum/phpstan": "^1.8",
+        "flarum/testing": "^1.0",
+        "phpstan/phpstan": "^1.8"
     },
     "autoload-dev": {
         "psr-4": {
@@ -63,11 +65,13 @@
     "scripts": {
         "test": "phpunit",
         "test:setup": "@php -r \"require 'vendor/autoload.php'; (new Flarum\\Testing\\integration\\Setup\\SetupScript())->run();\"",
-        "verify:anonymity": "@php scripts/verify-anonymity.php"
+        "verify:anonymity": "@php scripts/verify-anonymity.php",
+        "phpstan": "phpstan analyse --no-progress"
     },
     "scripts-descriptions": {
         "test": "PHPUnit regresyon testlerini calistirir (once test:setup gerekir).",
         "test:setup": "AYRI test veritabanini kurar. DB_* ve FLARUM_TEST_TMP_DIR ortam degiskenlerini kullanir. Hedef veritabanindaki TUM tablolari siler - asla canli DB gostermeyin.",
-        "verify:anonymity": "Calisan siteye karsi gercek HTTP istekleriyle anonimlik sizintisi tarar."
+        "verify:anonymity": "Calisan siteye karsi gercek HTTP istekleriyle anonimlik sizintisi tarar.",
+        "phpstan": "Statik analiz (level 5) - extensions/*/src."
     }
 }

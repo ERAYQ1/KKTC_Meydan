@@ -1,0 +1,120 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  php-lint:
+    name: PHP syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+      - name: php -l on every tracked .php file
+        run: git ls-files '*.php' | xargs -n1 -P4 php -l
+
+  phpstan:
+    name: PHPStan (level 5)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, gd, zip, pdo_mysql, bcmath
+          coverage: none
+      - name: Composer install
+        run: composer install --no-interaction --prefer-dist
+      - name: PHPStan
+        run: composer run phpstan
+
+  phpunit:
+    name: PHPUnit (unit + integration)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Reuses the project's own docker-compose stack rather than
+      # reassembling PHP extensions/MariaDB tuning by hand in the runner -
+      # what CI tests is then the same image/config that actually ships.
+      - name: Write CI .env
+        run: |
+          echo "MYSQL_ROOT_PASSWORD=ci_root_secret" >> .env
+          echo "MYSQL_PASSWORD=ci_user_secret" >> .env
+
+      - name: Write CI config.php
+        run: |
+          cp config.example.php config.php
+          sed -i "s/CHANGE_ME_BEFORE_DEPLOY/ci_user_secret/" config.php
+
+      - name: Build and start stack
+        run: docker compose up -d --build
+
+      - name: Wait for MariaDB to be healthy
+        run: |
+          for i in $(seq 1 45); do
+            status=$(docker inspect --format='{{.State.Health.Status}}' kktc_meydan_db 2>/dev/null || echo starting)
+            [ "$status" = "healthy" ] && exit 0
+            sleep 2
+          done
+          echo "MariaDB never became healthy" >&2
+          docker logs kktc_meydan_db
+          exit 1
+
+      - name: Composer install (in container)
+        run: docker compose exec -T flarum-app composer install --no-interaction --prefer-dist
+
+      - name: Set up separate test database
+        run: |
+          docker compose exec -T flarum-app sh -c '
+            DB_HOST=flarum-db DB_DATABASE=kktc_meydan_test \
+            DB_USERNAME=kktc_user DB_PASSWORD=ci_user_secret \
+            FLARUM_TEST_TMP_DIR=/var/www/html/tests/tmp composer test:setup
+          '
+
+      - name: PHPUnit
+        run: docker compose exec -T flarum-app vendor/bin/phpunit
+
+      - name: Container logs (on failure)
+        if: failure()
+        run: docker compose logs
+
+  build-diff:
+    name: JS build (${{ matrix.extension }}) - dist staleness check
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        extension:
+          - ads-manager
+          - analytics-dashboard
+          - anonymous-posting
+          - business-profile
+          - classifieds
+          - event-calendar
+          - mobile-ui
+          - report-status
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: npm ci
+        working-directory: extensions/${{ matrix.extension }}/js
+        run: npm ci
+
+      - name: npm run build
+        working-directory: extensions/${{ matrix.extension }}/js
+        run: npm run build
+
+      # js/dist/ is committed (so a fresh clone doesn't need a JS toolchain
+      # to run the forum) - this fails the build if someone edited src/
+      # without rebuilding, so dist/ never silently drifts from src/.
+      - name: Fail if dist/ is stale (uncommitted after a fresh build)
+        run: git diff --exit-code -- extensions/${{ matrix.extension }}/js/dist

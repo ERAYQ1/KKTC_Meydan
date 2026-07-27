@@ -1,0 +1,25 @@
+includes:
+    - vendor/flarum/phpstan/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    stubFiles:
+        - phpstan-stubs/Discussion.stub
+        - phpstan-stubs/Post.stub
+    level: 5
+    paths:
+        - extensions/ads-manager/src
+        - extensions/analytics-dashboard/src
+        - extensions/anonymous-posting/src
+        - extensions/auto-moderation/src
+        - extensions/business-profile/src
+        - extensions/classifieds/src
+        - extensions/event-calendar/src
+        - extensions/report-status/src
+    excludePaths:
+        - */node_modules/*
+        - */vendor/*
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

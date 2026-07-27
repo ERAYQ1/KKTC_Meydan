@@ -52,13 +52,25 @@ class GuardRegulatedCategoryContent
             }
 
             if ($hasIdNumber || $isSecurityTag) {
-                // firstOrCreate: afterSave can run again on a subsequent
-                // edit that still trips the guard - don't stack duplicate
-                // flags for the same post/type pair.
-                Flag::firstOrCreate(
-                    ['post_id' => $post->id, 'type' => 'kktcmeydan-auto-moderation'],
-                    ['created_at' => Carbon::now()]
-                );
+                // afterSave can run again on a subsequent edit that still
+                // trips the guard - don't stack duplicate flags for the
+                // same post/type pair. NOT Flag::firstOrCreate(): Flag
+                // declares no $fillable, so mass-assignment (what
+                // firstOrCreate uses under the hood) throws
+                // MassAssignmentException on every call - caught by
+                // AutoModerationFlagDedupTest, which failed with a 500
+                // until this was changed to explicit property assignment.
+                $exists = Flag::where('post_id', $post->id)
+                    ->where('type', 'kktcmeydan-auto-moderation')
+                    ->exists();
+
+                if (! $exists) {
+                    $flag = new Flag;
+                    $flag->post_id = $post->id;
+                    $flag->type = 'kktcmeydan-auto-moderation';
+                    $flag->created_at = Carbon::now();
+                    $flag->save();
+                }
             }
         });
     }

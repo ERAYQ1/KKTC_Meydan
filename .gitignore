@@ -19,6 +19,10 @@
 # works without running npm install/build; node_modules is regenerable)
 /extensions/*/js/node_modules/
 
+# Root lint/format tooling (package.json devDependencies) - regenerable.
+# package-lock.json IS committed (CI's `npm ci` needs it).
+/node_modules/
+
 # Sensitive config files
 config.php
 .env

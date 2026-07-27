@@ -1,0 +1,28 @@
+<?php
+
+namespace Flarum\Discussion;
+
+/**
+ * PHPStan-only: properties/relations our extensions add to the core
+ * Discussion model via Extend\Model->cast()/Extend\Relation, and via
+ * flarum/approval + flarum/tags (neither ships its own PHPStan stubs).
+ * Merged onto the real class by PHPStan's `stubFiles`, has no runtime
+ * effect.
+ *
+ * @property bool $is_approved (flarum/approval)
+ * @property bool $is_anonymous (kktcmeydan/anonymous-posting)
+ * @property float|null $price (kktcmeydan/classifieds)
+ * @property string $currency (kktcmeydan/classifieds)
+ * @property string|null $location (kktcmeydan/classifieds)
+ * @property string|null $contact_phone (kktcmeydan/classifieds)
+ * @property string|null $classified_type (kktcmeydan/classifieds)
+ * @property \Carbon\Carbon|null $event_start_at (kktcmeydan/event-calendar)
+ * @property \Carbon\Carbon|null $event_end_at (kktcmeydan/event-calendar)
+ * @property string|null $report_status (kktcmeydan/report-status)
+ * @property int $id
+ * @property int $user_id
+ * @property int|null $last_posted_user_id
+ */
+class Discussion
+{
+}

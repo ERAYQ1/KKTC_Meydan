@@ -1,0 +1,19 @@
+<?php
+
+namespace Flarum\Post;
+
+/**
+ * PHPStan-only: properties our extensions add to the core Post model via
+ * Extend\Model->cast(), and flarum/approval's is_approved (it ships no
+ * PHPStan stubs of its own). Merged onto the real class by PHPStan's
+ * `stubFiles`, has no runtime effect.
+ *
+ * @property bool $is_approved (flarum/approval)
+ * @property bool $is_anonymous (kktcmeydan/anonymous-posting)
+ * @property int $id
+ * @property int $number
+ * @property string $content
+ */
+class Post
+{
+}
