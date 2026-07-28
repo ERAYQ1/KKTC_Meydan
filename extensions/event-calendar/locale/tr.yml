@@ -6,3 +6,10 @@ kktcmeydan-event-calendar:
       end_label: Bitiş Tarihi/Saati
     badge:
       tooltip: "Etkinlik: {range}"
+    rsvp:
+      going_button: Katılıyorum
+      interested_button: İlgileniyorum
+    calendar:
+      nav_link: Etkinlik Takvimi
+    notifications:
+      kktcmeydanEventReminder: "Yarın katılacağınız bir etkinlik var: {discussion}"

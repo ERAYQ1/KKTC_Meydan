@@ -10,4 +10,10 @@ set -e
 chown -R www-data:www-data /var/www/html/storage
 chmod -R 755 /var/www/html/storage
 
+# Flarum's Laravel-style scheduler ("flarum schedule:run") needs a single
+# cron tick to ever run - without it, every Extend\Console::schedule() job
+# in the codebase (event reminders, core's weekly announcement) is dead code.
+crontab /var/www/html/docker/crontab
+crond -b
+
 exec "$@"

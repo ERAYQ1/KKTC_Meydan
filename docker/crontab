@@ -1,0 +1,6 @@
+# Flarum'un kendi Laravel-tarzi zamanlayicisi ("schedule:run") boyle bir
+# cron olmadan hicbir extension'in Extend\Console::schedule() ile kaydettigi
+# is asla calismaz (ornegin event-calendar'in etkinlik hatirlatma bildirimi,
+# core'un haftalik duyuru gorevi). Standart Flarum kurulumu icin gerekli tek
+# cron satiri budur.
+* * * * * su -s /bin/sh -c "cd /var/www/html && php flarum schedule:run --no-interaction >> storage/logs/scheduler.log 2>&1" www-data

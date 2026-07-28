@@ -6,4 +6,18 @@ kktcmeydan-business-profile:
       phone_label: Telefon
       whatsapp_label: WhatsApp
       hours_label: Çalışma Saatleri
+      map_url_label: Harita Linki (Google Maps paylaşım linki)
+      photo_url_label: İşletme Fotoğrafı (görsel linki)
       save_button: Kaydet
+    map_link: Haritada Gör
+    reviews:
+      heading: "İşletme Yorumları"
+      no_reviews: Henüz yorum yapılmamış.
+      review_count: "{count} yorum"
+      add_review: Yorum Yap
+      rating_label: Puan
+      comment_label: Yorumunuz (opsiyonel)
+      submit_button: Gönder
+      delete_button: Sil
+      cannot_review_self: Kendi işletmenizi değerlendiremezsiniz.
+      login_required: Yorum yapmak için giriş yapmalısınız.
