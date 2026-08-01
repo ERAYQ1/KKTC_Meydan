@@ -21,8 +21,6 @@ KKTC Meydan, günlük gündemden bölge sohbetlerine, üniversite yaşamından e
 | 🛠️ Sorun Bildir | Altyapı/belediye sorunları, durum takibi (bildirildi → inceleniyor → yetkiliye iletildi → çözüldü) |
 | 🗣️ Genel Meydan | Günlük sohbetler, mizah, itiraf, tartışma, soru-cevap |
 
-Detaylı içerik mimarisi, hashtag hiyerarşisi ve yapılacaklar listesi için bkz. [ROADMAP.md](ROADMAP.md).
-
 ## Özel Eklentiler
 
 Bu repo'ya özel geliştirilen eklentiler `extensions/` klasöründe tutulur:
@@ -133,8 +131,6 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] N+1 sorgu düzeltmeleri (konu listesinde `ianm/follow-users` + `fof/best-answer` kaynaklı gereksiz sorgular — bkz. kök `extend.php`) ve rozetlerin başlığın üzerine binmesi düzeltmesi (bkz. `less-overrides/forum.less`)
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu (SSL/HTTPS dahil — şu an sadece port 80)
-
-Detaylı durum ve teknik notlar için bkz. [ROADMAP.md](ROADMAP.md).
 
 ## Lisans
 
