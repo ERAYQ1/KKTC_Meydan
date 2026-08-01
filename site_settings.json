@@ -6,6 +6,11 @@
   "welcome_title": "KKTC Meydan'a Hoş Geldiniz! 🌴",
   "welcome_subtitle": "Kıbrıs gündemi, bölgeler, üniversite yaşamı, emlak/iş ilanları ve ulaşım hakkında özgürce tartışın.",
   "footer_html": "© 2026 KKTC Meydan — Kıbrıs'ın Özgür Topluluk Platformu",
+  "forum_keywords": "kktc, kıbrıs, lefkosa, girne, gazimagusa, kktc meydan, kktc forum, kktc gundem, kktc haber, kktc universite, kktc ulasim, kktc emlak, kktc is ilani",
+  "seo_social_media_image_path": "assets/favicon-kktc03.png",
+  "seo_reviewed_post_crawler": "1",
+  "seo_reviewed_search_engines": "1",
+  "seo_last_review": "2026-08-01 12:00:00",
   "categories": [
     {
       "slug": "gundem",

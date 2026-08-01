@@ -69,6 +69,26 @@ if (! empty($config['footer_html'])) {
     $settings->set('custom_footer', $config['footer_html']);
 }
 
+if (! empty($config['forum_keywords'])) {
+    $settings->set('forum_keywords', $config['forum_keywords']);
+}
+
+if (! empty($config['seo_social_media_image_path'])) {
+    $settings->set('seo_social_media_image_path', $config['seo_social_media_image_path']);
+}
+
+if (isset($config['seo_reviewed_post_crawler'])) {
+    $settings->set('seo_reviewed_post_crawler', $config['seo_reviewed_post_crawler']);
+}
+
+if (isset($config['seo_reviewed_search_engines'])) {
+    $settings->set('seo_reviewed_search_engines', $config['seo_reviewed_search_engines']);
+}
+
+if (! empty($config['seo_last_review'])) {
+    $settings->set('seo_last_review', $config['seo_last_review']);
+}
+
 $forceThemeLess = in_array('--force', $argv, true);
 $themeLessPath = __DIR__ . '/assets/theme.less';
 
