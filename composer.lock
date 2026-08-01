@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb68f637dc26683536b5050151debbdc",
+    "content-hash": "0fa49fd95fc35c8ad924d451a43e1527",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -5256,6 +5256,42 @@
                 "MIT"
             ],
             "description": "Ilan konularina yapilandirilmis fiyat/konum/iletisim/ilan-tipi alanlari ekler (Ilan Sistemi v2 altyapisi)",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/currency-ticker",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/currency-ticker",
+                "reference": "80d7274730c0536fd8068ca40fd4e94452e81f34"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Doviz Kuru Banti",
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-money-bill-wave",
+                        "backgroundColor": "#16a085",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\CurrencyTicker\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Canli GBP/EUR/USD - TRY doviz kuru banti - forum ust bar",
             "transport-options": {
                 "relative": true
             }
@@ -14274,6 +14310,7 @@
         "kktcmeydan/auto-moderation": 20,
         "kktcmeydan/business-profile": 20,
         "kktcmeydan/classifieds": 20,
+        "kktcmeydan/currency-ticker": 20,
         "kktcmeydan/duty-pharmacy": 20,
         "kktcmeydan/event-calendar": 20,
         "kktcmeydan/mobile-ui": 20,

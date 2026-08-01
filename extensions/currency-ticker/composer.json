@@ -1,0 +1,27 @@
+{
+    "name": "kktcmeydan/currency-ticker",
+    "description": "Canli GBP/EUR/USD - TRY doviz kuru banti - forum ust bar",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\CurrencyTicker\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Doviz Kuru Banti",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-money-bill-wave",
+                "backgroundColor": "#16a085",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

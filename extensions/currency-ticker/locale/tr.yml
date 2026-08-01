@@ -1,0 +1,5 @@
+kktcmeydan-currency-ticker:
+  forum:
+    loading: Kurlar yükleniyor...
+    error: Döviz kurları alınamadı.
+    updated_at: 'Son güncelleme: {time}'

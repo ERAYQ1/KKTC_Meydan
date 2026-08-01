@@ -1,0 +1,49 @@
+.CurrencyTicker {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  background: rgba(20, 24, 28, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #eaeef1;
+  font-size: 12.5px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &--loading {
+    opacity: 0.6;
+  }
+}
+
+.CurrencyTicker-track {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.CurrencyTicker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.CurrencyTicker-icon {
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .CurrencyTicker {
+    font-size: 11.5px;
+    padding: 8px 10px;
+  }
+}

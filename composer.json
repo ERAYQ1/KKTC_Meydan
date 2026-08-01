@@ -35,6 +35,7 @@
         "kktcmeydan/auto-moderation": "*@dev",
         "kktcmeydan/business-profile": "*@dev",
         "kktcmeydan/classifieds": "*@dev",
+        "kktcmeydan/currency-ticker": "*@dev",
         "kktcmeydan/duty-pharmacy": "*@dev",
         "kktcmeydan/event-calendar": "*@dev",
         "kktcmeydan/mobile-ui": "*@dev",
