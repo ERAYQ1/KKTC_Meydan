@@ -34,6 +34,11 @@ Bu repo'ya özel geliştirilen eklentiler `extensions/` klasöründe tutulur:
 - **`extensions/analytics-dashboard`** — Admin paneline DAU/WAU, toplam konu/mesaj/üye sayaçları ve en popüler kategoriler (konu/yanıt bazında) gösteren salt-okunur istatistik sayfası.
 - **`extensions/auto-moderation`** — Sağlık/Güvenlik-Acil Durum/Kamu kategorilerinde kimlik numarası, sağlık mahremiyeti ihlali ve kurum/meslek hedefli karalama içeriğini tespit edip moderatör kuyruğuna düşüren, güvenlik ihlallerinde otomatik `flarum-flags` raporu oluşturan arka plan koruma katmanı.
 - **`extensions/mobile-ui`** — Mobil (iOS Safari & Android Chrome) için native-app hissi: alt navigasyon barı, kart tipi konu listesi, keşfet/profil bottom sheet'leri, tam ekran arama, klavye/dokunma uyumluluğu. Tüm kurallar `@media (max-width: 768px)` altında scope edilir — masaüstü görünümü etkilenmez.
+- **`extensions/duty-pharmacy`** — Nöbetçi eczaneler (KTEB canlı veri, kaynak erişilemezse fallback) ve acil numaralar; forum üst barında modal.
+- **`extensions/currency-ticker`** — GBP/EUR/USD → TRY canlı döviz kuru bandı; forum üst bar.
+- **`extensions/block-user`** — Kullanıcı engelleme: profil, ayarlar sayfası ve engellenen kullanıcının içeriğini filtreleme.
+- **`extensions/social-share`** — Konu içi hızlı paylaşım modalı: WhatsApp, X, Facebook ve link kopyala.
+- **`fof/reactions`** — KKTC'ye özel 5 yerel emoji ile beğeni yerine geçen reaksiyon sistemi (emoji seti admin panelinden yapılandırılır).
 
 Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodunda değişiklik yaparsan ilgili eklentinin `js/` klasöründe `npm install && npm run build` çalıştırman gerekir.
 
@@ -44,6 +49,17 @@ Derlenmiş JS (`js/dist/`) repo'ya dahildir, `node_modules/` değildir; JS kodun
 - nginx
 - Node.js (özel eklentilerin JS derlemesi için)
 - Docker / Docker Compose
+
+### Nginx güvenlik sertleştirmesi
+
+`.nginx.conf` içinde uygulanan kalkanlar:
+
+- **RCE sertleştirmesi:** `/assets/` (kullanıcı yüklemeli dosya dizini) altında PHP çalıştırma engellenir — kötü amaçlı `.php` yüklemesi upload edilse bile çalıştırılamaz.
+- **Hassas dosya erişim engeli:** `composer.json`, `composer.lock`, `package.json`, `package-lock.json`, `phpunit.xml`, `phpstan.neon` dosyalarına doğrudan HTTP erişimi 403 ile reddedilir.
+- **Gizli dosya/dizin engeli:** `.` ile başlayan tüm dosyalar (`.env`, `.git` vb.) erişime kapalı.
+- **Source map engeli:** `.map` dosyaları production'da bilgi sızıntısı olduğundan erişime kapalı.
+- **Güvenlik başlıkları:** `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security` ve Flarum/Mithril boot ile YouTube gömme uyumlu bir `Content-Security-Policy` her yanıtta (`always`, 4xx/5xx dahil) gönderilir.
+- **`server_tokens off`:** nginx sürüm bilgisi hata sayfalarında/başlıklarda gizlenir.
 
 ## Kurulum (tek komutla, Docker)
 
@@ -63,6 +79,8 @@ docker compose exec flarum-app composer install
 
 Platform varsayılan olarak `http://localhost:8080` üzerinden erişilebilir olacaktır. `public/assets/` içindeki derlenmiş JS/CSS dosyaları git'e dahil değildir (`.gitignore`'da) — ilk istekte kendiliğinden derlenir; forum sayfasını ve admin panelini (giriş yaptıktan sonra) birer kez ziyaret etmek yeterlidir.
 
+> **Admin girişi:** `admin` kullanıcı adı/şifresi Flarum'un web kurulum sihirbazında (ilk `http://localhost:8080` ziyaretinde) interaktif olarak belirlenir; hiçbir dosyada varsayılan veya sabit kodlanmış bir admin şifresi tutulmaz. SMTP henüz yapılandırılmadığından ("Durum" bölümüne bakın) şifremi unuttum akışı şu an çalışmıyor — şifreyi unutursanız tekrar hatırlamanın yolu yok, admin panelinden değiştirip güvenli saklayın.
+
 İlk kurulumdan sonra gerekli eklentileri etkinleştirin:
 
 ```bash
@@ -72,6 +90,8 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
   kktcmeydan-business-profile kktcmeydan-report-status kktcmeydan-classifieds \
   kktcmeydan-event-calendar kktcmeydan-anonymous-posting kktcmeydan-ads-manager \
   kktcmeydan-analytics-dashboard kktcmeydan-auto-moderation kktcmeydan-mobile-ui \
+  kktcmeydan-duty-pharmacy kktcmeydan-currency-ticker kktcmeydan-block-user \
+  kktcmeydan-social-share fof-reactions \
   fof-follow-tags ianm-follow-users fof-sitemap fof-polls fof-oauth \
   fof-gamification fof-formatting fof-best-answer fof-pages fof-terms fof-seo
 ```
@@ -126,6 +146,12 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] Reklam sistemi (özel eklenti — bkz. `extensions/ads-manager`: hedefli banner, admin CRUD paneli, gösterim/tıklama sayacı)
 - [x] Detaylı istatistik/analitik admin paneli (özel eklenti — bkz. `extensions/analytics-dashboard`: DAU/WAU, popüler kategoriler, toplam sayaçlar)
 - [x] Otomatik moderasyon (özel eklenti — bkz. `extensions/auto-moderation`: kimlik no/sağlık mahremiyeti/karalama tespiti, Sağlık-Güvenlik-Kamu kategorilerinde)
+- [x] Nöbetçi eczaneler (özel eklenti — bkz. `extensions/duty-pharmacy`: KTEB canlı veri + fallback, acil numaralar, üst bar modalı)
+- [x] Canlı döviz kuru bandı (özel eklenti — bkz. `extensions/currency-ticker`: GBP/EUR/USD → TRY, üst bar)
+- [x] Kullanıcı engelleme (özel eklenti — bkz. `extensions/block-user`: profil, ayarlar, içerik filtreleme)
+- [x] Konu paylaşım modalı (özel eklenti — bkz. `extensions/social-share`: WhatsApp, X, Facebook, link kopyala)
+- [x] KKTC yerel emoji reaksiyonları (`fof/reactions`, 5 yerel emoji)
+- [x] Nginx güvenlik sertleştirmesi (`/assets/` altında PHP çalıştırma yasağı, hassas config dosyalarına 403, source map/gizli dosya engeli, güvenlik başlıkları — bkz. Teknoloji bölümü)
 - [x] SEO meta/OG/Twitter Card/schema.org etiketleri (`fof/seo`), robots.txt (`fof/sitemap` tarafından zaten otomatik üretiliyordu)
 - [x] Gizlilik Politikası + Kullanım Şartları sayfaları (`fof/pages` ile `/p/gizlilik-politikasi` ve `/p/kullanim-sartlari`), kayıtta zorunlu kabul checkbox'ı (`fof/terms`) — **içerik taslaktır, yayına almadan önce hukuki gözden geçirme şart**, `iletisim@kktcmeydan.com` yer tutucudur
 - [x] N+1 sorgu düzeltmeleri (konu listesinde `ianm/follow-users` + `fof/best-answer` kaynaklı gereksiz sorgular — bkz. kök `extend.php`) ve rozetlerin başlığın üzerine binmesi düzeltmesi (bkz. `less-overrides/forum.less`)
