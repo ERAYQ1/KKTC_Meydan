@@ -607,6 +607,72 @@ fof-sitemap:
             minimum_item_threshold_label: "Etiket: Minimum konu sayısı"
             minimum_item_threshold_help: Bir etiketin site haritasına dahil edilmesi için sahip olması gereken minimum konu sayısı.
 
+fof-reactions:
+  forum:
+    disabled-reaction: Bu reaksiyonu şu anda kullanamazsınız, lütfen sayfayı yenileyin.
+    warning: Reaksiyonunuz dönüştürüldü.
+    notification: '{username} mesajınıza {reaction} ile tepki verdi'
+    settings:
+      notify_post_reacted_label: Biri mesajlarımdan birine tepki verdiğinde
+    reacting-own-post: Kendi mesajınıza reaksiyon veremezsiniz.
+    modal:
+      title: Reaksiyonlar
+      anonymous_count: "{count, plural, one {# anonim kullanıcı} other {# anonim kullanıcı}}"
+      no_reactions: Henüz reaksiyon yok.
+    mod_item: Reaksiyonları Görüntüle
+    react_button_label: Tepki Ver
+
+  admin:
+    permissions:
+      react_posts_label: Mesajlara reaksiyon ver
+      see_reactions_label: Mesajlara kimin reaksiyon verdiğini gör
+      delete_post_reactions_label: Mesajlardaki reaksiyonları sil
+
+    page:
+      cdn:
+        title: CDN
+        help: |
+          Varsayılan olarak reaksiyon görselleri Cloudflare'in CDN'inden sunulur. İsterseniz başka bir CDN
+          adresi belirtebilirsiniz. <code>[codepoint]</code> ifadesi emojinin kod noktasıyla değiştirilir.
+
+          Örneğin jsdelivr üzerinden Noto Emoji'ye geçmek için <code>https://cdn.jsdelivr.net/gh/googlefonts/noto-emoji@v2.040/svg/emoji_u[codepoint].svg</code> girebilirsiniz. Bu alan asla boş bırakılmamalıdır.
+        label: URL
+        default-url: "Varsayılan: {url}"
+      reactions:
+        title: Özel Reaksiyonlar
+        reactions: Mevcut Reaksiyonlar
+        Helptext: Emoji veya font-awesome ikonunun adını (tanımlayıcı) girin ve türünü seçin.
+        help:
+          display: Görünen Ad
+          identifier: Tanımlayıcı
+        delete_confirmation: Bu reaksiyonu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.
+
+      convert:
+        help: Eklentiyi az önce güncellediyseniz reaksiyonlarınızın dönüştürülmesi gerekir. Yeni kurduysanız bu mesajı görmezden gelebilirsiniz.
+        button: Eski reaksiyonları dönüştür
+        converting: Reaksiyonlarınız şu anda dönüştürülüyor. İşlem bittiğinde görmek için birkaç dakika sonra sitenizi yenileyin (toplam beğeni sayınıza göre süre değişebilir).
+        converted: "{number} beğeni başarıyla dönüştürüldü"
+
+      settings:
+        react_own_posts_help: Etkinleştirildiğinde, izne bağlı olarak kullanıcılar kendi mesajlarına da reaksiyon verebilir. Kullanıcıların kendi mesajlarına reaksiyon vermesini engellemek için bu ayarı kapatın.
+        react_own_posts_label: Kullanıcılar kendi mesajlarına reaksiyon verebilir
+        allow-anonymous: Anonim (ziyaretçi) reaksiyonlarına izin ver
+        allow-anonymous-help: Etkinleştirilirse ziyaretçiler ve anonim kullanıcılar mesajlara reaksiyon verebilir. Anonim reaksiyonlar bir kullanıcı profiline bağlanmaz ve reaksiyon listesinde toplu gösterilir.
+        save_settings: Ayarları Kaydet
+        integrations:
+          legend: Entegrasyonlar
+          warning: Aynı reaksiyon hem beğeniye <strong>hem de</strong> oya dönüştürülemez.
+          gamification:
+            legend: Puanlama (Gamification)
+            upvoteLabel: Reaksiyonları olumlu oya dönüştür
+            upvoteHelptext: Otomatik olarak olumlu oya dönüştürülmesini istediğiniz reaksiyonun tanımlayıcısını girin
+            downvoteLabel: Reaksiyonları olumsuz oya dönüştür
+            downvoteHelptext: Otomatik olarak olumsuz oya dönüştürülmesini istediğiniz reaksiyonun tanımlayıcısını girin
+          likes:
+            legend: Beğeniler
+            Label: Reaksiyonları beğeniye dönüştür
+            Helptext: Otomatik olarak beğeniye dönüştürülmesini istediğiniz reaksiyonun tanımlayıcısını girin
+
 fof-formatting:
   admin:
     plugins:

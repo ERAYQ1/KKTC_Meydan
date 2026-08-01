@@ -25,6 +25,7 @@
         "fof/oauth": "^1.7",
         "fof/pages": "^1.0",
         "fof/polls": "^2.3",
+        "fof/reactions": "^1.4",
         "fof/seo": "^3.0",
         "fof/sitemap": "^2.6",
         "fof/terms": "^1.5",
