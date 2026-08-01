@@ -1,0 +1,16 @@
+kktcmeydan-duty-pharmacy:
+  forum:
+    header_button: Nöbetçi Eczaneler & Acil
+    modal:
+      title: Nöbetçi Eczaneler & Acil Numaralar
+      tabs:
+        pharmacies: Nöbetçi Eczaneler
+        emergency: Acil Numaralar
+      loading: Yükleniyor...
+      error: Veri alınamadı, lütfen daha sonra tekrar deneyin.
+      fallback_notice: Canlı KTEB verisine ulaşılamadı, yedek bilgiler gösteriliyor.
+      call_button: Ara
+      map_button: Haritada Gör
+      no_pharmacies: Bu ilçe için nöbetçi eczane bilgisi bulunamadı.
+      hours_label: 'Nöbet saatleri:'
+      updated_at: 'Son güncelleme: {time}'

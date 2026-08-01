@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa6156f07ffd18229f5b670b76beb650",
+    "content-hash": "bb68f637dc26683536b5050151debbdc",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -5256,6 +5256,42 @@
                 "MIT"
             ],
             "description": "Ilan konularina yapilandirilmis fiyat/konum/iletisim/ilan-tipi alanlari ekler (Ilan Sistemi v2 altyapisi)",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/duty-pharmacy",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/duty-pharmacy",
+                "reference": "8652d8a718d045a9e183002f55582bd85ffb1fe7"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Nobetci Eczaneler ve Acil",
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-briefcase-medical",
+                        "backgroundColor": "#c0392b",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\DutyPharmacy\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Nobetci eczaneler (KTEB canli veri) ve acil numaralar - forum ust barinda modal",
             "transport-options": {
                 "relative": true
             }
@@ -14238,6 +14274,7 @@
         "kktcmeydan/auto-moderation": 20,
         "kktcmeydan/business-profile": 20,
         "kktcmeydan/classifieds": 20,
+        "kktcmeydan/duty-pharmacy": 20,
         "kktcmeydan/event-calendar": 20,
         "kktcmeydan/mobile-ui": 20,
         "kktcmeydan/report-status": 20

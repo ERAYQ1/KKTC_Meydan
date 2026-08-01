@@ -1,0 +1,117 @@
+.DutyPharmacy-headerButton {
+  white-space: nowrap;
+}
+
+.DutyPharmacyModal {
+  &-loading,
+  &-error {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  &-notice {
+    background: rgba(230, 126, 34, 0.12);
+    border: 1px solid rgba(230, 126, 34, 0.4);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  &-tabs {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    border-bottom: 1px solid rgba(120, 120, 120, 0.25);
+
+    li.active .Button {
+      font-weight: bold;
+      border-bottom: 2px solid #c0392b;
+    }
+  }
+
+  &-districtTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+
+    .Button.active {
+      background: #c0392b;
+      color: #fff;
+    }
+  }
+
+  &-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  &-empty {
+    opacity: 0.7;
+  }
+
+  &-emergencyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+}
+
+.DutyPharmacyCard {
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 8px;
+  padding: 12px;
+
+  &-name {
+    margin: 0 0 6px;
+    font-size: 15px;
+  }
+
+  &-hours,
+  &-address {
+    margin: 0 0 6px;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  &-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+}
+
+.EmergencyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 8px;
+  padding: 16px 8px;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+
+  &:hover {
+    background: rgba(192, 57, 43, 0.08);
+    border-color: #c0392b;
+  }
+
+  &-label {
+    font-size: 13px;
+  }
+
+  &-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #c0392b;
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "kktcmeydan/duty-pharmacy",
+    "description": "Nobetci eczaneler (KTEB canli veri) ve acil numaralar - forum ust barinda modal",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\DutyPharmacy\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Nobetci Eczaneler ve Acil",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-briefcase-medical",
+                "backgroundColor": "#c0392b",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
