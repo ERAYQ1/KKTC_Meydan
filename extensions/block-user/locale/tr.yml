@@ -1,0 +1,10 @@
+kktcmeydan-block-user:
+  forum:
+    block_button: Kullanıcıyı Engelle
+    unblock_button: Engeli Kaldır
+    block_confirm: Bu kullanıcıyı engellemek istediğinize emin misiniz? Konuları ve gönderileri artık görünmeyecek.
+    blocked_toast: Kullanıcı engellendi.
+    unblocked_toast: Kullanıcının engeli kaldırıldı.
+    settings:
+      title: Engellenen Kullanıcılar
+      empty: Henüz kimseyi engellemediniz.

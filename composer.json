@@ -33,6 +33,7 @@
         "kktcmeydan/analytics-dashboard": "*@dev",
         "kktcmeydan/anonymous-posting": "*@dev",
         "kktcmeydan/auto-moderation": "*@dev",
+        "kktcmeydan/block-user": "*@dev",
         "kktcmeydan/business-profile": "*@dev",
         "kktcmeydan/classifieds": "*@dev",
         "kktcmeydan/currency-ticker": "*@dev",

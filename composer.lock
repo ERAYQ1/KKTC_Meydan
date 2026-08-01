@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fa49fd95fc35c8ad924d451a43e1527",
+    "content-hash": "4b66c184edbeba65425e98c5cf2c5970",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -5184,6 +5184,42 @@
                 "MIT"
             ],
             "description": "Saglik, Guvenlik/Acil Durum ve Kamu kategorilerinde TC/KKTC kimlik numarasi, ozel saglik ihlali ve doktor/kurum hedefli karalama icerigini otomatik tespit edip moderator onay kuyruguna dusuren ve guvenlik ihlallerinde otomatik rapor olusturan koruma katmani",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/block-user",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/block-user",
+                "reference": "b8d1030402e3ccf8f3d6606de8362ae75436511f"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Kullaniciyi Engelle",
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-user-slash",
+                        "backgroundColor": "#7f1d1d",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KktcMeydan\\BlockUser\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Kullanici engelleme - profil, ayarlar ve icerik filtreleme",
             "transport-options": {
                 "relative": true
             }
@@ -14308,6 +14344,7 @@
         "kktcmeydan/analytics-dashboard": 20,
         "kktcmeydan/anonymous-posting": 20,
         "kktcmeydan/auto-moderation": 20,
+        "kktcmeydan/block-user": 20,
         "kktcmeydan/business-profile": 20,
         "kktcmeydan/classifieds": 20,
         "kktcmeydan/currency-ticker": 20,

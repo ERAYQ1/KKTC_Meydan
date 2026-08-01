@@ -1,0 +1,27 @@
+{
+    "name": "kktcmeydan/block-user",
+    "description": "Kullanici engelleme - profil, ayarlar ve icerik filtreleme",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "KktcMeydan\\BlockUser\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Kullaniciyi Engelle",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-user-slash",
+                "backgroundColor": "#7f1d1d",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
