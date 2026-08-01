@@ -44,7 +44,9 @@ class SaveEventDatesToDatabase
         }
 
         try {
-            return Carbon::parse($value);
+            $date = Carbon::parse($value);
+
+            return ($date->year < 2000 || $date->year > 2100) ? null : $date;
         } catch (\Exception $e) {
             return null;
         }

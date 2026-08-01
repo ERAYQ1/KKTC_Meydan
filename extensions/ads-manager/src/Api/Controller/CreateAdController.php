@@ -33,7 +33,7 @@ class CreateAdController extends AbstractCreateController
         AdUrlValidator::assertValid($targetUrl, 'targetUrl');
 
         $ad = new Ad;
-        $ad->title = (string) Arr::get($attributes, 'title', '');
+        $ad->title = strip_tags(trim((string) Arr::get($attributes, 'title', '')));
         $ad->image_url = $imageUrl;
         $ad->target_url = $targetUrl;
         $ad->target_category_slug = Arr::get($attributes, 'targetCategorySlug') ?: null;

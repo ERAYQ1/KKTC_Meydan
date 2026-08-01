@@ -24,7 +24,8 @@ class SaveClassifiedFieldsToDatabase
 
         if (array_key_exists('price', $attributes)) {
             $price = $attributes['price'];
-            $discussion->price = ($price === null || $price === '') ? null : (float) $price;
+            $floatPrice = ($price === null || $price === '') ? null : (float) $price;
+            $discussion->price = ($floatPrice !== null && $floatPrice < 0) ? null : $floatPrice;
         }
 
         if (array_key_exists('currency', $attributes)) {

@@ -37,8 +37,11 @@ class UpdateAdController extends AbstractShowController
             AdUrlValidator::assertValid((string) $attributes['targetUrl'], 'targetUrl');
         }
 
+        if (array_key_exists('title', $attributes)) {
+            $ad->title = strip_tags(trim((string) $attributes['title']));
+        }
+
         foreach ([
-            'title' => 'title',
             'imageUrl' => 'image_url',
             'targetUrl' => 'target_url',
         ] as $jsonKey => $column) {
