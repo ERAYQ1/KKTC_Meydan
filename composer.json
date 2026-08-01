@@ -41,7 +41,8 @@
         "kktcmeydan/duty-pharmacy": "*@dev",
         "kktcmeydan/event-calendar": "*@dev",
         "kktcmeydan/mobile-ui": "*@dev",
-        "kktcmeydan/report-status": "*@dev"
+        "kktcmeydan/report-status": "*@dev",
+        "kktcmeydan/social-share": "*@dev"
     },
     "repositories": [
         {

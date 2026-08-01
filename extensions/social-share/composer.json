@@ -1,0 +1,22 @@
+{
+    "name": "kktcmeydan/social-share",
+    "description": "Konu ici hizli paylasim - WhatsApp, X, Facebook ve link kopyala",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Sosyal Paylasim",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-share-alt",
+                "backgroundColor": "#0e7490",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -7,6 +7,8 @@
 
 namespace KktcMeydan;
 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 use Flarum\Announcements\AnnouncementsFetcher;
 use Flarum\Api\Controller\ListDiscussionsController;
 use Flarum\Api\Serializer\BasicUserSerializer;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b541631b925a5adc434d33508de29699",
+    "content-hash": "56adf0b7e351e25922fc50e930fb2274",
     "packages": [
         {
             "name": "axy/backtrace",
@@ -5560,6 +5560,37 @@
                 "MIT"
             ],
             "description": "Sorun Bildir kategorisindeki konulara gercek durum alani, renkli rozet ve moderator paneli ekler",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "kktcmeydan/social-share",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "extensions/social-share",
+                "reference": "7c9390dcc947993f0ca939caacd93f67b0f939ff"
+            },
+            "require": {
+                "flarum/core": "^1.8"
+            },
+            "type": "flarum-extension",
+            "extra": {
+                "flarum-extension": {
+                    "title": "Sosyal Paylasim",
+                    "category": "feature",
+                    "icon": {
+                        "name": "fas fa-share-alt",
+                        "backgroundColor": "#0e7490",
+                        "color": "#fff"
+                    }
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Konu ici hizli paylasim - WhatsApp, X, Facebook ve link kopyala",
             "transport-options": {
                 "relative": true
             }
@@ -14444,7 +14475,8 @@
         "kktcmeydan/duty-pharmacy": 20,
         "kktcmeydan/event-calendar": 20,
         "kktcmeydan/mobile-ui": 20,
-        "kktcmeydan/report-status": 20
+        "kktcmeydan/report-status": 20,
+        "kktcmeydan/social-share": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

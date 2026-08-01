@@ -1,0 +1,10 @@
+kktcmeydan-social-share:
+  forum:
+    share_button: Paylaş
+    modal:
+      title: Konuyu Paylaş
+      whatsapp: WhatsApp
+      x: X (Twitter)
+      facebook: Facebook
+      copy_link: Bağlantıyı Kopyala
+      link_copied: Bağlantı kopyalandı.
