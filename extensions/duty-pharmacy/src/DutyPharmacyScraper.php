@@ -6,8 +6,8 @@ class DutyPharmacyScraper
 {
     const SOURCE_URL = 'https://www.kteb.org/dp/?lang=tr';
 
-    const CONNECT_TIMEOUT_SECONDS = 6;
-    const TOTAL_TIMEOUT_SECONDS = 10;
+    const CONNECT_TIMEOUT_SECONDS = 2;
+    const TOTAL_TIMEOUT_SECONDS = 3;
 
     // KTEB renders duty pharmacies into 9 sub-region panels, but the district
     // list we expose only has 6 entries - Ust/Alt Mesarya and Karpaz are rural

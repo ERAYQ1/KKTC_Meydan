@@ -9,8 +9,8 @@ class CurrencyRateFetcher
 {
     const SOURCE_URL = 'https://open.er-api.com/v6/latest/GBP';
 
-    const CONNECT_TIMEOUT_SECONDS = 5;
-    const TOTAL_TIMEOUT_SECONDS = 8;
+    const CONNECT_TIMEOUT_SECONDS = 2;
+    const TOTAL_TIMEOUT_SECONDS = 3;
 
     /**
      * @var Client

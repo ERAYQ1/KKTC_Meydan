@@ -13,6 +13,8 @@ app.initializers.add('kktcmeydan-block-user', () => {
   addBlockUserControl();
 
   extend(SettingsPage.prototype, 'settingsItems', function (items) {
+    if (!app.session.user) return;
+
     items.add(
       'blockedUsers',
       <FieldSet className="Settings-blockedUsers" label={app.translator.trans('kktcmeydan-block-user.forum.settings.title')}>
