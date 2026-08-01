@@ -18,10 +18,10 @@ return [
     (new Extend\Locales(__DIR__.'/locale')),
 
     (new Extend\User())
-        ->registerPreference('business_address', 'strval', '')
-        ->registerPreference('business_phone', 'strval', '')
-        ->registerPreference('business_whatsapp', 'strval', '')
-        ->registerPreference('business_hours', 'strval', '')
+        ->registerPreference('business_address', 'KktcMeydan\BusinessProfile\BusinessGroupGate::sanitize', '')
+        ->registerPreference('business_phone', 'KktcMeydan\BusinessProfile\BusinessGroupGate::sanitize', '')
+        ->registerPreference('business_whatsapp', 'KktcMeydan\BusinessProfile\BusinessGroupGate::sanitize', '')
+        ->registerPreference('business_hours', 'KktcMeydan\BusinessProfile\BusinessGroupGate::sanitize', '')
         ->registerPreference('business_map_url', 'strval', '')
         ->registerPreference('business_photo_url', 'strval', ''),
 

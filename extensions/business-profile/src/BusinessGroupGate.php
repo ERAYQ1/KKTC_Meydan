@@ -20,4 +20,13 @@ class BusinessGroupGate
             fn ($group) => $group->name_singular === self::GROUP_NAME_SINGULAR
         );
     }
+
+    /**
+     * Preference transformer for business contact fields - strips HTML/script
+     * tags so a business profile can't inject markup into visitor browsers.
+     */
+    public static function sanitize($value): string
+    {
+        return strip_tags(trim((string) $value));
+    }
 }

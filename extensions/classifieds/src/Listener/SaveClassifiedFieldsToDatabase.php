@@ -33,17 +33,17 @@ class SaveClassifiedFieldsToDatabase
         }
 
         if (array_key_exists('location', $attributes)) {
-            $location = mb_substr(trim((string) $attributes['location']), 0, self::LOCATION_MAX_LENGTH);
+            $location = mb_substr(strip_tags(trim((string) $attributes['location'])), 0, self::LOCATION_MAX_LENGTH);
             $discussion->location = $location === '' ? null : $location;
         }
 
         if (array_key_exists('contactPhone', $attributes)) {
-            $phone = mb_substr(trim((string) $attributes['contactPhone']), 0, self::CONTACT_PHONE_MAX_LENGTH);
+            $phone = mb_substr(strip_tags(trim((string) $attributes['contactPhone'])), 0, self::CONTACT_PHONE_MAX_LENGTH);
             $discussion->contact_phone = $phone === '' ? null : $phone;
         }
 
         if (array_key_exists('classifiedType', $attributes)) {
-            $type = $attributes['classifiedType'];
+            $type = strip_tags(trim((string) $attributes['classifiedType']));
             $discussion->classified_type = in_array($type, self::VALID_TYPES, true) ? $type : null;
         }
     }
