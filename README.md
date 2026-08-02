@@ -114,6 +114,8 @@ docker compose exec flarum-app vendor/bin/phpunit
 docker compose exec flarum-app php scripts/verify-anonymity.php
 ```
 
+13 özel eklentinin tamamı entegrasyon testi ile kapsanmıştır (`tests/integration/`): API nitelikleri, endpoint yanıtları, yetki sınırları ve — salt ön yüz olan `social-share`/`mobile-ui` için — ön yüzün eklenti etkinken sorunsuz boot etmesi.
+
 `phpunit.xml` içinde `processIsolation="true"` **zorunludur, hız tercihi değil**: her entegrasyon testi tam bir Flarum uygulaması boot ettiği için tek süreçte ~8 testten sonra PHP bellek limiti tükeniyor ve MariaDB OOM-killer tarafından öldürülüyor.
 
 Üçüncü parti (`fof/*`, `ianm/*`) paketler sadece İngilizce dil dosyasıyla gelir; Türkçe çevirileri `locale-overrides/tr.yml` içinde (kök `extend.php` ile `Extend\Locales` olarak bağlı) tamamlanmıştır — Flarum birden fazla locale dizinini aynı dile birleştirdiği için bu, paketlerin kendi çevirisiymiş gibi devreye girer.
