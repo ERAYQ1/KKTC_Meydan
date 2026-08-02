@@ -35,7 +35,7 @@
         <env name="DB_PORT" value="3306"/>
         <env name="DB_DATABASE" value="kktc_meydan_test"/>
         <env name="DB_USERNAME" value="kktc_user"/>
-        <env name="DB_PASSWORD" value="kktc_user_secret"/>
+        <env name="DB_PASSWORD" value="CHANGE_ME_BEFORE_DEPLOY"/>
         <env name="FLARUM_TEST_TMP_DIR" value="/var/www/html/tests/tmp"/>
     </php>
 </phpunit>

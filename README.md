@@ -104,7 +104,7 @@ docker compose exec flarum-app php flarum extension:enable flarum-tags flarum-la
 # Bir kereye mahsus: AYRI test veritabanını kurar (hedef DB'deki tüm tabloları siler)
 # DB_PASSWORD, .env'deki MYSQL_PASSWORD ile aynı olmalı
 docker compose exec flarum-app sh -c 'DB_HOST=flarum-db DB_DATABASE=kktc_meydan_test \
-  DB_USERNAME=kktc_user DB_PASSWORD=kktc_user_secret \
+  DB_USERNAME=kktc_user DB_PASSWORD=CHANGE_ME_BEFORE_DEPLOY \
   FLARUM_TEST_TMP_DIR=/var/www/html/tests/tmp composer test:setup'
 
 # Regresyon testleri (unit + entegrasyon)
