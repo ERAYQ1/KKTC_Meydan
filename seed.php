@@ -1207,7 +1207,7 @@ if ($db->getSchemaBuilder()->hasTable('pages')) {
             $db->table('pages')->where('id', $existing->id)->update([
                 'title' => $page['title'],
                 'content' => $page['content'],
-                'is_html' => 0,
+                'is_html' => 1,
                 'is_hidden' => 0,
                 'is_restricted' => 0,
                 'edit_time' => $now,
@@ -1218,7 +1218,7 @@ if ($db->getSchemaBuilder()->hasTable('pages')) {
                 'title' => $page['title'],
                 'slug' => $page['slug'],
                 'content' => $page['content'],
-                'is_html' => 0,
+                'is_html' => 1,
                 'is_hidden' => 0,
                 'is_restricted' => 0,
                 'time' => $now,
