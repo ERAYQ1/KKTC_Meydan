@@ -84,6 +84,19 @@ jobs:
         if: failure()
         run: docker compose logs
 
+  eslint:
+    name: ESLint check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install root dependencies
+        run: npm ci
+      - name: Run ESLint
+        run: npm run lint
+
   build-diff:
     name: JS build (${{ matrix.extension }}) - dist staleness check
     runs-on: ubuntu-latest
@@ -94,11 +107,15 @@ jobs:
           - ads-manager
           - analytics-dashboard
           - anonymous-posting
+          - block-user
           - business-profile
           - classifieds
+          - currency-ticker
+          - duty-pharmacy
           - event-calendar
           - mobile-ui
           - report-status
+          - social-share
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
