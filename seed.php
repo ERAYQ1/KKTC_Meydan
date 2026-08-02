@@ -1105,126 +1105,148 @@ $legalPages = [
     [
         'slug' => 'gizlilik-politikasi',
         'title' => 'Gizlilik Politikası',
-        'content' => <<<MD
-KKTC Meydan olarak kişisel verilerinizin korunmasına önem veriyoruz. Bu politika, platformu kullandığınızda hangi verilerin işlendiğini ve bu veriler üzerindeki haklarınızı açıklar.
+        'content' => <<<HTML
+<p><strong>Son güncelleme:</strong> bu sayfa platformun güncel veri işleme uygulamalarını yansıtır ve değişiklik hâlinde yenilenir.</p>
 
-## 1. Toplanan veriler
+<h2>1. Veri Sorumlusu ve Kapsam</h2>
+<p>KKTC Meydan ("Platform"), Kuzey Kıbrıs Türk Cumhuriyeti'nde faaliyet gösteren bir topluluk ve tartışma platformudur. Platform, işlediği kişisel veriler bakımından <strong>veri sorumlusu</strong> sıfatını taşır. Kişisel veriler; KKTC'de yürürlükte olan kişisel verilerin korunması mevzuatı ile Türkiye Cumhuriyeti'nin 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ilkeleri esas alınarak işlenir.</p>
+<p>Verileriniz <strong>hukuka ve dürüstlük kurallarına uygun</strong>, <strong>belirli, açık ve meşru amaçlarla</strong>, <strong>işlendikleri amaçla bağlantılı, sınırlı ve ölçülü</strong> biçimde ve <strong>gerektiği süre kadar</strong> saklanır.</p>
 
-- **Hesap bilgileri:** kullanıcı adı, e-posta adresi, şifrenizin geri döndürülemez şekilde şifrelenmiş (hash) hâli.
-- **İçerik:** açtığınız konular, gönderileriniz, yorumlarınız, beğenileriniz, ilan ve etkinlik kayıtlarınız.
-- **Profil bilgileri:** isteğe bağlı olarak eklediğiniz avatar, biyografi ve işletme iletişim bilgileri.
-- **Teknik veriler:** IP adresi, tarayıcı türü, oturum çerezleri ve güvenlik amaçlı erişim kayıtları.
+<h2>2. İşlenen Veri Kategorileri</h2>
+<ul>
+  <li><strong>Kimlik ve iletişim verileri:</strong> kullanıcı adı, e-posta adresi, isteğe bağlı profil bilgileri (avatar, biyografi).</li>
+  <li><strong>İşlem güvenliği verileri:</strong> IP adresi, oturum ve giriş kayıtları (log), tarayıcı/cihaz bilgisi, şifrenizin geri döndürülemez şekilde şifrelenmiş (hash) hâli. Açık şifreniz hiçbir aşamada saklanmaz.</li>
+  <li><strong>İşletme ve ilan verileri:</strong> yalnızca <em>sizin kendi rızanızla</em> girdiğiniz işletme adresi, telefon, WhatsApp numarası, çalışma saatleri ile ilan içeriğindeki konum, fiyat ve iletişim bilgileri. Bu alanlar profilinizde/ilanınızda <strong>herkese açık</strong> yayımlanır; paylaşmak zorunda değilsiniz.</li>
+  <li><strong>Kullanıcı içeriği:</strong> açtığınız konular, gönderiler, yorumlar, beğeniler, anket oyları, etkinlik katılım (RSVP) kayıtları ve sorun bildirimleri.</li>
+</ul>
 
-## 2. Verilerin kullanım amacı
+<h2>3. Anonim Paylaşım ve Kimlik Gizliliği</h2>
+<p>Anonim paylaşım özelliğiyle açılan konu ve gönderilerde <strong>gerçek kullanıcı kimliği ve IP adresi sunucu tarafında maskelenir</strong>; yazarın adı diğer kullanıcılara, arama sonuçlarına ve API yanıtlarına hiçbir şekilde yansıtılmaz. Gizleme istemci (tarayıcı) tarafında değil, sunucu tarafında uygulanır.</p>
+<p>Anonim içeriğin gerçek yazarına yalnızca şu hâllerde erişilebilir:</p>
+<ul>
+  <li>ilgili yetkiye sahip <strong>moderatörler</strong>, kötüye kullanım, taciz veya suç teşkil eden içeriğin incelenmesi amacıyla;</li>
+  <li><strong>yetkili kamu makamlarının</strong> KKTC mevzuatı uyarınca usulüne uygun, yazılı ve yasal dayanağı bulunan talebi hâlinde.</li>
+</ul>
+<p>Bunun dışında anonim kimlik bilgisi hiçbir kişiye, kuruma veya üçüncü tarafa açıklanmaz.</p>
 
-Verileriniz yalnızca hesabınızın yönetimi, içeriklerin yayınlanması, topluluk kurallarının uygulanması, spam ve kötüye kullanımın önlenmesi ile platformun teknik olarak işletilmesi amacıyla kullanılır.
+<h2>4. İşleme Amaçları ve Hukuki Sebepler</h2>
+<ul>
+  <li><strong>Sözleşmenin ifası:</strong> üyelik hesabının oluşturulması ve yönetimi, içeriklerin yayımlanması, bildirim ve hatırlatmaların iletilmesi.</li>
+  <li><strong>Hukuki yükümlülük:</strong> yetkili makamların yasal taleplerinin karşılanması ve mevzuat gereği tutulması gereken kayıtların saklanması.</li>
+  <li><strong>Meşru menfaat:</strong> spam, sahte hesap, dolandırıcılık ve kötüye kullanımın önlenmesi; platform güvenliğinin ve teknik sürekliliğinin sağlanması; topluluk kurallarının uygulanması.</li>
+  <li><strong>Açık rıza:</strong> işletme iletişim bilgileri, ilan detayları gibi tamamen isteğe bağlı olarak paylaştığınız veriler.</li>
+</ul>
+<p>Kişisel verileriniz <strong>pazarlama amacıyla üçüncü kişilere satılmaz, kiralanmaz veya devredilmez.</strong></p>
 
-## 3. Çerezler
+<h2>5. Çerezler (Cookies)</h2>
+<p>Platform yalnızca <strong>zorunlu teknik çerezler</strong> kullanır: oturumunuzun açık kalmasını sağlayan oturum çerezi, güvenlik (CSRF) çerezi ve tema/dil gibi arayüz tercihlerinizi hatırlayan tercih çerezi. Reklam takibi veya profilleme amaçlı üçüncü taraf çerezi kullanılmaz.</p>
+<p>Çerezleri tarayıcı ayarlarınızdan silebilir veya engelleyebilirsiniz; bu durumda oturum açma başta olmak üzere bazı işlevler çalışmaz.</p>
 
-Oturumunuzun açık kalması ve tercihlerinizin (tema, dil) hatırlanması için çerez kullanılır. Tarayıcı ayarlarınızdan çerezleri silebilir veya engelleyebilirsiniz; bu durumda oturum açma özelliği çalışmayabilir.
+<h2>6. Saklama Süresi</h2>
+<p>Hesabınız aktif olduğu sürece hesap ve içerik verileriniz saklanır. Güvenlik amaçlı erişim kayıtları (log) makul bir süre tutulduktan sonra silinir. Hesabınızı kapattığınızda kimlik ve profil verileriniz kaldırılır; tartışmaların bütünlüğünün korunması amacıyla gönderileriniz <strong>anonimleştirilerek</strong> yayında bırakılabilir.</p>
 
-## 4. Verilerin paylaşımı
+<h2>7. Veri Güvenliği</h2>
+<p>Şifreler geri döndürülemez biçimde saklanır, yönetim işlemleri yetki denetimine tabidir, sunucu ve uygulama katmanı düzenli olarak güncellenir. Buna karşın internet üzerinden yapılan hiçbir aktarımın mutlak güvenlikte olduğu taahhüt edilemez.</p>
 
-Kişisel verileriniz üçüncü taraflara satılmaz ve pazarlama amacıyla paylaşılmaz. Paylaşım yalnızca yasal bir yükümlülük veya yetkili makamların usulüne uygun talebi hâlinde yapılır.
+<h2>8. Haklarınız</h2>
+<p>Kişisel verilerinizle ilgili olarak şu haklara sahipsiniz:</p>
+<ul>
+  <li>işlenip işlenmediğini öğrenme ve <strong>verilerinize erişme</strong>;</li>
+  <li>eksik veya yanlış işlenmiş verilerin <strong>düzeltilmesini</strong> isteme;</li>
+  <li>verilerinizin <strong>silinmesini veya anonimleştirilmesini</strong> talep etme;</li>
+  <li>işlemeye <strong>itiraz etme</strong> ve verilerinizin bir kopyasını isteme.</li>
+</ul>
+<p>Taleplerinizi <strong>{$legalContactEmail}</strong> adresine iletebilirsiniz. Başvurularınız en kısa sürede, her hâlükârda makul bir süre içinde yanıtlanır. Kimliğinizin doğrulanması amacıyla talebin hesabınıza kayıtlı e-posta adresinden gönderilmesi gerekir.</p>
 
-## 5. Saklama süresi
+<h2>9. Değişiklikler</h2>
+<p>Bu politika güncellenebilir. Esaslı değişiklikler platform üzerinden duyurulur ve bu sayfadaki güncelleme bilgisi yenilenir.</p>
 
-Hesabınız aktif olduğu sürece verileriniz saklanır. Hesabınızı sildirdiğinizde hesap ve profil bilgileriniz kaldırılır; tartışmaların bütünlüğünü korumak için gönderileriniz anonimleştirilerek bırakılabilir.
-
-## 6. Haklarınız
-
-Verilerinize erişme, düzeltme, silinmesini isteme ve işlenmesine itiraz etme hakkına sahipsiniz. Taleplerinizi aşağıdaki adrese iletebilirsiniz.
-
-## 7. Güvenlik
-
-Şifreler geri döndürülemez şekilde saklanır, yönetici işlemleri yetki denetimine tabidir ve platform düzenli olarak güncellenir. Buna rağmen internet üzerinden yapılan hiçbir aktarımın %100 güvenli olduğu garanti edilemez.
-
-## 8. Değişiklikler
-
-Bu politika güncellenebilir. Önemli değişiklikler platform üzerinden duyurulur ve bu sayfadaki güncelleme tarihi yenilenir.
-
-## 9. İletişim
-
-Gizlilikle ilgili tüm soru ve talepleriniz için: **{$legalContactEmail}**
-MD,
+<h2>10. İletişim</h2>
+<p>Gizlilikle ilgili tüm soru, talep ve şikâyetleriniz için: <strong>{$legalContactEmail}</strong></p>
+HTML,
     ],
     [
         'slug' => 'kullanim-sartlari',
         'title' => 'Kullanım Şartları',
-        'content' => <<<MD
-KKTC Meydan'a kayıt olarak veya platformu kullanarak aşağıdaki şartları kabul etmiş sayılırsınız.
+        'content' => <<<HTML
+<p>KKTC Meydan'a ("Platform") kayıt olarak, giriş yaparak veya içerik paylaşarak aşağıdaki şartları kabul etmiş sayılırsınız. Şartları kabul etmiyorsanız platformu kullanmamalısınız.</p>
 
-## 1. Üyelik
+<h2>1. Üyelik ve Hesap Güvenliği</h2>
+<ul>
+  <li>Hesap açarken <strong>doğru ve güncel bilgi</strong> beyan etmeniz gerekir; başkasının kimliği, işletme adı veya iletişim bilgisiyle hesap açılamaz.</li>
+  <li>Şifrenizin gizliliğinden ve hesabınız üzerinden gerçekleştirilen tüm işlemlerden <strong>siz sorumlusunuz</strong>. Güçlü bir şifre kullanın ve başkasıyla paylaşmayın.</li>
+  <li>Yetkisiz bir erişim veya şüpheli bir hareket fark ederseniz derhal <strong>{$legalContactEmail}</strong> adresine bildirin.</li>
+  <li>Yaptırımdan kaçınmak amacıyla açılan çoklu hesaplar ve otomatik (bot) kayıtlar kapatılır.</li>
+</ul>
 
-Hesap açarken doğru bilgi vermeniz gerekir. Hesabınızın güvenliğinden ve hesabınız üzerinden yapılan tüm işlemlerden siz sorumlusunuz. Şüpheli bir erişim fark ederseniz derhal bize bildirin.
+<h2>2. Kullanıcı Üretimi İçerik (UGC) ve Yasaklar</h2>
+<p>Paylaştığınız her içeriğin hukuki sorumluluğu size aittir. Aşağıdaki içerikler kesinlikle yasaktır:</p>
+<ul>
+  <li><strong>Hakaret, sövme, tehdit ve taciz</strong>; kişi veya topluluklara yönelik yıldırma amaçlı paylaşımlar.</li>
+  <li><strong>Nefret söylemi</strong>: etnik köken, dil, din, cinsiyet, cinsel yönelim, engellilik veya uyruk temelli aşağılama ve ayrımcılık.</li>
+  <li><strong>Kişisel veri ifşası (doxxing)</strong>: bir kişinin adresi, telefonu, kimlik numarası, iş yeri, aile bilgileri veya özel yazışmalarının rızası olmadan yayımlanması.</li>
+  <li><strong>Sahte, yanıltıcı veya dolandırıcılık amaçlı ilanlar</strong>; var olmayan konut/araç/iş ilanları, kapora tuzakları, ödeme yönlendirmeleri.</li>
+  <li><strong>Kurum veya kişi hedefli karalama</strong>: doğruluğu ortaya konmamış isnatlarla itibar zedeleyici kampanya yürütülmesi.</li>
+  <li>Yasa dışı ürün/hizmet tanıtımı, telif hakkı ihlali, müstehcen veya şiddet içerikli materyal, spam ve izinsiz reklam, oy/etkileşim manipülasyonu.</li>
+</ul>
 
-## 2. İçerik sorumluluğu
+<h2>3. Otomatik ve Manuel Moderasyon</h2>
+<p>Platform, topluluk güvenliği için otomatik filtreler ve insan moderasyonu birlikte kullanır. Özellikle <strong>sağlık</strong>, <strong>güvenlik/acil durum</strong> ve <strong>kamu hizmetleri</strong> konularındaki paylaşımlar, yanlış bilginin doğrudan zarar doğurma riski nedeniyle yayımlanmadan önce veya sonra denetimden geçebilir; onay kuyruğuna alınabilir, düzenlenebilir veya kaldırılabilir.</p>
+<p>Kuralları ihlal eden içerikler uyarı yapılmaksızın kaldırılabilir; tekrarlanan ihlallerde hesap askıya alınabilir veya kapatılabilir. Moderasyon kararlarına ilişkin itirazlarınızı iletişim adresinden iletebilirsiniz.</p>
 
-Paylaştığınız her içeriğin sorumluluğu size aittir. Platform, kullanıcı içeriklerinin doğruluğunu garanti etmez ve içeriklerden doğan zararlardan sorumlu tutulamaz.
+<h2>4. İlan ve İşletme Dizini — Sorumluluk Sınırı</h2>
+<ul>
+  <li>İlanlarda ve işletme profillerinde yer alan fiyat, konum, nitelik ve iletişim bilgileri <strong>tamamen ilanı veren kullanıcıya aittir</strong>; Platform bu bilgilerin doğruluğunu, güncelliğini veya ilanın gerçekliğini garanti etmez.</li>
+  <li>Platform, alıcı ile satıcı, kiracı ile kiraya veren, işveren ile iş arayan arasındaki <strong>ticari ilişkiye taraf değildir</strong>; aracılık, komisyonculuk veya emlakçılık hizmeti sunmaz.</li>
+  <li>Ödeme, kapora, sözleşme ve teslimat süreçleri taraflar arasında yürür. Peşin ödeme taleplerine karşı dikkatli olun, mümkün olduğunca yüz yüze görün ve resmi belge isteyin.</li>
+  <li>İlan paylaşırken doğru kategori ve etiketi (#satılık, #kiralık, #iş-ilanı, #ev-arkadaşı, #ikinci-el) kullanın; konum, fiyat ve iletişim bilgisini açıkça belirtin.</li>
+</ul>
 
-## 3. Yasak içerikler
+<h2>5. Fikri Mülkiyet ve Lisans</h2>
+<p>Paylaştığınız metin, görsel ve diğer içeriklerin <strong>telif hakları sizde kalır</strong>. Platformda yayımlamakla; içeriğin platform üzerinde saklanması, görüntülenmesi, çoğaltılması, arama motorlarına ve site içi arama sonuçlarına açılması için Platform'a <strong>münhasır olmayan, dünya çapında, süresiz ve ücretsiz bir kullanım lisansı</strong> vermiş olursunuz. Bu lisans, içeriğinizin size ait olmaktan çıktığı anlamına gelmez.</p>
+<p>Platform'un adı, logosu, arayüz tasarımı ve yazılımı üzerindeki haklar saklıdır. Size ait olmayan içeriği izinsiz yayımlamayın; telif ihlali bildirimlerinizi iletişim adresine iletebilirsiniz.</p>
 
-- Hakaret, taciz, nefret söylemi, tehdit ve kişisel verilerin rızasız paylaşımı,
-- Yasa dışı ürün/hizmet tanıtımı, dolandırıcılık ve yanıltıcı ilanlar,
-- Spam, çoklu hesapla oy/etkileşim manipülasyonu, izinsiz reklam,
-- Telif hakkı ihlali içeren paylaşımlar,
-- Müstehcen veya şiddet içerikli materyaller.
+<h2>6. Sorumluluğun Sınırlandırılması ve Uygulanacak Hukuk</h2>
+<p>Platform <strong>"olduğu gibi" (as is)</strong> sunulur. Kesintisiz, hatasız veya belirli bir amaca uygun çalışacağı taahhüt edilmez; bakım, teknik arıza, saldırı veya güncelleme nedeniyle hizmete ara verilebilir. Platform, kullanıcı içeriğinden, kullanıcılar arasındaki uyuşmazlıklardan ve içeriğe güvenilerek alınan kararlardan doğan <strong>doğrudan veya dolaylı zararlardan sorumlu tutulamaz</strong>.</p>
+<p>Bu şartlar <strong>Kuzey Kıbrıs Türk Cumhuriyeti hukukuna</strong> tabidir. Şartların uygulanmasından doğabilecek her türlü ihtilafın çözümünde <strong>KKTC Lefkoşa Kaza Mahkemeleri</strong> yetkilidir.</p>
 
-## 4. İlan kuralları
-
-İlan paylaşırken uygun kategori ve etiketi (#satılık, #kiralık, #iş-ilanı, #ev-arkadaşı, #ikinci-el) kullanın; konum, fiyat ve iletişim bilgisini açıkça belirtin. Platform, ilan taraflarının arasındaki alışverişe taraf değildir ve doğabilecek anlaşmazlıklardan sorumlu değildir.
-
-## 5. Moderasyon ve yaptırımlar
-
-Kuralları ihlal eden içerikler uyarı yapılmadan kaldırılabilir; tekrarlayan ihlallerde hesap askıya alınabilir veya kapatılabilir. Moderasyon kararlarına itirazlarınızı iletişim adresinden iletebilirsiniz.
-
-## 6. Fikri mülkiyet
-
-Paylaştığınız içeriğin hakları sizde kalır. İçeriği platformda yayınlamamız, görüntülememiz ve arama motorlarına açmamız için gerekli, dünya çapında ve ücretsiz bir kullanım izni vermiş olursunuz.
-
-## 7. Hizmetin sürekliliği
-
-Platform "olduğu gibi" sunulur. Bakım, teknik arıza veya güncelleme nedeniyle hizmete ara verilebilir; kesintisiz erişim garantisi verilmez.
-
-## 8. Şartlardaki değişiklikler
-
-Bu şartlar zaman zaman güncellenebilir. Güncellemeden sonra platformu kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir.
-
-## 9. İletişim
-
-Sorularınız ve bildirimleriniz için: **{$legalContactEmail}**
-MD,
+<h2>7. Şartlardaki Değişiklikler ve İletişim</h2>
+<p>Bu şartlar zaman zaman güncellenebilir; güncelleme sonrasında platformu kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir. Soru, bildirim ve itirazlarınız için: <strong>{$legalContactEmail}</strong></p>
+<p>Kişisel verilerinizin işlenmesine ilişkin ayrıntılar için <a href="/p/gizlilik-politikasi">Gizlilik Politikası</a> sayfasını inceleyin.</p>
+HTML,
     ],
 ];
 
-if ($db->getSchemaBuilder()->hasTable('pages')) {
-    $now = Carbon\Carbon::now();
+// Sayfalar `pages` tablosuna dogrudan INSERT ile DEGIL, FoF\Pages\Page modeli
+// uzerinden yaziliyor. Sebep: model `content`i setter'da s9e TextFormatter ile
+// parse edip saklıyor, okurken `unparse` ediyor (bkz. vendor/fof/pages/src/
+// Page.php). Ham HTML dogrudan sutuna yazilirsa unparse onu parse edilmis
+// sanip tum etiketleri soyuyor ve sayfa duz metin olarak yayina cikiyor -
+// gozlemlenen tam olarak buydu. Model uzerinden yazinca parse/unparse gidis
+// donusu kayipsiz oluyor ve `is_html = 1` ile HTML aynen render ediliyor.
+if (class_exists(\FoF\Pages\Page::class) && $db->getSchemaBuilder()->hasTable('pages')) {
+    foreach ($legalPages as $pageData) {
+        $page = \FoF\Pages\Page::where('slug', $pageData['slug'])->first();
+        $isNew = ! $page;
 
-    foreach ($legalPages as $page) {
-        $existing = $db->table('pages')->where('slug', $page['slug'])->first();
-
-        if ($existing) {
-            $db->table('pages')->where('id', $existing->id)->update([
-                'title' => $page['title'],
-                'content' => $page['content'],
-                'is_html' => 1,
-                'is_hidden' => 0,
-                'is_restricted' => 0,
-                'edit_time' => $now,
-            ]);
-            echo "Hukuki sayfa guncellendi: /p/{$page['slug']}\n";
+        if ($isNew) {
+            $page = new \FoF\Pages\Page();
+            $page->slug = $pageData['slug'];
+            $page->time = Carbon\Carbon::now();
         } else {
-            $db->table('pages')->insert([
-                'title' => $page['title'],
-                'slug' => $page['slug'],
-                'content' => $page['content'],
-                'is_html' => 1,
-                'is_hidden' => 0,
-                'is_restricted' => 0,
-                'time' => $now,
-            ]);
-            echo "Hukuki sayfa olusturuldu: /p/{$page['slug']}\n";
+            $page->edit_time = Carbon\Carbon::now();
         }
+
+        $page->title = $pageData['title'];
+        $page->content = $pageData['content'];
+        $page->is_html = true;
+        $page->is_hidden = false;
+        $page->is_restricted = false;
+        $page->save();
+
+        echo $isNew
+            ? "Hukuki sayfa olusturuldu: /p/{$pageData['slug']}\n"
+            : "Hukuki sayfa guncellendi: /p/{$pageData['slug']}\n";
     }
 } else {
     echo "fof/pages kurulu degil, hukuki sayfalar atlandi.\n";
