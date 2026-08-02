@@ -153,7 +153,8 @@ Bu betik idempotenttir (tekrar tekrar çalıştırılabilir), `site_settings.jso
 - [x] KKTC yerel emoji reaksiyonları (`fof/reactions`, 5 yerel emoji)
 - [x] Nginx güvenlik sertleştirmesi (`/assets/` altında PHP çalıştırma yasağı, hassas config dosyalarına 403, source map/gizli dosya engeli, güvenlik başlıkları — bkz. Teknoloji bölümü)
 - [x] SEO meta/OG/Twitter Card/schema.org etiketleri (`fof/seo`), robots.txt (`fof/sitemap` tarafından zaten otomatik üretiliyordu)
-- [x] Gizlilik Politikası + Kullanım Şartları sayfaları (`fof/pages` ile `/p/gizlilik-politikasi` ve `/p/kullanim-sartlari`), kayıtta zorunlu kabul checkbox'ı (`fof/terms`) — **içerik taslaktır, yayına almadan önce hukuki gözden geçirme şart**, `iletisim@kktcmeydan.com` yer tutucudur
+- [x] Gizlilik Politikası + Kullanım Şartları sayfaları (`fof/pages` ile `/p/gizlilik-politikasi` ve `/p/kullanim-sartlari`), kayıtta zorunlu kabul checkbox'ı (`fof/terms`) — metinler `seed.php` tarafından tohumlanıyor (yayın metni, iletişim adresi `iletisim@kktcmeydan.com`); yayına almadan önce hukuki gözden geçirme önerilir
+- [x] Örnek reklam banner'ları (`extensions/ads-manager`, görseller `public/assets/ads/*.svg`) ve varsayılan gönderen adresi `mail_from` — hepsi `seed.php` ile idempotent tohumlanıyor
 - [x] N+1 sorgu düzeltmeleri (konu listesinde `ianm/follow-users` + `fof/best-answer` kaynaklı gereksiz sorgular — bkz. kök `extend.php`) ve rozetlerin başlığın üzerine binmesi düzeltmesi (bkz. `less-overrides/forum.less`)
 - [ ] Mail/SMTP ayarı (kayıt onayı ve şifre sıfırlama şu an çalışmıyor — canlı sunucuya geçince yapılacak)
 - [ ] Canlı hosting kurulumu (SSL/HTTPS dahil — şu an sadece port 80)

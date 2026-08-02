@@ -64,6 +64,7 @@ $settings->set('theme_primary_color', $config['theme_color']);
 $settings->set('theme_secondary_color', $config['theme_color']);
 $settings->set('welcome_title', $config['welcome_title']);
 $settings->set('welcome_message', $config['welcome_subtitle']);
+$settings->set('mail_from', $config['mail_from'] ?? 'noreply@kktcmeydan.com');
 
 if (! empty($config['footer_html'])) {
     $settings->set('custom_footer', $config['footer_html']);
@@ -1092,5 +1093,246 @@ foreach ($userIds as $username => $id) {
     $votesAssigned++;
 }
 echo "{$votesAssigned} kullaniciya itibar puani atandi.\n";
+
+// --- 18. Hukuki sayfalar (fof/pages) --------------------------------------
+// Sayfa metinleri burada tutuluyor ki `pages` tablosu sifirlansa bile seed
+// tekrar calistirildiginda yayin metinleri geri gelsin. Slug ile eslesiyor:
+// var olan sayfanin basligi/icerigi guncelleniyor, yenisi ekleniyor.
+
+$legalContactEmail = 'iletisim@kktcmeydan.com';
+
+$legalPages = [
+    [
+        'slug' => 'gizlilik-politikasi',
+        'title' => 'Gizlilik Politikası',
+        'content' => <<<MD
+KKTC Meydan olarak kişisel verilerinizin korunmasına önem veriyoruz. Bu politika, platformu kullandığınızda hangi verilerin işlendiğini ve bu veriler üzerindeki haklarınızı açıklar.
+
+## 1. Toplanan veriler
+
+- **Hesap bilgileri:** kullanıcı adı, e-posta adresi, şifrenizin geri döndürülemez şekilde şifrelenmiş (hash) hâli.
+- **İçerik:** açtığınız konular, gönderileriniz, yorumlarınız, beğenileriniz, ilan ve etkinlik kayıtlarınız.
+- **Profil bilgileri:** isteğe bağlı olarak eklediğiniz avatar, biyografi ve işletme iletişim bilgileri.
+- **Teknik veriler:** IP adresi, tarayıcı türü, oturum çerezleri ve güvenlik amaçlı erişim kayıtları.
+
+## 2. Verilerin kullanım amacı
+
+Verileriniz yalnızca hesabınızın yönetimi, içeriklerin yayınlanması, topluluk kurallarının uygulanması, spam ve kötüye kullanımın önlenmesi ile platformun teknik olarak işletilmesi amacıyla kullanılır.
+
+## 3. Çerezler
+
+Oturumunuzun açık kalması ve tercihlerinizin (tema, dil) hatırlanması için çerez kullanılır. Tarayıcı ayarlarınızdan çerezleri silebilir veya engelleyebilirsiniz; bu durumda oturum açma özelliği çalışmayabilir.
+
+## 4. Verilerin paylaşımı
+
+Kişisel verileriniz üçüncü taraflara satılmaz ve pazarlama amacıyla paylaşılmaz. Paylaşım yalnızca yasal bir yükümlülük veya yetkili makamların usulüne uygun talebi hâlinde yapılır.
+
+## 5. Saklama süresi
+
+Hesabınız aktif olduğu sürece verileriniz saklanır. Hesabınızı sildirdiğinizde hesap ve profil bilgileriniz kaldırılır; tartışmaların bütünlüğünü korumak için gönderileriniz anonimleştirilerek bırakılabilir.
+
+## 6. Haklarınız
+
+Verilerinize erişme, düzeltme, silinmesini isteme ve işlenmesine itiraz etme hakkına sahipsiniz. Taleplerinizi aşağıdaki adrese iletebilirsiniz.
+
+## 7. Güvenlik
+
+Şifreler geri döndürülemez şekilde saklanır, yönetici işlemleri yetki denetimine tabidir ve platform düzenli olarak güncellenir. Buna rağmen internet üzerinden yapılan hiçbir aktarımın %100 güvenli olduğu garanti edilemez.
+
+## 8. Değişiklikler
+
+Bu politika güncellenebilir. Önemli değişiklikler platform üzerinden duyurulur ve bu sayfadaki güncelleme tarihi yenilenir.
+
+## 9. İletişim
+
+Gizlilikle ilgili tüm soru ve talepleriniz için: **{$legalContactEmail}**
+MD,
+    ],
+    [
+        'slug' => 'kullanim-sartlari',
+        'title' => 'Kullanım Şartları',
+        'content' => <<<MD
+KKTC Meydan'a kayıt olarak veya platformu kullanarak aşağıdaki şartları kabul etmiş sayılırsınız.
+
+## 1. Üyelik
+
+Hesap açarken doğru bilgi vermeniz gerekir. Hesabınızın güvenliğinden ve hesabınız üzerinden yapılan tüm işlemlerden siz sorumlusunuz. Şüpheli bir erişim fark ederseniz derhal bize bildirin.
+
+## 2. İçerik sorumluluğu
+
+Paylaştığınız her içeriğin sorumluluğu size aittir. Platform, kullanıcı içeriklerinin doğruluğunu garanti etmez ve içeriklerden doğan zararlardan sorumlu tutulamaz.
+
+## 3. Yasak içerikler
+
+- Hakaret, taciz, nefret söylemi, tehdit ve kişisel verilerin rızasız paylaşımı,
+- Yasa dışı ürün/hizmet tanıtımı, dolandırıcılık ve yanıltıcı ilanlar,
+- Spam, çoklu hesapla oy/etkileşim manipülasyonu, izinsiz reklam,
+- Telif hakkı ihlali içeren paylaşımlar,
+- Müstehcen veya şiddet içerikli materyaller.
+
+## 4. İlan kuralları
+
+İlan paylaşırken uygun kategori ve etiketi (#satılık, #kiralık, #iş-ilanı, #ev-arkadaşı, #ikinci-el) kullanın; konum, fiyat ve iletişim bilgisini açıkça belirtin. Platform, ilan taraflarının arasındaki alışverişe taraf değildir ve doğabilecek anlaşmazlıklardan sorumlu değildir.
+
+## 5. Moderasyon ve yaptırımlar
+
+Kuralları ihlal eden içerikler uyarı yapılmadan kaldırılabilir; tekrarlayan ihlallerde hesap askıya alınabilir veya kapatılabilir. Moderasyon kararlarına itirazlarınızı iletişim adresinden iletebilirsiniz.
+
+## 6. Fikri mülkiyet
+
+Paylaştığınız içeriğin hakları sizde kalır. İçeriği platformda yayınlamamız, görüntülememiz ve arama motorlarına açmamız için gerekli, dünya çapında ve ücretsiz bir kullanım izni vermiş olursunuz.
+
+## 7. Hizmetin sürekliliği
+
+Platform "olduğu gibi" sunulur. Bakım, teknik arıza veya güncelleme nedeniyle hizmete ara verilebilir; kesintisiz erişim garantisi verilmez.
+
+## 8. Şartlardaki değişiklikler
+
+Bu şartlar zaman zaman güncellenebilir. Güncellemeden sonra platformu kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir.
+
+## 9. İletişim
+
+Sorularınız ve bildirimleriniz için: **{$legalContactEmail}**
+MD,
+    ],
+];
+
+if ($db->getSchemaBuilder()->hasTable('pages')) {
+    $now = Carbon\Carbon::now();
+
+    foreach ($legalPages as $page) {
+        $existing = $db->table('pages')->where('slug', $page['slug'])->first();
+
+        if ($existing) {
+            $db->table('pages')->where('id', $existing->id)->update([
+                'title' => $page['title'],
+                'content' => $page['content'],
+                'is_html' => 0,
+                'is_hidden' => 0,
+                'is_restricted' => 0,
+                'edit_time' => $now,
+            ]);
+            echo "Hukuki sayfa guncellendi: /p/{$page['slug']}\n";
+        } else {
+            $db->table('pages')->insert([
+                'title' => $page['title'],
+                'slug' => $page['slug'],
+                'content' => $page['content'],
+                'is_html' => 0,
+                'is_hidden' => 0,
+                'is_restricted' => 0,
+                'time' => $now,
+            ]);
+            echo "Hukuki sayfa olusturuldu: /p/{$page['slug']}\n";
+        }
+    }
+} else {
+    echo "fof/pages kurulu degil, hukuki sayfalar atlandi.\n";
+}
+
+// --- 19. Kayit ekrani zorunlu kabul checkbox'lari (fof/terms) --------------
+// `url` alani kayit formundaki linki belirliyor; ayni url ile eslesen kayit
+// varsa adi/sirasi guncelleniyor, yoksa olusturuluyor.
+
+$termsPolicies = [
+    ['name' => 'Kullanım Şartları', 'url' => '/p/kullanim-sartlari', 'sort' => 1],
+    ['name' => 'Gizlilik Politikası', 'url' => '/p/gizlilik-politikasi', 'sort' => 2],
+];
+
+if ($db->getSchemaBuilder()->hasTable('fof_terms_policies')) {
+    $now = Carbon\Carbon::now();
+
+    foreach ($termsPolicies as $policy) {
+        $existing = $db->table('fof_terms_policies')->where('url', $policy['url'])->first();
+
+        if ($existing) {
+            $db->table('fof_terms_policies')->where('id', $existing->id)->update([
+                'name' => $policy['name'],
+                'sort' => $policy['sort'],
+                'optional' => 0,
+                'updated_at' => $now,
+            ]);
+            echo "Kayit sarti guncellendi: {$policy['name']}\n";
+        } else {
+            $db->table('fof_terms_policies')->insert([
+                'name' => $policy['name'],
+                'url' => $policy['url'],
+                'sort' => $policy['sort'],
+                'optional' => 0,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+            echo "Kayit sarti olusturuldu: {$policy['name']}\n";
+        }
+    }
+} else {
+    echo "fof/terms kurulu degil, kayit sartlari atlandi.\n";
+}
+
+// --- 20. Ornek reklam banner'lari (ads-manager) ---------------------------
+// Gorseller repo icindeki public/assets/ads/*.svg dosyalari; URL'ler
+// config.php'deki forum adresinden turetiliyor ki AdUrlValidator'in
+// bekledigi mutlak http(s) formatinda olsunlar. Baslik ile eslesiyor:
+// istatistik sutunlari (impressions/clicks) korunuyor.
+
+$flarumConfig = require __DIR__ . '/config.php';
+$baseUrl = rtrim($flarumConfig['url'] ?? 'http://localhost:8080', '/');
+
+$seedAds = [
+    [
+        'title' => 'Ercan Havalimanı Ulaşım ve Havaş Rehberi 2026',
+        'image_url' => $baseUrl . '/assets/ads/ercan-ulasim.svg',
+        'target_url' => $baseUrl . '/t/ulasim',
+        'target_category_slug' => 'ulasim',
+    ],
+    [
+        'title' => 'KKTC Öğrenci Evleri & Yurt Rehberi',
+        'image_url' => $baseUrl . '/assets/ads/ogrenci-evleri.svg',
+        'target_url' => $baseUrl . '/t/universite',
+        'target_category_slug' => 'universite',
+    ],
+    [
+        'title' => 'Girne ve Lefkoşa Yerel İşletme Dizini',
+        'image_url' => $baseUrl . '/assets/ads/yerel-isletme-dizini.svg',
+        'target_url' => $baseUrl . '/t/bolgeler',
+        'target_category_slug' => 'bolgeler',
+    ],
+];
+
+if ($db->getSchemaBuilder()->hasTable('ads')) {
+    $now = Carbon\Carbon::now();
+
+    foreach ($seedAds as $ad) {
+        $existing = $db->table('ads')->where('title', $ad['title'])->first();
+
+        if ($existing) {
+            $db->table('ads')->where('id', $existing->id)->update([
+                'image_url' => $ad['image_url'],
+                'target_url' => $ad['target_url'],
+                'target_category_slug' => $ad['target_category_slug'],
+                'is_active' => 1,
+                'updated_at' => $now,
+            ]);
+            echo "Reklam guncellendi: {$ad['title']}\n";
+        } else {
+            $db->table('ads')->insert([
+                'title' => $ad['title'],
+                'image_url' => $ad['image_url'],
+                'target_url' => $ad['target_url'],
+                'target_category_slug' => $ad['target_category_slug'],
+                'target_district_slug' => null,
+                'target_university_slug' => null,
+                'is_active' => 1,
+                'impressions_count' => 0,
+                'clicks_count' => 0,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ]);
+            echo "Reklam olusturuldu: {$ad['title']}\n";
+        }
+    }
+} else {
+    echo "ads-manager kurulu degil, ornek reklamlar atlandi.\n";
+}
 
 echo "Seed tamamlandi. Toplam kullanici: " . count($userIds) . ', toplam konu: ' . Discussion::count() . "\n";
