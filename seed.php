@@ -1357,4 +1357,133 @@ if ($db->getSchemaBuilder()->hasTable('ads')) {
     echo "ads-manager kurulu degil, ornek reklamlar atlandi.\n";
 }
 
+// --- 21/22/23 ortak zaman damgasi ------------------------------------------
+// Sabit tarih, Carbon::now() degil: updateOrInsert her yeniden calistirmada
+// ayni satiri gunceller, sabit damga sayesinde yazilan deger de birebir ayni
+// kalir - yani ikinci calistirma DB'de hicbir alani degistirmez.
+$demoStamp = Carbon\Carbon::parse('2026-08-01 12:00:00');
+
+// --- 21. Etkinlik katilimlari (event-calendar) -----------------------------
+// Eslesme anahtari discussion_id + user_id (tablodaki unique index ile ayni),
+// katilimci secimi modulo ile deterministik: yeniden calistirinca ayni ciftler
+// uretilir, tablo buyumez.
+
+if ($db->getSchemaBuilder()->hasTable('event_rsvps')) {
+    $rsvpPool = array_merge($studentPool, $localPool);
+    $eventDiscussions = Discussion::whereNotNull('event_start_at')->orderBy('id')->get();
+
+    $rsvpCount = 0;
+    foreach ($eventDiscussions as $index => $discussion) {
+        // Etkinlik basina 2 katilimci; havuzda asal olmayan adimlarla ilerleyip
+        // ayni kullanicinin her etkinlige yazilmasini onluyoruz.
+        for ($slot = 0; $slot < 2; $slot++) {
+            $candidate = $rsvpPool[($index * 7 + $slot * 31) % count($rsvpPool)];
+            $userId = $userIds[$candidate['username']] ?? null;
+
+            // Kendi etkinligine RSVP atmasin.
+            if (! $userId || $userId === (int) $discussion->user_id) {
+                continue;
+            }
+
+            $db->table('event_rsvps')->updateOrInsert(
+                ['discussion_id' => $discussion->id, 'user_id' => $userId],
+                [
+                    'status' => ($index + $slot) % 3 === 0 ? 'interested' : 'going',
+                    'created_at' => $demoStamp,
+                    'updated_at' => $demoStamp,
+                ]
+            );
+            $rsvpCount++;
+        }
+    }
+    echo "{$rsvpCount} etkinlik katilim kaydi (event_rsvps) hazir.\n";
+} else {
+    echo "event-calendar kurulu degil, ornek katilimlar atlandi.\n";
+}
+
+// --- 22. Isletme degerlendirmeleri (business-profile) ----------------------
+// Degerlendiren havuzu ogrenci + yerel halk, yani isletme grubuyla kesismiyor:
+// CreateBusinessReviewController'in yasakladigi "kendi isletmeni degerlendirme"
+// durumu bu yolla hic olusmuyor.
+
+if ($db->getSchemaBuilder()->hasTable('business_reviews')) {
+    $reviewComments = [
+        'Hızlı hizmet ve güler yüzlü personel, teşekkürler!',
+        'Konumu çok merkezi ve porsiyonları doyurucu.',
+        'KKTC\'de gördüğüm en iyi müşteri ilgisi.',
+    ];
+
+    $businessGroupId = $roleIds['İşletme'] ?? 6;
+    $businessUserIds = $db->table('group_user')
+        ->where('group_id', $businessGroupId)
+        ->orderBy('user_id')
+        ->pluck('user_id')
+        ->all();
+
+    $reviewerPool = array_merge($localPool, $studentPool);
+
+    $reviewCount = 0;
+    foreach ($businessUserIds as $index => $businessUserId) {
+        for ($slot = 0; $slot < 2; $slot++) {
+            $reviewer = $reviewerPool[($index * 11 + $slot * 41) % count($reviewerPool)];
+            $reviewerId = $userIds[$reviewer['username']] ?? null;
+
+            if (! $reviewerId || $reviewerId === (int) $businessUserId) {
+                continue;
+            }
+
+            $db->table('business_reviews')->updateOrInsert(
+                ['business_user_id' => $businessUserId, 'reviewer_user_id' => $reviewerId],
+                [
+                    'rating' => ($index + $slot) % 2 === 0 ? 5 : 4,
+                    'comment' => $reviewComments[($index + $slot) % count($reviewComments)],
+                    'created_at' => $demoStamp,
+                    'updated_at' => $demoStamp,
+                ]
+            );
+            $reviewCount++;
+        }
+    }
+    echo "{$reviewCount} isletme degerlendirmesi (business_reviews) hazir.\n";
+} else {
+    echo "business-profile kurulu degil, ornek degerlendirmeler atlandi.\n";
+}
+
+// --- 23. Kullanici engellemeleri (block-user) ------------------------------
+// Sadece demo amacli birkac cift: engelleme UI'inin bos gorunmemesi icin.
+// Tabloda updated_at yok, created_at tek zaman sutunu.
+
+if ($db->getSchemaBuilder()->hasTable('user_blocks')) {
+    $blockPairs = [];
+
+    // Havuzun uclerinden secilen sabit indeksler: ayni kullanici hem engelleyen
+    // hem engellenen olmasin diye farkli havuzlardan aliniyor.
+    if (count($localPool) >= 3 && count($studentPool) >= 3) {
+        $blockPairs = [
+            [$localPool[0]['username'], $studentPool[5]['username']],
+            [$studentPool[2]['username'], $localPool[9]['username']],
+            [$localPool[14]['username'], $studentPool[20]['username']],
+        ];
+    }
+
+    $blockCount = 0;
+    foreach ($blockPairs as [$blockerName, $blockedName]) {
+        $blockerId = $userIds[$blockerName] ?? null;
+        $blockedId = $userIds[$blockedName] ?? null;
+
+        if (! $blockerId || ! $blockedId || $blockerId === $blockedId) {
+            continue;
+        }
+
+        $db->table('user_blocks')->updateOrInsert(
+            ['user_id' => $blockerId, 'blocked_user_id' => $blockedId],
+            ['created_at' => $demoStamp]
+        );
+        $blockCount++;
+    }
+    echo "{$blockCount} kullanici engelleme kaydi (user_blocks) hazir.\n";
+} else {
+    echo "block-user kurulu degil, ornek engellemeler atlandi.\n";
+}
+
 echo "Seed tamamlandi. Toplam kullanici: " . count($userIds) . ', toplam konu: ' . Discussion::count() . "\n";
