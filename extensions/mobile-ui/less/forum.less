@@ -14,6 +14,8 @@
   body {
     max-width: 100%;
     overflow-x: hidden;
+    // iOS Safari yatay/dikey cevirmede yaziyi kendiliginden buyutmesin.
+    -webkit-text-size-adjust: 100%;
   }
 
   // DIKKAT: buraya `overflow-x: hidden` EKLEME. CSS'te bir eksende
@@ -26,6 +28,46 @@
   .container,
   .App-content {
     max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Grid/flex cocuklarinin varsayilan `min-width: auto` degeri, uzun
+  // kelime veya genis medya iceren cocuklarin kabi disina tasmasina yol
+  // acar. 320px'de bile tasma olmamasi icin sifirla.
+  .DiscussionListItem-main,
+  .DiscussionListItem-content,
+  .PostStream,
+  .Post,
+  .Post-body,
+  .Modal-body,
+  .UserCard-info {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Gomulu medya ve kod bloklari ekran genisligini asamaz; genis
+  // tablo/kod kendi icinde kayar, sayfa govdesi kaymaz.
+  img,
+  video,
+  iframe,
+  embed,
+  object,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .Post-body pre,
+  .Post-body table,
+  .Post-body .embed,
+  .TextEditor-preview pre,
+  .TextEditor-preview table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .DiscussionListItem-title,
@@ -59,6 +101,31 @@
     min-height: 44px;
     min-width: 44px;
   }
+
+  // Satir ici linkleri 44px yapmak metin akisini bozardi; bunun yerine
+  // liste linklerine dolgu vererek hedefi buyutuyoruz. Konu listesi
+  // rozetleri bilgi amacli (tiklanabilir degil), o yuzden buyutulmez.
+  .ShareModal-link,
+  .DutyPharmacyCard-actions .Button,
+  .MobileDiscoverList a,
+  .BlockedUsersList-item .Button {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+  }
+
+  // iOS Safari, 16px'ten kucuk yazi tipli bir alana odaklaninca sayfayi
+  // otomatik yakinlastirir ve geri cikmaz. Tum girdi alanlarini 16px'e
+  // sabitleyerek bunu kokten engelle.
+  input,
+  select,
+  textarea,
+  .FormControl {
+    font-size: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 // -------------------------------------------------------------
@@ -78,7 +145,10 @@
     padding-bottom: calc(~"56px + env(safe-area-inset-bottom)");
   }
 
-  .MobileBottomNav {
+  // `.MobileTab`, cekirdek/tema kaynakli alternatif alt sekme bari sinifi;
+  // ayni safe-area ve dokunma kurallarini alsin diye birlikte hedefleniyor.
+  .MobileBottomNav,
+  .MobileTab {
     position: fixed;
     left: 0;
     right: 0;
@@ -88,7 +158,11 @@
     align-items: stretch;
     justify-content: space-between;
     height: 56px;
+    box-sizing: content-box;
+    // iOS ev cubugu (alt) ve yatay moddaki centik (yan) icin guvenli alan.
     padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
     background: var(--body-bg);
     border-top: 1px solid var(--control-bg);
     box-shadow: 0 -2px 10px var(--shadow-color);
@@ -402,10 +476,37 @@
   .Composer:not(.minimized) {
     height: 100dvh !important;
     top: 0 !important;
+    max-width: 100%;
+    border-radius: 0;
+    // Alt navigasyon barinin (z-index: 1000) uzerinde kalsin.
+    z-index: 1100;
+  }
+
+  // Kucultulmus composer alt cekmece gibi dursun ve alt bara binmesin.
+  .Composer.minimized {
+    max-width: 100%;
+    border-radius: 12px 12px 0 0;
+    bottom: calc(~"56px + env(safe-area-inset-bottom)");
+  }
+
+  .ComposerBody {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .ComposerBody-editor {
     padding-bottom: calc(~"16px + env(safe-area-inset-bottom)");
+
+    // Klavye acilinca kalan alanda yeterli yazma yuzeyi kalsin.
+    textarea {
+      min-height: 30dvh;
+    }
+  }
+
+  .TextEditor-controls {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   // Fiyat / konum / telefon / tarih-saat / kategori gibi ozel alanlar:
@@ -478,5 +579,228 @@
 
   body:has(.Search.focused) {
     overflow: hidden;
+  }
+}
+
+// -------------------------------------------------------------
+// 6. Modallar (cekirdek + eklenti) — tam genislik, kaydirilabilir
+// -------------------------------------------------------------
+@media @mobile {
+  // Cekirdek telefon modali zaten tam ekran; burada sadece guvenli alan,
+  // tasma ve dokunma hedeflerini tamamliyoruz.
+  .Modal,
+  .Modal-content {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .Modal-content {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .Modal-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .Modal-close .Button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  // --- Nobetci Eczane modali ---
+  .DutyPharmacyModal {
+    &-tabs,
+    &-districtTabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .Button {
+        flex-shrink: 0;
+        min-height: 44px;
+      }
+    }
+
+    // 240px/180px'lik minmax izleri 320px ekranda tasma yapiyordu:
+    // telefonda tek sutuna, genis telefonda iki sutuna dus.
+    &-cards {
+      grid-template-columns: 1fr;
+    }
+
+    &-emergencyGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .DutyPharmacyCard,
+  .EmergencyCard {
+    min-width: 0;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .DutyPharmacyCard-actions {
+    flex-wrap: wrap;
+
+    .Button {
+      flex: 1 1 140px;
+      justify-content: center;
+    }
+  }
+
+  .DutyPharmacy-sidebarButton {
+    min-height: 44px;
+  }
+
+  // --- Paylasim modali ---
+  .ShareModal-links {
+    gap: 4px;
+
+    li {
+      border-bottom: 1px solid var(--control-bg);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .ShareModal-link {
+    padding: 8px 4px;
+    word-break: break-word;
+  }
+
+  // --- Canli doviz bandi ---
+  .CurrencyTicker {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .CurrencyTicker-track {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  // --- Reklam banner'i ---
+  .AdBanner {
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    min-height: 44px;
+
+    &-image {
+      width: 72px;
+      height: 48px;
+    }
+
+    &-body {
+      flex: 1 1 160px;
+      min-width: 0;
+    }
+
+    &-title {
+      word-break: break-word;
+    }
+  }
+
+  // --- Etkinlik takvimi sayfasi ---
+  .CalendarPage-grid {
+    gap: 2px;
+  }
+
+  .CalendarPage-cell {
+    min-height: 56px;
+    padding: 2px;
+  }
+
+  .CalendarPage-event {
+    font-size: 10px;
+  }
+
+  .CalendarPage-header {
+    gap: 8px;
+    flex-wrap: wrap;
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  // --- Isletme profili / engellenen kullanicilar ---
+  .BusinessReviews-summary {
+    flex-wrap: wrap;
+  }
+
+  .BusinessReviews-starPicker {
+    padding: 4px;
+    min-width: 32px;
+    display: inline-block;
+  }
+
+  .BlockedUsersList-item {
+    flex-wrap: wrap;
+  }
+}
+
+// -------------------------------------------------------------
+// 7. Cok dar ekranlar (iPhone SE sinifi, <= 375px)
+// -------------------------------------------------------------
+@media (max-width: 375px) {
+  .DiscussionList {
+    padding: 0 6px;
+  }
+
+  .DiscussionListItem-main {
+    grid-template-columns: 32px 1fr;
+    column-gap: 8px;
+    padding: 10px;
+  }
+
+  .DiscussionListItem-author .Avatar {
+    .Avatar--size(32px);
+  }
+
+  .DiscussionListItem-title {
+    font-size: 14px;
+  }
+
+  .DiscussionListItem-info {
+    font-size: 11px;
+  }
+
+  .ClassifiedBadge,
+  .EventDateBadge,
+  .ReportStatusBadge,
+  .DiscussionListItem-badges .Badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .MobileBottomNav-item {
+    font-size: 9px;
+  }
+
+  .DutyPharmacyModal-emergencyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .AdBanner-image {
+    width: 56px;
+    height: 40px;
   }
 }
