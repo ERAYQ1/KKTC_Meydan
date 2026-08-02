@@ -14,8 +14,11 @@ parameters:
         - extensions/analytics-dashboard/src
         - extensions/anonymous-posting/src
         - extensions/auto-moderation/src
+        - extensions/block-user/src
         - extensions/business-profile/src
         - extensions/classifieds/src
+        - extensions/currency-ticker/src
+        - extensions/duty-pharmacy/src
         - extensions/event-calendar/src
         - extensions/report-status/src
     excludePaths:

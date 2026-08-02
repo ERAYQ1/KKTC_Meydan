@@ -210,6 +210,10 @@ class DutyPharmacyScraper
         }
 
         foreach ($nodes as $node) {
+            if (! $node instanceof \DOMElement) {
+                continue;
+            }
+
             $href = $node->getAttribute('href');
             $raw = trim(substr($href, strlen('tel:')));
 
